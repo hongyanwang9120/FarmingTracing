@@ -1,6 +1,6 @@
 module.exports = {
 
-  title: 'Vue Admin Template',
+  title: '农产品区块链溯源平台',
 
   /**
    * @type {boolean} true | false
