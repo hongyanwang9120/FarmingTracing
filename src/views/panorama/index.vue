@@ -41,7 +41,6 @@
             bottom: 100%;
             right: 14px;
             background-color: rgb(250, 250, 250);
-            font-family: 'Helvetica Neue';
             font-size: 14px;
             visibility: hidden;
             opacity: 0;

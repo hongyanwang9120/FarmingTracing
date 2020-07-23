@@ -1,0 +1,30 @@
+{
+  "id": "1962298",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "688060",
+      "name": "查找 表单 列表",
+      "font_class": "chazhaobiaodanliebiao",
+      "unicode": "e76a",
+      "unicode_decimal": 59242
+    },
+    {
+      "icon_id": "1147047",
+      "name": "地图",
+      "font_class": "ditu",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "7463933",
+      "name": "地图",
+      "font_class": "ditu1",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    }
+  ]
+}

@@ -159,6 +159,7 @@ export default {
       let MinN_Y = h - padding - PL_Size - PL_Size / 6
       this.randomX = this.RandomNum(MinN_X, MaxN_X)
       this.randomY = this.RandomNum(MinN_Y, MaxN_Y)
+      console.log('随机x值：'+this.randomX, '----偏移量：'+this.deviation,'查看组,应该传递的值为：'+(this.randomX-10)+",误差为："+this.deviation)
       let X = this.randomX
       let Y = this.randomY
       this.left_Num = -X + 10
@@ -274,10 +275,14 @@ export default {
       let self = this
       e = e || window.event
       let moveEnd_X = (e.pageX || e.changedTouches[0].pageX) - self.moveStart
+      
       let ver_Num = self.randomX - 10
+
       let deviation = this.deviation
+
       let Min_left = ver_Num - deviation
       let Max_left = ver_Num + deviation
+console.log(ver_Num,Min_left,Max_left,'查看范围,鼠标位置为：'+moveEnd_X)
       if (self.moveStart !== '') {
         if (Max_left > moveEnd_X && moveEnd_X > Min_left) {
           self.displayTips = true
@@ -356,6 +361,11 @@ export default {
   watch: {
   },
   beforeDestroy() {
+    // 页面转移后取消鼠标事件
+        document.removeEventListener('mousemove', this.moving)
+      document.removeEventListener('touchmove', this.moving)
+      document.removeEventListener('mouseup', this.moveEnd)
+      document.removeEventListener('touchend', this.moveEnd)
     this.isleavePage = true
   }
 }

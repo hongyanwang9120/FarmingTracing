@@ -15,6 +15,20 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
+import './assets/css/icon/iconfont.css'
+// import VueAMap from 'vue-amap'
+// Vue.use(VueAMap)
+// VueAMap.initAMapApiLoader({
+//   key: 'f0270d0e5ef5ec0659bbde180d7005f5',
+//   plugin: [
+//     'AMap.Scale', 'AMap.OverView', 'AMap.ToolBar', 'AMap.MapType', 'AMap.PlaceSearch', 'AMap.Geolocation', 'AMap.Geocoder','AMap.ElasticMarker',
+//     'AMap.AdvancedInfoWindowr','AMap.Autocomplete','AMap.DistrictSearch','AMap.DragRoute','AMap.Geocoder','AMap.CitySearch','AMap.MouseTool','AMap.CircleEditor',
+//     'AMap.PolyEditor','AMap.MarkerClusterer','AMap.RangingTool','AMap.CloudDataLayer','AMap.CloudDataSearch','AMap.Weather'
+//   ],
+//   v: '1.4.4',
+//   uiVersion: '1.0'})
+
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

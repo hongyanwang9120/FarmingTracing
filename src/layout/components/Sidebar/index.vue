@@ -1,6 +1,13 @@
 <template>
   <div :class="{'has-logo':showLogo}">
-    <logo v-if="showLogo" :collapse="isCollapse" />
+    
+    <br>
+    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <logo v-if="true" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :default-active="activeMenu"
@@ -19,13 +26,24 @@
 </template>
 
 <script>
+import Hamburger from '@/components/Hamburger'
 import { mapGetters } from 'vuex'
 import Logo from './Logo'
 import SidebarItem from './SidebarItem'
 import variables from '@/styles/variables.scss'
 
 export default {
-  components: { SidebarItem, Logo },
+  components: { SidebarItem, Logo,Hamburger },
+  data() {
+    return {
+      
+    }
+  },
+  methods:{
+toggleSideBar() {
+      this.$store.dispatch('app/toggleSideBar')
+    },
+  },
   computed: {
     ...mapGetters([
       'sidebar'

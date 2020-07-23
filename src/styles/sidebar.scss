@@ -6,10 +6,11 @@
     transition: margin-left .28s;
     margin-left: $sideBarWidth;
     position: relative;
+    background:#F2F2F4;
     .content{
-      height:860px;
+      height:100%;
       overflow: auto;
-
+padding:0 30px 30px 30px
     }
   }
 
