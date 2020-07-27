@@ -1,7 +1,7 @@
 <template>
   <div :class="classObj" class="app-wrapper">
     
-<my-header></my-header>
+    <my-header />
 
     <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside" />
     <sidebar class="sidebar-container" />
@@ -10,7 +10,7 @@
       <div :class="{'fixed-header':fixedHeader}">
         <navbar />
       </div>
-      <app-main  class="content"/>
+      <app-main class="content" />
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@
 <script>
 import { Navbar, Sidebar, AppMain } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
-import myHeader from "./myHeader"
+import myHeader from './myHeader'
 export default {
   name: 'Layout',
   components: {

@@ -1,31 +1,31 @@
 <template>
   <div class="header">
-   <div class="company_title">
+    <div class="company_title">
       <span>江苏省无锡市农产品区块链溯源平台</span>
-   </div>
-   <div class="company_details">
+    </div>
+    <div class="company_details">
       <div class="user">
         <div>
- <img src="http://placehold.it/36x36&text=36x36" alt="">
+          <img src="http://placehold.it/36x36&text=36x36" alt="">
         </div>
        
-          <span>Admin（刘欣瑶）</span>
+        <span>Admin（刘欣瑶）</span>
       </div>
       <div class="organizations">
-<el-select v-model="value" placeholder="请选择">
-    <el-option
-      v-for="item in options"
-      :key="item.value"
-      :label="item.label"
-      :value="item.value">
-    </el-option>
-  </el-select>
+        <el-select v-model="value" placeholder="请选择">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
       </div>
       <div class="message">
-          <span>消息</span>
-          <el-button type="primary" class="message_num">12</el-button>
+        <span>消息</span>
+        <el-button type="primary" class="message_num">12</el-button>
       </div>
-   </div>
+    </div>
  
   </div>
 </template>
@@ -33,7 +33,10 @@
 <script>
 
 export default {
-  name: 'myHeader',
+  name: 'MyHeader',
+  components: {
+  
+  },
    data() {
       return {
         options: [{
@@ -55,9 +58,6 @@ export default {
         value: '选项1'
       }
     },
-  components: {
-  
-  },
   computed: {
   },
   methods: {

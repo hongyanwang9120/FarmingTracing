@@ -7,7 +7,7 @@
     <div class="content">
       <span>电话：010-56984569</span>
       <span>传真：+86 08354856</span>
-<span>邮箱：plant@hotmall.com</span>
+      <span>邮箱：plant@hotmall.com</span>
 
     </div>
   </div>
@@ -15,7 +15,7 @@
  
 <script>
 export default {
-  name: "carrousel",
+  name: 'Carrousel',
 
   data() {
     return {};

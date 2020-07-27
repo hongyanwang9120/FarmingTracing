@@ -3,7 +3,7 @@
     <div class="protal">
       <div class="header">
         <div>
-          <img src="@/assets/portal_images/lgoo-small@2x.png" alt />
+          <img src="@/assets/portal_images/lgoo-small@2x.png" alt>
           <span>农产品区块链溯源平台</span>
         </div>
         <div>
@@ -13,38 +13,37 @@
         </div>
       </div>
       <div class="swiper">
-        <swiper></swiper>
+        <swiper />
       </div>
       <div class="product">
-        <img src="http://placehold.it/460x320&text=460x320" />
+        <img src="http://placehold.it/460x320&text=460x320">
         <div>
           <span>溯源产品功能介绍</span>
           <p>文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文案预留文</p>
         </div>
       </div>
       <div class="online">
-        <message></message>
-        <contac></contac>
+        <message />
+        <contac />
       </div>
-      <portal-footer></portal-footer>
+      <portal-footer />
     </div>
   </div>
 </template>
 
 <script>
-import swiper from "./swiper";
-import message from "./message";
+import swiper from './swiper';
+import message from './message';
 import contac from './contac';
 import portalFooter from '../common/portalFooter'
 export default {
-  name: "Portal",
+  name: 'Portal',
   components: {
     swiper,
     message,
     contac,
     portalFooter
   },
-  mounted() {},
   data() {
     return {};
   },
@@ -56,6 +55,7 @@ export default {
       immediate: true
     }
   },
+  mounted() {},
   methods: {
      async logout() {
       await this.$store.dispatch('user/logout')

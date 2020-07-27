@@ -6,7 +6,7 @@
  
 <script>
 export default {
-  name: "portalFooter",
+  name: 'PortalFooter',
 
   data() {
     return {};

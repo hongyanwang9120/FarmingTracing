@@ -33,7 +33,7 @@ export const constantRoutes = [
   {
     path: '/login',
     component: () => import('@/views/login/index'),
-    hidden: true,
+    hidden: true
   },
   /*
   {
@@ -96,8 +96,6 @@ export const constantRoutes = [
       }
     ]
   },
-
- 
 
   {
     path: '/nested',

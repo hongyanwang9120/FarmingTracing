@@ -4,59 +4,59 @@
       <div class="change">
         <el-button type="primary" class="change-mode" @click="changeDeviceMode">
           <!-- <i :class="iconfont icon-chazhaobiaodanliebiao"></i> -->
-          <i :class="{ 'iconfont': true, 'icon-chazhaobiaodanliebiao':deviceMode==='列表模式', 'icon-ditu':deviceMode!=='列表模式'}"></i>
+          <i :class="{ 'iconfont': true, 'icon-chazhaobiaodanliebiao':deviceMode==='列表模式', 'icon-ditu':deviceMode!=='列表模式'}" />
 
-          {{deviceMode}}
+          {{ deviceMode }}
         </el-button>
       </div>
-      <div class="icon-list" v-if="deviceMode==='列表模式'">
+      <div v-if="deviceMode==='列表模式'" class="icon-list">
         <ul>
           <li v-for="(item,index) in iconList" :key="index">
-            <img :src=item.imgUrl alt="" />
-            <p>{{item.title}}</p>
+            <img :src="item.imgUrl" alt="">
+            <p>{{ item.title }}</p>
           </li>
           
         </ul>
       </div>
-      <div class="device-list" v-else>
+      <div v-else class="device-list">
         <ul>
-          <li >
+          <li>
             <el-button>新增设备</el-button>
           </li>
-          <li >
+          <li>
             <el-button>报警记录</el-button>
           </li>
         </ul>
       </div>
     </div>
-    <map-mode v-if="deviceMode==='列表模式'"></map-mode>
-    <list-mode v-else></list-mode>
+    <map-mode v-if="deviceMode==='列表模式'" />
+    <list-mode v-else />
   </div>
 </template>
 <script>
-import mapMode from "./mapMode";
-import listMode from "./listMode";
+import mapMode from './mapMode';
+import listMode from './listMode';
 
 export default {
-  components: { mapMode,listMode},
-
-  mounted() {},
+  components: { mapMode, listMode },
   data() {
     return {
-      deviceMode:"列表模式",
-      iconList:[
-        {imgUrl:require("@/assets/map_images/on-line.png"),title:"正常"},
-        {imgUrl:require("@/assets/map_images/off-line.png"),title:"离线"},
-        {imgUrl:require("@/assets/map_images/fault.png"),title:"故障"},
-        {imgUrl:require("@/assets/map_images/warning.png"),title:"报警"}
+      deviceMode: '列表模式',
+      iconList: [
+        { imgUrl: require('@/assets/map_images/on-line.png'), title: '正常' },
+        { imgUrl: require('@/assets/map_images/off-line.png'), title: '离线' },
+        { imgUrl: require('@/assets/map_images/fault.png'), title: '故障' },
+        { imgUrl: require('@/assets/map_images/warning.png'), title: '报警' }
 
       ]
     };
   },
+
+  mounted() {},
   methods: {
-    changeDeviceMode(){
-      this.deviceMode= 
-      this.deviceMode=="列表模式"?"地图模式":"列表模式"
+    changeDeviceMode() {
+      this.deviceMode = 
+      this.deviceMode == '列表模式' ? '地图模式' : '列表模式'
     }
   }
 };

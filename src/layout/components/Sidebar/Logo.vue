@@ -25,17 +25,16 @@ export default {
   data() {
     return {
       title: '农产品区块链溯源平台',
-      logo: require("@/assets/login_images/logo_slices/logo@2x.png")
+      logo: require('@/assets/login_images/logo_slices/logo@2x.png')
     }
   },
   watch: {
-    collapse(val){
-      console.log(val,'collapse')
-     return this.logo= 
-      val ? require("@/assets/login_images/logo_slices/logo.png") : require("@/assets/login_images/logo_slices/logo@2x.png")
-
+    collapse(val) {
+      console.log(val, 'collapse')
+     return this.logo = 
+      val ? require('@/assets/login_images/logo_slices/logo.png') : require('@/assets/login_images/logo_slices/logo@2x.png')
     }
-  },
+  }
 }
 </script>
 

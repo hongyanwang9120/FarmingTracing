@@ -1,13 +1,11 @@
 <template>
 
-  
-
   <div class="login-header">
 
-     <div>
-          <img src="@/assets/login_images/logo_slices/logo.png" alt />
-          <span>农产品区块链溯源平台</span>
-        </div>
+    <div>
+      <img src="@/assets/login_images/logo_slices/logo.png" alt>
+      <span>农产品区块链溯源平台</span>
+    </div>
   </div>
 </template>
 
@@ -25,7 +23,6 @@ export default {
   }
 }
 </script>
-
 
 <style lang="scss" scoped>
 $bg:#2d3a4b;

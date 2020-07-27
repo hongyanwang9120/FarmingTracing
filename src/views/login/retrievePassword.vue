@@ -5,26 +5,26 @@
       <div class="step">
         <el-steps :active="orderStatus" finish-status="wait" process-status="finish" align-center>
           <el-step
-            :title="item.title"
-            :description="item.description"
             v-for="(item,index) in items"
             :key="index"
-          ></el-step>
+            :title="item.title"
+            :description="item.description"
+          />
         </el-steps>
       </div>
       <div class="Authentication">
-         <div class="get_code" v-if="this.orderStatus==0">
+        <div v-if="this.orderStatus==0" class="get_code">
           <div>
             <p>
-              <input type="text" class="form_tel" v-model="formLabelAlign.tel" placeholder="请输入手机号" />
+              <input v-model="formLabelAlign.tel" type="text" class="form_tel" placeholder="请输入手机号">
             </p>
             <p>
               <input
+                v-model="formLabelAlign.code"
                 type="text"
                 class="form_code"
-                v-model="formLabelAlign.code"
                 placeholder="请输入短信验证码"
-              />
+              >
               <el-button class="get_code_btn">获取验证码</el-button>
             </p>
             <p>
@@ -32,81 +32,81 @@
             </p>
           </div>
         </div> 
-        <div class="reset_passwords" v-else-if="this.orderStatus==1">
+        <div v-else-if="this.orderStatus==1" class="reset_passwords">
           <div>
-                      当前注册手机号为：
-                      <span>18696172528</span>
+            当前注册手机号为：
+            <span>18696172528</span>
           </div>
           <div>
             <p>
-              <input type="text" class="form_tel" v-model="formLabelAlign.tel" placeholder="请输入手机号" />
+              <input v-model="formLabelAlign.tel" type="text" class="form_tel" placeholder="请输入手机号">
             </p>
             <p>
               <input
+                v-model="formLabelAlign.code"
                 type="text"
                 class="form_code"
-                v-model="formLabelAlign.code"
                 placeholder="请输入短信验证码"
-              />
+              >
             </p>
             <p class="password_hint">密码可以为大写字母、小写字母、数字和特殊符号</p>
             <p>
-              <el-button class="get_code_next"  @click="changeOrderStatus(2)">确认</el-button>
+              <el-button class="get_code_next" @click="changeOrderStatus(2)">确认</el-button>
             </p>
           </div>
         </div>
-        <div class="finish" v-else-if ="this.orderStatus==2">
+        <div v-else-if="this.orderStatus==2" class="finish">
           <div>
-                      成功找回密码，
-                      <span>{{timerTitle}}</span>秒后将跳转到登陆页面！
+            成功找回密码，
+            <span>{{ timerTitle }}</span>秒后将跳转到登陆页面！
           </div>
          
-            <p>
-              <el-button class="get_code_next"  @click="changeOrderStatus(3)">登录</el-button>
-            </p>
-          </div>
+          <p>
+            <el-button class="get_code_next" @click="changeOrderStatus(3)">登录</el-button>
+          </p>
         </div>
       </div>
     </div>
+  </div>
   
 </template>
 
 <script>
 export default {
-  name: "retrievePassword",
+  name: 'RetrievePassword',
   data() {
     return {
       formLabelAlign: {
-        tel: "",
-        code: ""
+        tel: '',
+        code: ''
       },
-      timer:null,
-      timerTitle:5,
+      timer: null,
+      timerTitle: 5,
       orderStatus: 0,
       items: [
-        { title: "验证身份", description: "" },
-        { title: "重置密码", description: "" },
-        { title: "完成", description: "" }
+        { title: '验证身份', description: '' },
+        { title: '重置密码', description: '' },
+        { title: '完成', description: '' }
       ]
     };
   },
   watch: {},
   methods: {
-    changeOrderStatus(num){
-        if(num==3){
-          this.$parent.showRetrieve=false
+    changeOrderStatus(num) {
+        if (num == 3) {
+          this.$parent.showRetrieve = false
         }
-        this.orderStatus=num
-        if(this.orderStatus==2){
+        this.orderStatus = num
+        if (this.orderStatus == 2) {
           const TIME_COUNT = 5;
         var count;
         if (!this.timer) {
           count = TIME_COUNT;
           this.timer = setInterval(() => {
             if (count > 0 && count <= TIME_COUNT) {
-              this.timerTitle =  --count ;
+              this.timerTitle = --count;
             } else {
-               this.$parent.showRetrieve=false
+               this.$parent.showRetrieve = false
               clearInterval(this.timer);
               this.timer = null;
             }
@@ -114,12 +114,10 @@ export default {
         }
         }
         console.log(this.orderStatus)
-    
     }
   }
 };
 </script>
-
 
 <style lang="scss" scoped>
 $bg: #2d3a4b;
@@ -250,8 +248,6 @@ color:rgba(19,110,195,1);
       }
     }
     .finish {
-      
-        
     
       .get_code_next {
         width: 100%;

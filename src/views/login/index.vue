@@ -1,12 +1,12 @@
 <template>
-<div>
+  <div>
   
-<login-header></login-header>
+    <login-header />
 
-  <div class="login-container">
-    <login-user></login-user>
-  </div>
-  <portal-footer> </portal-footer>
+    <div class="login-container">
+      <login-user />
+    </div>
+    <portal-footer />
  
   </div>
 </template>
@@ -17,13 +17,12 @@ import loginUser from './loginUser'
 import portalFooter from '../common/portalFooter'
 import loginHeader from './header'
 
-
 export default {
   name: 'Login',
-  components:{
+  components: {
     loginUser,
     portalFooter,
-    loginHeader,
+    loginHeader
 
   },
   data() {
@@ -45,7 +44,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 
 $bg:#283443;
 $light_gray:#fff;
@@ -108,8 +106,6 @@ $light_gray:#eee;
   width: 100%;
   background-color: rgba(32,32,32,1);;
   overflow: hidden;
-
- 
 
   .tips {
     font-size: 14px;

@@ -7,32 +7,32 @@
     <div class="content">
       <p class="title">我们时刻准备，为您提供最满意的服务</p>
       <p class="describe">请认真填写以下内容，我们在收到信息后将会与您取得联系！（ <span class="red"> * </span> 为必填项）
-                            </p>
-                            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-  <el-form-item label="您的姓名：" prop="name">
-    <el-input v-model="ruleForm.name"></el-input>
-  </el-form-item>
-  <el-form-item label="联系电话：" prop="phone">
-    <el-input v-model="ruleForm.phone"></el-input>
-  </el-form-item>
- <el-form-item label="邮箱地址：" prop="email">
-    <el-input v-model="ruleForm.email"></el-input>
-  </el-form-item>
-  <el-form-item label="留言内容：" prop="desc">
-    <el-input type="textarea" v-model="ruleForm.desc"></el-input>
-  </el-form-item>
-  <el-form-item>
-    <el-button type="primary" @click="submitForm('ruleForm')" class="submitBtn"> 确认提交 <i class="el-icon-arrow-right el-icon--right"></i></el-button>
-    <el-button @click="resetForm('ruleForm')" class="resetBtn">重置内容<i class="el-icon-arrow-right el-icon--right"></i></el-button>
-  </el-form-item>
-</el-form>
+      </p>
+      <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="100px" class="demo-ruleForm">
+        <el-form-item label="您的姓名：" prop="name">
+          <el-input v-model="ruleForm.name" />
+        </el-form-item>
+        <el-form-item label="联系电话：" prop="phone">
+          <el-input v-model="ruleForm.phone" />
+        </el-form-item>
+        <el-form-item label="邮箱地址：" prop="email">
+          <el-input v-model="ruleForm.email" />
+        </el-form-item>
+        <el-form-item label="留言内容：" prop="desc">
+          <el-input v-model="ruleForm.desc" type="textarea" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" class="submitBtn" @click="submitForm('ruleForm')"> 确认提交 <i class="el-icon-arrow-right el-icon--right" /></el-button>
+          <el-button class="resetBtn" @click="resetForm('ruleForm')">重置内容<i class="el-icon-arrow-right el-icon--right" /></el-button>
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
  
 <script>
 export default {
-  name: "carrousel",
+  name: 'Carrousel',
 
   data() {
     return {
@@ -61,7 +61,7 @@ export default {
     };
   },
   computed: {},
-  methods:{
+  methods: {
     submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {

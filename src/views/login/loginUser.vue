@@ -1,13 +1,13 @@
 <template>
   <div class="content">
     <el-form
+      v-if="!this.loginForm.CaptchaModal"
       ref="loginForm"
       :model="loginForm"
       :rules="loginRules"
       class="login-form"
       auto-complete="on"
       label-position="left"
-      v-if="!this.loginForm.CaptchaModal"
     >
       <div class="title-container">
         <h3 class="title">欢迎登陆</h3>
@@ -26,7 +26,7 @@
         />
       </el-form-item>
 
-      <el-form-item prop="password" v-if="loginForm.loginType=='password'">
+      <el-form-item v-if="loginForm.loginType=='password'" prop="password">
         <el-input
           :key="passwordType"
           ref="password"
@@ -42,7 +42,7 @@
           <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
-      <el-form-item class="user-captcha" v-if="loginForm.loginType =='captcha'">
+      <el-form-item v-if="loginForm.loginType =='captcha'" class="user-captcha">
         <el-input
           ref="captcha"
           v-model="loginForm.captcha"
@@ -54,14 +54,14 @@
         />
         <button
           :class="[{'show-captcha-modal':true}, {'show-captcha-disabled': loginForm.isCaptchaDisabled}]"
-          :disabled = "loginForm.isCaptchaDisabled "
+          :disabled="loginForm.isCaptchaDisabled "
           @click="showCaptchaModal"
-        >{{this.loginForm.CaptchaTitle}}</button>
+        >{{ this.loginForm.CaptchaTitle }}</button>
       </el-form-item>
 
       <div class="tips">
-        <span @click="changeLoginType">{{this.loginForm.LoginMessage}}</span>
-        <span class="lost-password" v-if="this.loginForm.LoginMessage==='手机号/验证码登陆'" @click="showRetrieve=true">忘记密码？</span>
+        <span @click="changeLoginType">{{ this.loginForm.LoginMessage }}</span>
+        <span v-if="this.loginForm.LoginMessage==='手机号/验证码登陆'" class="lost-password" @click="showRetrieve=true">忘记密码？</span>
       </div>
       <el-button
         :loading="loading"
@@ -71,13 +71,13 @@
       >注册/登陆</el-button>
     </el-form>
     <el-form
+      v-else
       ref="loginForm"
       :model="loginForm"
       :rules="loginRules"
       class="login-form"
       auto-complete="on"
       label-position="left"
-      v-else
     >
       <div class="title-container">
         <h3 class="title">欢迎登陆</h3>
@@ -85,70 +85,70 @@
           <span>请完成安全验证</span>
           <span>
             <i>
-              <img src="@/assets/captcha_images/Refresh.png" alt />
+              <img src="@/assets/captcha_images/Refresh.png" alt>
             </i>
             <i>
-              <img src="@/assets/captcha_images/question.png" alt />
+              <img src="@/assets/captcha_images/question.png" alt>
             </i>
             <i>
-              <img src="@/assets/captcha_images/close.png" alt />
+              <img src="@/assets/captcha_images/close.png" alt>
             </i>
           </span>
         </span>
-        <puzzle :puzzleImgList=ImgList></puzzle>
+        <puzzle :puzzle-img-list="ImgList" />
       </div>
     </el-form>
-     <retrieve-password v-if="showRetrieve"></retrieve-password>
+    <retrieve-password v-if="showRetrieve" />
   </div>
 </template>
 
 <script>
-import { validUsername } from "@/utils/validate";
-import puzzle from "./puzzle";
-import retrievePassword from'./retrievePassword'
+import { validUsername } from '@/utils/validate';
+import puzzle from './puzzle';
+import retrievePassword from './retrievePassword'
 export default {
-  name: "LoginUser",
-  components: { puzzle,    retrievePassword },
+  name: 'LoginUser',
+  components: { puzzle, retrievePassword },
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!validUsername(value)) {
-        callback(new Error("Please enter the correct user name"));
+        callback(new Error('Please enter the correct user name'));
       } else {
         callback();
       }
     };
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
-        callback(new Error("The password can not be less than 6 digits"));
+        callback(new Error('The password can not be less than 6 digits'));
       } else {
         callback();
       }
     };
     return {
       loginForm: {
-        username: "",
-        password: "",
-        captcha: "",
-        loginType: "password",
+        username: '',
+        password: '',
+        captcha: '',
+        loginType: 'password',
         CaptchaModal: false,
-        CaptchaTitle: "获取验证码",
-        LoginMessage: "手机号/验证码登陆",
+        CaptchaTitle: '获取验证码',
+        LoginMessage: '手机号/验证码登陆',
         isCaptchaDisabled: false
       },
       loginRules: {
         username: [
-          { required: true, trigger: "blur", validator: validateUsername }
+          { required: true, trigger: 'blur', validator: validateUsername }
         ],
         password: [
-          { required: true, trigger: "blur", validator: validatePassword }
+          { required: true, trigger: 'blur', validator: validatePassword }
         ]
       },
       loading: false,
-      showRetrieve:false,
-      passwordType: "password",
+      showRetrieve: false,
+      passwordType: 'password',
       redirect: undefined,
       timer: null,
-      ImgList:["http://placehold.it/400x200&text=400x200","http://placehold.it/600x504&text=600x504"]
+      ImgList: ['http://placehold.it/400x200&text=400x200', 'http://placehold.it/600x504&text=600x504']
     };
   },
   watch: {
@@ -162,27 +162,27 @@ export default {
   methods: {
     changeLoginType() {
       this.loginForm.loginType =
-        this.loginForm.loginType === "password" ? "captcha" : "password";
+        this.loginForm.loginType === 'password' ? 'captcha' : 'password';
       this.loginForm.LoginMessage =
-        this.loginForm.loginType === "password"
-          ? "手机号/验证码登陆"
-          : "手机号/密码登陆";
+        this.loginForm.loginType === 'password'
+          ? '手机号/验证码登陆'
+          : '手机号/密码登陆';
       console.log(this.loginForm.loginType);
     },
     showCaptchaModal(showTime = false) {
       this.loginForm.CaptchaModal = !this.loginForm.CaptchaModal;
       if (showTime) {
         this.loginForm.isCaptchaDisabled = true;
-        const TIME_COUNT = 5+3;
+        const TIME_COUNT = 5 + 3;
         var count;
         if (!this.timer) {
           count = TIME_COUNT;
           this.timer = setInterval(() => {
             if (count > 0 && count <= TIME_COUNT) {
-              this.loginForm.CaptchaTitle = "重新发送（" + --count + "s）";
+              this.loginForm.CaptchaTitle = '重新发送（' + --count + 's）';
             } else {
               this.loginForm.isCaptchaDisabled = false;
-              this.loginForm.CaptchaTitle = "重新获取";
+              this.loginForm.CaptchaTitle = '重新获取';
               clearInterval(this.timer);
               this.timer = null;
             }
@@ -191,10 +191,10 @@ export default {
       }
     },
     showPwd() {
-      if (this.passwordType === "password") {
-        this.passwordType = "";
+      if (this.passwordType === 'password') {
+        this.passwordType = '';
       } else {
-        this.passwordType = "password";
+        this.passwordType = 'password';
       }
       this.$nextTick(() => {
         this.$refs.password.focus();
@@ -205,16 +205,16 @@ export default {
         if (valid) {
           this.loading = true;
           this.$store
-            .dispatch("user/login", this.loginForm)
+            .dispatch('user/login', this.loginForm)
             .then(() => {
-              this.$router.push("/dashboard");
+              this.$router.push('/dashboard');
               this.loading = false;
             })
             .catch(() => {
               this.loading = false;
             });
         } else {
-          console.log("error submit!!");
+          console.log('error submit!!');
           return false;
         }
       });

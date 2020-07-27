@@ -3,10 +3,10 @@
     
     <br>
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+    <br>
+    <br>
+    <br>
+    <br>
     <logo v-if="true" :collapse="isCollapse" />
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
@@ -33,16 +33,16 @@ import SidebarItem from './SidebarItem'
 import variables from '@/styles/variables.scss'
 
 export default {
-  components: { SidebarItem, Logo,Hamburger },
+  components: { SidebarItem, Logo, Hamburger },
   data() {
     return {
       
     }
   },
-  methods:{
+  methods: {
 toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
-    },
+    }
   },
   computed: {
     ...mapGetters([

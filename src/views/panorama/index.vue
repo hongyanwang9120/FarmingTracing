@@ -1,7 +1,7 @@
 <template>
   <div class="panorama-container">
     <div class="panorama-text">这是全景name: {{ name }}</div>
-    <div class="main" id="pano" style="background-color: rgb(0, 0, 0);">
+    <div id="pano" class="main" style="background-color: rgb(0, 0, 0);">
       <!-- <canvas
         width="700"
         height="974"
@@ -18,7 +18,7 @@
           background: transparent;
           display: none;
         "
-      ></div>
+      />
       <div
         style="
           width: 100%;
@@ -52,9 +52,9 @@
             transition: all 0.27s ease 0s;
             width: 200px;
           "
-          ><a
-            type="item"
-            style="
+        ><a
+          type="item"
+          style="
               display: block;
               padding: 10px 10px 10px 20px;
               text-decoration: none;
@@ -62,8 +62,8 @@
               pointer-events: auto;
               transition: all 0.27s ease 0s;
             "
-            >Control<span
-              style="
+        >Control<span
+          style="
                 float: right;
                 width: 17px;
                 height: 17px;
@@ -71,13 +71,11 @@
                 background-size: cover;
                 background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiIC8+PC9zdmc+');
               "
-            ></span
-            ><span style="font-size: 13px; font-weight: 300; float: right;"
-              >Mouse</span
-            ></a
-          ><a
-            type="item"
-            style="
+        /><span
+          style="font-size: 13px; font-weight: 300; float: right;"
+        >Mouse</span></a><a
+          type="item"
+          style="
               display: block;
               padding: 10px 10px 10px 20px;
               text-decoration: none;
@@ -85,8 +83,8 @@
               pointer-events: auto;
               transition: all 0.27s ease 0s;
             "
-            >Mode<span
-              style="
+        >Mode<span
+          style="
                 float: right;
                 width: 17px;
                 height: 17px;
@@ -94,12 +92,9 @@
                 background-size: cover;
                 background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiIC8+PC9zdmc+');
               "
-            ></span
-            ><span style="font-size: 13px; font-weight: 300; float: right;"
-              >Normal</span
-            ></a
-          ></span
-        ><span
+        /><span
+          style="font-size: 13px; font-weight: 300; float: right;"
+        >Normal</span></a></span><span
           style="
             cursor: pointer;
             float: right;
@@ -113,45 +108,45 @@
             pointer-events: auto;
             background-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik03IDE0SDV2NWg1di0ySDd2LTN6bS0yLTRoMlY3aDNWNUg1djV6bTEyIDdoLTN2Mmg1di01aC0ydjN6TTE0IDV2MmgzdjNoMlY1aC01eiIvPgo8L3N2Zz4=');
           "
-        ></span>
+        />
       </div>
     </div>
     <div class="time">
       <p id="timeDisplay">2020-07-17 10:41:55</p>
     </div>
-    <ul class="list" id="list">
+    <ul id="list" class="list">
       <li class="li">
     
         <img
           src="../../assets/panorama_images/wKgBKF3LlMmAQ3cVAAAM7VcYeJY958.png"
-        />
+        >
         <p style="margin-top: 10px;">27.74℃</p>
       </li>
       <li class="li">
         <img
           src="../../assets/panorama_images/wKgBKF3LlMmAWavfAAAOPshRT0s390.png"
-        />
+        >
         <p style="margin-top: 10px;">100.0RH%</p>
       </li>
       <li class="li">
         <img
           src="../../assets/panorama_images/wKgBn13LlNmAMfVFAAAM7VcYeJY489.png"
-        />
+        >
         <p style="margin-top: 10px;">997.1hPa</p>
       </li>
       <li class="li">
         <img
           src="../../assets/panorama_images/wKgBKF3LlMmABazJAAALyFZFBhs061.png"
-        />
+        >
         <p style="margin-top: 10px;">27953.2lux</p>
       </li>
     </ul>
     <input
+      id="pic"
       type="hidden"
       value="/31384703333230301f002a00_1594953794-20200717104317943.jpg"
-      id="pic"
-    />
-    <input type="hidden" value="2020-07-17 10:41:55" id="time" />
+    >
+    <input id="time" type="hidden" value="2020-07-17 10:41:55">
     <ul style="display: none;">
       <li class="li1">
         http://220.170.144.56:22999/group1/M00/00/64/wKgBKF3LlMmAQ3cVAAAM7VcYeJY958.png
@@ -177,56 +172,49 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import  {ImagePanorama,Panorama,Viewer} from '@/lib/panolens.module.js'
+import { ImagePanorama, Panorama, Viewer } from '@/lib/panolens.module.js'
 export default {
-  name: 'panorama',
+  name: 'Panorama',
   computed: {
     ...mapGetters([
       'name'
     ])
   },
-  data(){
+  data() {
     return {
 
     }
   },
   mounted() {
-    this.$nextTick(()=>{
- var panorama,
-        viewer,
-        images,
-        index = 0,
-        renewDuration = 10000;
+    this.$nextTick(() => {
+ var panorama;
+        var viewer;
+        var images;
+        var index = 0;
+        var renewDuration = 10000;
       
-      var container = document.getElementById("pano");
+      var container = document.getElementById('pano');
       // viewer = new PANOLENS.Viewer({
   
       viewer = new Viewer({
         container: container,
-        controlButtons: ["fullscreen"],
+        controlButtons: ['fullscreen'],
         autoRotate: true,
         autoRotateActivationDuration: 2000,
-        autoRotateSpeed: 0.3,
+        autoRotateSpeed: 0.3
       });
       function renew() {
-        var val = document.getElementById("pic").value;
+        var val = document.getElementById('pic').value;
         panorama && panorama.dispose() && viewer.remove(panorama);
         // panorama = new PANOLENS.ImagePanorama(val);
         panorama = new ImagePanorama(val);
-
  
         viewer.add(panorama);
-       
       }
       renew();
     })
-  
-      
-   
   },
-  methods:{
-
-     
+  methods: {
     
   }
 }

@@ -40,10 +40,10 @@ import {
   Raycaster,
   Frustum,
   REVISION as REVISION$1
-} from "three";
+} from 'three';
 
-const version = "0.11.0";
-const dependencies = { three: "^0.105.2" };
+const version = '0.11.0';
+const dependencies = { three: '^0.105.2' };
 
 /**
  * REVISION
@@ -51,7 +51,7 @@ const dependencies = { three: "^0.105.2" };
  * @example PANOLENS.REVISION
  * @type {string} revision
  */
-const REVISION = version.split(".")[1];
+const REVISION = version.split('.')[1];
 
 /**
  * VERSION
@@ -67,7 +67,7 @@ const VERSION = version;
  * @example PANOLENS.THREE_REVISION
  * @type {string} threejs revision
  */
-const THREE_REVISION = dependencies.three.split(".")[1];
+const THREE_REVISION = dependencies.three.split('.')[1];
 
 /**
  * THREEJS VERSION
@@ -75,7 +75,7 @@ const THREE_REVISION = dependencies.three.split(".")[1];
  * @example PANOLENS.THREE_VERSION
  * @type {string} threejs version
  */
-const THREE_VERSION = dependencies.three.replace(/[^0-9.]/g, "");
+const THREE_VERSION = dependencies.three.replace(/[^0-9.]/g, '');
 
 /**
  * CONTROLS
@@ -115,27 +115,27 @@ const MODES = { UNKNOWN: 0, NORMAL: 1, CARDBOARD: 2, STEREO: 3 };
  */
 const DataImage = {
   Info:
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABAAAAAQADq8/hgAAADBklEQVR42u2bP08UQRiHnzFaSYCI/xoksdBIqGwIiYWRUBISExpCQ0ej38FWOmlIKKhoMPEbaCxsrrHiYrQgOSlQEaICrT+LHSPZzNzt3s3c3Hn7lHvLzvv82L2dm30XKioqKgYY062BJF0HpoA7wARwBbhsPz4DjoEG8AnYNcZ8Sx1Op8IXJM1KWpdUV3nq9m9nJV1I7VNGfEzSM0mNNqR9NOwxx1L7NRMflbQm6SSgeJ4TO8Zoat+8/LKkg4jieQ4kLaf2RtKwpJ0uiufZkTScSn5S0l5C+b/sSZrstvyMpKPU5uc4kjTTjkvpeYCkaeA1/+7hvcIZMGuMqUULQNIU8Aa4ltrWwyHwyBizGzwASSPAe+B2assW7AH3jTE/i+xcZoa12Qfy2Bo3i+5cKABl99zF1GYlWFTBeULLS0DZrOsDcDNggTXgc27bLWA64BhfgHvGmB8dHUXZ1DM0S45xliKMs9bKr+klIOkqsBrwv9JtVq1DewEAT4Ch1BYdMGQdygeg7Df4SmqDAKyoyXpCszPgITCeuvoAjFuX0gE8jljUdv7bCtiOOJ7XpdUZ8L/gdXHOA5QtYH5NXXVgbrgWWn1nwFTqaiPgdPIFcDd1tRFwOl307DwRuZgXwLvctgfA04hjOp18AcReZ6sZY16e3yDpUuQxnU6+S2AkcjEpcDr1zxOXSPgCKLSa0mc4nXwB/EpdbQScTr4AGqmrjYDTyRfAx9TVRsDp5Aug8LJyH+F0cgZg58z11BUHpO5ruGh2G3ybuuqAeF2aBfAqddUB8bq0OgP2U1cegH3aOQOMMb+BrdTVB2DLupQLwLIOnKY26IBT6+ClaQDGmO/ARmqLDtiwDn7HVkcY+EdjNoTlCI+tYhO2iUppm6HKslPUq2qQKHpUe8AFsjaUXuUQWCgqXyoAG8IuME/WkNRrnAHzZfqDSgdgQ6gBc2Td3b3CMTBXtkOsIzTIjZLnQhjcVtlcEIPZLJ0LoVvt8s/Va+3yuSAG84UJRxB98cpM9dJURUVFxSDzBxKde4Lk3/h2AAAAAElFTkSuQmCC",
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABAAAAAQADq8/hgAAADBklEQVR42u2bP08UQRiHnzFaSYCI/xoksdBIqGwIiYWRUBISExpCQ0ej38FWOmlIKKhoMPEbaCxsrrHiYrQgOSlQEaICrT+LHSPZzNzt3s3c3Hn7lHvLzvv82L2dm30XKioqKgYY062BJF0HpoA7wARwBbhsPz4DjoEG8AnYNcZ8Sx1Op8IXJM1KWpdUV3nq9m9nJV1I7VNGfEzSM0mNNqR9NOwxx1L7NRMflbQm6SSgeJ4TO8Zoat+8/LKkg4jieQ4kLaf2RtKwpJ0uiufZkTScSn5S0l5C+b/sSZrstvyMpKPU5uc4kjTTjkvpeYCkaeA1/+7hvcIZMGuMqUULQNIU8Aa4ltrWwyHwyBizGzwASSPAe+B2assW7AH3jTE/i+xcZoa12Qfy2Bo3i+5cKABl99zF1GYlWFTBeULLS0DZrOsDcDNggTXgc27bLWA64BhfgHvGmB8dHUXZ1DM0S45xliKMs9bKr+klIOkqsBrwv9JtVq1DewEAT4Ch1BYdMGQdygeg7Df4SmqDAKyoyXpCszPgITCeuvoAjFuX0gE8jljUdv7bCtiOOJ7XpdUZ8L/gdXHOA5QtYH5NXXVgbrgWWn1nwFTqaiPgdPIFcDd1tRFwOl307DwRuZgXwLvctgfA04hjOp18AcReZ6sZY16e3yDpUuQxnU6+S2AkcjEpcDr1zxOXSPgCKLSa0mc4nXwB/EpdbQScTr4AGqmrjYDTyRfAx9TVRsDp5Aug8LJyH+F0cgZg58z11BUHpO5ruGh2G3ybuuqAeF2aBfAqddUB8bq0OgP2U1cegH3aOQOMMb+BrdTVB2DLupQLwLIOnKY26IBT6+ClaQDGmO/ARmqLDtiwDn7HVkcY+EdjNoTlCI+tYhO2iUppm6HKslPUq2qQKHpUe8AFsjaUXuUQWCgqXyoAG8IuME/WkNRrnAHzZfqDSgdgQ6gBc2Td3b3CMTBXtkOsIzTIjZLnQhjcVtlcEIPZLJ0LoVvt8s/Va+3yuSAG84UJRxB98cpM9dJURUVFxSDzBxKde4Lk3/h2AAAAAElFTkSuQmCC',
   Arrow:
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABAAAAAQADq8/hgAAADPklEQVR42u2bMUscQRiG30/SRaJEI1ZKUiRErNIELRUbQYSAnX8hpVUgkDYp0wgWVjYW+QcJaQzYpLojJIXhtDDEKBpj65ti58ixmdmb2ZvZ7+T2AUHudmfmeXf2bnb3O6CmpqZmgJGqOiI5AWAWwEMA0wDuArht3r4CcAagBeAbgIaI/NQOp1fhIZKLJN+SbDKcptl3keSQtk+I+BjJVyRbJaRdtEybY9p+ReKjJN+QvIwonufS9DGq7ZuXXyd5nFA8zzHJdW1vkLxDcrdC8Ty7JO9oyc+QPFCUb3NAcqZq+TmSp9rmHZySnCvjErwOIPkUwHv8+w7vF64ALIrIfrIASM4C+ADgnratgxMACyLSiB4AyREAnwE80LbswgGAJyJy4bNxyApr6wbIw4xxy3djrwCYfeeuaZsFsEbPdULXU4DZqusLgMkEA21P05EEbf8A8FhEzos28pkBLxLKL5s/r/M1kEkz9vKQHGeatf05yfmOfubNa7G5JDle5NhtBjwHMBz5yFwAWBaRT+0XzP8pZsKwcQiH2fX8Ycojb+kzxUw4ZJn7CSQXqpRPHMKCq7+iZJ71Mvdy/DftXSQ6HcJdSDaqPPKW/mPOBO+lcbvzCU35RCFM2PpwnQKzZQfdgfe0dxH5dLA6uQJ4pC2fIASrkyuA6X6QjxyC1ckVQNn7bNHlI4ZgdXIFUObiJJl8pBCsTjGfuIwA2Cv4FN7xbYjkjqsRAHuIePXoCiDF1Zk2VidXAL+1R5sAq5MrgJb2aBNgdXIF8FV7tAmwOrkCCFs73wysTtYATHFCU3vEEWm6Ci6KvgY/ao86Ik6XogDeaY86Ik6XbjPgSHvkEThCwQy45XpDRK5JbgN4GWkgUyR9H65MRQxgW0SunZ5FezK7pfwd8e8MV8UfAPdF5Jdrg8JrAbPjprZFD2wWyQP6j8ZSEufRmGlgQ9umBBvd5IOgbjFUKLu+XnWBhG+rpsFVZGUo/coJgFVf+aAATAgNACvICpL6jSsAKyH1QcEBmBD2ASwhq+7uF84ALIVWiPUEB7lQsiOEwS2VzQUxmMXSuRCqKpd/zX4rl88FMZg/mLAEcSN+MlP/aKqmpqZmkPkL0hSjwOpNKxwAAAAASUVORK5CYII=",
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABAAAAAQADq8/hgAAADPklEQVR42u2bMUscQRiG30/SRaJEI1ZKUiRErNIELRUbQYSAnX8hpVUgkDYp0wgWVjYW+QcJaQzYpLojJIXhtDDEKBpj65ti58ixmdmb2ZvZ7+T2AUHudmfmeXf2bnb3O6CmpqZmgJGqOiI5AWAWwEMA0wDuArht3r4CcAagBeAbgIaI/NQOp1fhIZKLJN+SbDKcptl3keSQtk+I+BjJVyRbJaRdtEybY9p+ReKjJN+QvIwonufS9DGq7ZuXXyd5nFA8zzHJdW1vkLxDcrdC8Ty7JO9oyc+QPFCUb3NAcqZq+TmSp9rmHZySnCvjErwOIPkUwHv8+w7vF64ALIrIfrIASM4C+ADgnratgxMACyLSiB4AyREAnwE80LbswgGAJyJy4bNxyApr6wbIw4xxy3djrwCYfeeuaZsFsEbPdULXU4DZqusLgMkEA21P05EEbf8A8FhEzos28pkBLxLKL5s/r/M1kEkz9vKQHGeatf05yfmOfubNa7G5JDle5NhtBjwHMBz5yFwAWBaRT+0XzP8pZsKwcQiH2fX8Ycojb+kzxUw4ZJn7CSQXqpRPHMKCq7+iZJ71Mvdy/DftXSQ6HcJdSDaqPPKW/mPOBO+lcbvzCU35RCFM2PpwnQKzZQfdgfe0dxH5dLA6uQJ4pC2fIASrkyuA6X6QjxyC1ckVQNn7bNHlI4ZgdXIFUObiJJl8pBCsTjGfuIwA2Cv4FN7xbYjkjqsRAHuIePXoCiDF1Zk2VidXAL+1R5sAq5MrgJb2aBNgdXIF8FV7tAmwOrkCCFs73wysTtYATHFCU3vEEWm6Ci6KvgY/ao86Ik6XogDeaY86Ik6XbjPgSHvkEThCwQy45XpDRK5JbgN4GWkgUyR9H65MRQxgW0SunZ5FezK7pfwd8e8MV8UfAPdF5Jdrg8JrAbPjprZFD2wWyQP6j8ZSEufRmGlgQ9umBBvd5IOgbjFUKLu+XnWBhG+rpsFVZGUo/coJgFVf+aAATAgNACvICpL6jSsAKyH1QcEBmBD2ASwhq+7uF84ALIVWiPUEB7lQsiOEwS2VzQUxmMXSuRCqKpd/zX4rl88FMZg/mLAEcSN+MlP/aKqmpqZmkPkL0hSjwOpNKxwAAAAASUVORK5CYII=',
   FullscreenEnter:
-    "data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik03IDE0SDV2NWg1di0ySDd2LTN6bS0yLTRoMlY3aDNWNUg1djV6bTEyIDdoLTN2Mmg1di01aC0ydjN6TTE0IDV2MmgzdjNoMlY1aC01eiIvPgo8L3N2Zz4=",
+    'data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGRkZGIiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIHdpZHRoPSIyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wIDBoMjR2MjRIMHoiIGZpbGw9Im5vbmUiLz4KICAgIDxwYXRoIGQ9Ik03IDE0SDV2NWg1di0ySDd2LTN6bS0yLTRoMlY3aDNWNUg1djV6bTEyIDdoLTN2Mmg1di01aC0ydjN6TTE0IDV2MmgzdjNoMlY1aC01eiIvPgo8L3N2Zz4=',
   FullscreenLeave:
-    "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggc3R5bGU9ImZpbGw6I2ZmZiIgZD0iTTE0LDE0SDE5VjE2SDE2VjE5SDE0VjE0TTUsMTRIMTBWMTlIOFYxNkg1VjE0TTgsNUgxMFYxMEg1VjhIOFY1TTE5LDhWMTBIMTRWNUgxNlY4SDE5WiIgLz48L3N2Zz4=",
+    'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggc3R5bGU9ImZpbGw6I2ZmZiIgZD0iTTE0LDE0SDE5VjE2SDE2VjE5SDE0VjE0TTUsMTRIMTBWMTlIOFYxNkg1VjE0TTgsNUgxMFYxMEg1VjhIOFY1TTE5LDhWMTBIMTRWNUgxNlY4SDE5WiIgLz48L3N2Zz4=',
   VideoPlay:
-    "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggc3R5bGU9ImZpbGw6I2ZmZiIgZD0iTTgsNS4xNFYxOS4xNEwxOSwxMi4xNEw4LDUuMTRaIiAvPjwvc3ZnPg==",
+    'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggc3R5bGU9ImZpbGw6I2ZmZiIgZD0iTTgsNS4xNFYxOS4xNEwxOSwxMi4xNEw4LDUuMTRaIiAvPjwvc3ZnPg==',
   VideoPause:
-    "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggc3R5bGU9ImZpbGw6I2ZmZiIgZD0iTTE0LDE5LjE0SDE4VjUuMTRIMTRNNiwxOS4xNEgxMFY1LjE0SDZWMTkuMTRaIiAvPjwvc3ZnPg==",
+    'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggc3R5bGU9ImZpbGw6I2ZmZiIgZD0iTTE0LDE5LjE0SDE4VjUuMTRIMTRNNiwxOS4xNEgxMFY1LjE0SDZWMTkuMTRaIiAvPjwvc3ZnPg==',
   WhiteTile:
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIABAMAAAAGVsnJAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB1WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx0aWZmOkNvbXByZXNzaW9uPjE8L3RpZmY6Q29tcHJlc3Npb24+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgICAgIDx0aWZmOlBob3RvbWV0cmljSW50ZXJwcmV0YXRpb24+MjwvdGlmZjpQaG90b21ldHJpY0ludGVycHJldGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KAtiABQAAACRQTFRFAAAAAAAABgYGBwcHHh4eKysrx8fHy8vLzMzM7OzsAAAABgYG+q7SZgAAAAp0Uk5TAP7+/v7+/v7+/iJx/a8AAAOwSURBVHja7d0hbsNAEAVQo6SFI6XEcALDcgNLvUBvEBQVhpkWVYWlhSsVFS7t5QIshRt695lEASZP+8c7a1kzDL1fz+/zyuvzp6FbvoddrL6uDd1yGZ5eXldeb18N3fIx7A+58prmhm65DfvDcd0952lu6JabFbD/zVprZj1lzcys+fj9z8xTZtbT8rv8yWlu6BYAIgAAAAAAAAAAAABAM6QXEAEAAAAAAAAAgJ2gnaAIiIA3Q2qAGgAAAAAAAAAAAAAAAAAAAAAAAAAAQJsADkVFAAAAAAA8Bj0GRUAEREAEREAEREAEREAEAAAAAAAAAAB2gnaCIiACPplRA9QANUAERAAAAEVQERQBERCBVlfAcZ3aeZobusUKMGBhV6KUElHGKBERJR6/fxExRkQZl9/lT8S1oVsuhqyYMmPKjCkzvfcCpsxohrwY0Q06EAEAAAAAAAAAAACgGdILiAAAAAAAAAAAwE7QTlAERMCbITVADQAAAAAAAAAAAAAAAAAAAAAAAAAAwKmwQ1ERAAAAAACPQY9BERABERABERABERABERABAAAAAAAAAICdoJ2gCIiAT2bUADVADRABEQAAQBFUBEVABERgEyvAlJm+V4ApM6bMmDJjyowpM6bMdN0LmDKjGfJiRDfoQAQAAAAAAAAAAACAZkgvIAIAAAAAAAAAADtBO0EREAFvhtQANQAAAAAAAAAAAAAAAAAAAAAAAAAAAKfCDkVFAAAAAAA8Bj0GRUAEREAEREAEREAEREAEAAAAAAAAAAB2gnaCIiACPplRA9QANUAERAAAAEVQERQBERCBTawAU2b6XgGmzJgyY8qMKTOmzJgy03UvYMqMZsiLEd2gAxEAAAAAAAAAAAAAmiG9gAgAAAAAAAAAAOwE7QRFQAS8GVID1AAAAAAAAAAAAAAAAAAAAAAAAAAAAJwKOxQVAQAAAADwGPQYFAEREAEREAEREAEREAERAAAAAAAAAADYCdoJioAI+GRGDVAD1AAREAEAABRBRVAEREAENrECTJnpewWYMmPKjCkzpsyYMmPKTNe9gCkzmiEvRnSDDkQAAAAAAAAAAAAAaIb0AiIAAAAAAAAAALATtBMUARHwZkgNUAMAAAAAAAAAAAAAAAAAAAAAAAAAAHAq7FBUBAAAAADAY9BjUAREQAREQAREQAREQAREAAAAAAAAAABgJ2gnKAIi4JMZNUANUANEQAQAAFAEFUEREAER2MQKMGWm7xVgyowpM50PWen9ugNGXz1XaocAFgAAAABJRU5ErkJggg==",
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIABAMAAAAGVsnJAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB1WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx0aWZmOkNvbXByZXNzaW9uPjE8L3RpZmY6Q29tcHJlc3Npb24+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgICAgIDx0aWZmOlBob3RvbWV0cmljSW50ZXJwcmV0YXRpb24+MjwvdGlmZjpQaG90b21ldHJpY0ludGVycHJldGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KAtiABQAAACRQTFRFAAAAAAAABgYGBwcHHh4eKysrx8fHy8vLzMzM7OzsAAAABgYG+q7SZgAAAAp0Uk5TAP7+/v7+/v7+/iJx/a8AAAOwSURBVHja7d0hbsNAEAVQo6SFI6XEcALDcgNLvUBvEBQVhpkWVYWlhSsVFS7t5QIshRt695lEASZP+8c7a1kzDL1fz+/zyuvzp6FbvoddrL6uDd1yGZ5eXldeb18N3fIx7A+58prmhm65DfvDcd0952lu6JabFbD/zVprZj1lzcys+fj9z8xTZtbT8rv8yWlu6BYAIgAAAAAAAAAAAABAM6QXEAEAAAAAAAAAgJ2gnaAIiIA3Q2qAGgAAAAAAAAAAAAAAAAAAAAAAAAAAQJsADkVFAAAAAAA8Bj0GRUAEREAEREAEREAEREAEAAAAAAAAAAB2gnaCIiACPplRA9QANUAERAAAAEVQERQBERCBVlfAcZ3aeZobusUKMGBhV6KUElHGKBERJR6/fxExRkQZl9/lT8S1oVsuhqyYMmPKjCkzvfcCpsxohrwY0Q06EAEAAAAAAAAAAACgGdILiAAAAAAAAAAAwE7QTlAERMCbITVADQAAAAAAAAAAAAAAAAAAAAAAAAAAwKmwQ1ERAAAAAACPQY9BERABERABERABERABERABAAAAAAAAAICdoJ2gCIiAT2bUADVADRABEQAAQBFUBEVABERgEyvAlJm+V4ApM6bMmDJjyowpM6bMdN0LmDKjGfJiRDfoQAQAAAAAAAAAAACAZkgvIAIAAAAAAAAAADtBO0EREAFvhtQANQAAAAAAAAAAAAAAAAAAAAAAAAAAAKfCDkVFAAAAAAA8Bj0GRUAEREAEREAEREAEREAEAAAAAAAAAAB2gnaCIiACPplRA9QANUAERAAAAEVQERQBERCBTawAU2b6XgGmzJgyY8qMKTOmzJgy03UvYMqMZsiLEd2gAxEAAAAAAAAAAAAAmiG9gAgAAAAAAAAAAOwE7QRFQAS8GVID1AAAAAAAAAAAAAAAAAAAAAAAAAAAAJwKOxQVAQAAAADwGPQYFAEREAEREAEREAEREAERAAAAAAAAAADYCdoJioAI+GRGDVAD1AAREAEAABRBRVAEREAENrECTJnpewWYMmPKjCkzpsyYMmPKTNe9gCkzmiEvRnSDDkQAAAAAAAAAAAAAaIb0AiIAAAAAAAAAALATtBMUARHwZkgNUAMAAAAAAAAAAAAAAAAAAAAAAAAAAHAq7FBUBAAAAADAY9BjUAREQAREQAREQAREQAREAAAAAAAAAABgJ2gnKAIi4JMZNUANUANEQAQAAFAEFUEREAER2MQKMGWm7xVgyowpM50PWen9ugNGXz1XaocAFgAAAABJRU5ErkJggg==',
   Setting:
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABAAAAAQADq8/hgAAADn0lEQVR42u2bzUsVURjGnyO6CPzAMnTjppAo3LTwH1CqTfaxbeOiRS37A0wXtROFVi1aRBs3LWohSIGbQAQXViBGRhG0UIRKUCpK7q/FnOB2uc6cOXNmRnGe3eW+H8/7zLln3vNxpQoVKlQ4wjBFJAFOSRqX1O7osivpvjHmU1nChBZglvSYLYJbS0EanCvIJzWK+gnsyH34/8OuMaYjb265jwCgz6N4SWq3vodbAEmnS/KtBDgoAgyU5BteAOAkMAPcBroc7PskDWfgN+wyDwBdltMMcDI3tYBnde/pHeARMNTErgd4APzweP834oeN1dMkz5DlsFNn/yyv4kdiSK4At4AO4CqwGaDwRmza2B0210qM7YhrXU59ANAq6bWkwQTTn5KO5fIE0uVYlXTeGLOXFMx1DrjlULwKKN41x6DlnIjEEQCckPRe0okCiguJr5LOGGO+xhm5jICJQ1i8LOeJJKPYEQAMKvrtt5ZdjSf2FM0Fq/sZJI2A6UNcvCz36TiDfUcAcE1SPu/U6Mm8k/TFfu6XdFb5iX3dGPM8lQfwNod3+TowBnQ3yddtv1vPIe+b1JIBiwEJ1IAJ208k5W21trWA+V/5CHAcmAtU/A2P/DcCiTAHHE8tgCVhgLvAXgYCk17Jo/yTGfLuWe7Zd72AC8CWB4n3OAz7mLytNkZabAEXMhfeQKYfWEpJZCxA3rGUOZeA/qDF15FpAz47EvlNk9neI2e3jeWCz0BbmvipNkSMMX8kuSZYM8Z8zyqAjbHmaN5mOeYjgIXrU93MWrxHrNQjrqiDkQMLHwG+OdqF3NN3jeXKzU8AoF1SzdH8XKhJUO7HZDXLMbwAwICkJUULFxe0SbqSVQAbw3Xi7Ze0ZLmGAzAKbHs0JGU1QtvAaIjCW4B7ZOvJy2qFa5a730RPtBiaz0CgnkiZi6F5fBZDVMvho7EhcuS3xJJ2hV9IupgTqaLw0hhzab8vq23xOG/r+LDsKjLgYVzxUnU0ltwK2wDezUyJmEwqXgp/PL4rvxthaeCSI+zxuA10J8ZkWdJNSb2SLkvayKHwDRu71+ZajrG941J8agALDQ3GU/a/IvMkYCPzmCbtLNEVmacNtgs5iP9fYVNEV1Q6Hez7yNZSL+J2SarTcpqiyV2iUkG0IvPFvbz5FbEn+KEk3wMjwMeSfCsBXFBdly9CAPk9ydyffpECuB5tZfVJjaKWueOSfinln6YK4lahQoUKRxd/AcRPGTcQCAUQAAAAAElFTkSuQmCC",
+    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAABIAAAASABGyWs+AAAACXZwQWcAAABAAAAAQADq8/hgAAADn0lEQVR42u2bzUsVURjGnyO6CPzAMnTjppAo3LTwH1CqTfaxbeOiRS37A0wXtROFVi1aRBs3LWohSIGbQAQXViBGRhG0UIRKUCpK7q/FnOB2uc6cOXNmRnGe3eW+H8/7zLln3vNxpQoVKlQ4wjBFJAFOSRqX1O7osivpvjHmU1nChBZglvSYLYJbS0EanCvIJzWK+gnsyH34/8OuMaYjb265jwCgz6N4SWq3vodbAEmnS/KtBDgoAgyU5BteAOAkMAPcBroc7PskDWfgN+wyDwBdltMMcDI3tYBnde/pHeARMNTErgd4APzweP834oeN1dMkz5DlsFNn/yyv4kdiSK4At4AO4CqwGaDwRmza2B0210qM7YhrXU59ANAq6bWkwQTTn5KO5fIE0uVYlXTeGLOXFMx1DrjlULwKKN41x6DlnIjEEQCckPRe0okCiguJr5LOGGO+xhm5jICJQ1i8LOeJJKPYEQAMKvrtt5ZdjSf2FM0Fq/sZJI2A6UNcvCz36TiDfUcAcE1SPu/U6Mm8k/TFfu6XdFb5iX3dGPM8lQfwNod3+TowBnQ3yddtv1vPIe+b1JIBiwEJ1IAJ208k5W21trWA+V/5CHAcmAtU/A2P/DcCiTAHHE8tgCVhgLvAXgYCk17Jo/yTGfLuWe7Zd72AC8CWB4n3OAz7mLytNkZabAEXMhfeQKYfWEpJZCxA3rGUOZeA/qDF15FpAz47EvlNk9neI2e3jeWCz0BbmvipNkSMMX8kuSZYM8Z8zyqAjbHmaN5mOeYjgIXrU93MWrxHrNQjrqiDkQMLHwG+OdqF3NN3jeXKzU8AoF1SzdH8XKhJUO7HZDXLMbwAwICkJUULFxe0SbqSVQAbw3Xi7Ze0ZLmGAzAKbHs0JGU1QtvAaIjCW4B7ZOvJy2qFa5a730RPtBiaz0CgnkiZi6F5fBZDVMvho7EhcuS3xJJ2hV9IupgTqaLw0hhzab8vq23xOG/r+LDsKjLgYVzxUnU0ltwK2wDezUyJmEwqXgp/PL4rvxthaeCSI+zxuA10J8ZkWdJNSb2SLkvayKHwDRu71+ZajrG941J8agALDQ3GU/a/IvMkYCPzmCbtLNEVmacNtgs5iP9fYVNEV1Q6Hez7yNZSL+J2SarTcpqiyV2iUkG0IvPFvbz5FbEn+KEk3wMjwMeSfCsBXFBdly9CAPk9ydyffpECuB5tZfVJjaKWueOSfinln6YK4lahQoUKRxd/AcRPGTcQCAUQAAAAAElFTkSuQmCC',
   ChevronRight:
-    "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiIC8+PC9zdmc+",
+    'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiIC8+PC9zdmc+',
   Check:
-    "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIxLDdMOSwxOUwzLjUsMTMuNUw0LjkxLDEyLjA5TDksMTYuMTdMMTkuNTksNS41OUwyMSw3WiIgLz48L3N2Zz4=",
+    'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTIxLDdMOSwxOUwzLjUsMTMuNUw0LjkxLDEyLjA5TDksMTYuMTdMMTkuNTksNS41OUwyMSw3WiIgLz48L3N2Zz4=',
   ViewIndicator:
-    "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBpZD0idmlldy1pbmRpY2F0b3IiIGhlaWdodD0iMzAiIHdpZHRoPSIzMCIgdmlld0JveD0iLTIuNSAtMSAzMCAzMCI+Cgk8c3R5bGUgdHlwZT0idGV4dC9jc3MiPi5zdDB7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLW1pdGVybGltaXQ6MTA7ZmlsbDpub25lO30uc3Qxe3N0cm9rZS13aWR0aDo2O3N0cm9rZS1taXRlcmxpbWl0OjEwO30KCTwvc3R5bGU+Cgk8Zz4KCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNIDEyLjUgMCBBIDEyLjUgMTIuNSAwIDAgMCAtMTIuNSAwIEEgMTIuNSAxMi41IDAgMCAwIDEyLjUgMCIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwxMywxNS41KSI+PC9wYXRoPgoJCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0gMTMgMCBMIDEwIDIgTCAxNiAyIFoiPjwvcGF0aD4KCQk8cGF0aCBjbGFzcz0ic3QyIiBkPSJNIDIgMCBBIDIgMiAwIDAgMCAtMiAwIEEgMiAyIDAgMCAwIDIgMCIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwxMywxNS41KSI+PC9wYXRoPgoJCTxwYXRoIGNsYXNzPSJzdDEiIGlkPSJpbmRpY2F0b3IiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsMTMsMTUuNSkiPjwvcGF0aD4KCTwvZz4KPC9zdmc+"
+    'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiBpZD0idmlldy1pbmRpY2F0b3IiIGhlaWdodD0iMzAiIHdpZHRoPSIzMCIgdmlld0JveD0iLTIuNSAtMSAzMCAzMCI+Cgk8c3R5bGUgdHlwZT0idGV4dC9jc3MiPi5zdDB7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLW1pdGVybGltaXQ6MTA7ZmlsbDpub25lO30uc3Qxe3N0cm9rZS13aWR0aDo2O3N0cm9rZS1taXRlcmxpbWl0OjEwO30KCTwvc3R5bGU+Cgk8Zz4KCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNIDEyLjUgMCBBIDEyLjUgMTIuNSAwIDAgMCAtMTIuNSAwIEEgMTIuNSAxMi41IDAgMCAwIDEyLjUgMCIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwxMywxNS41KSI+PC9wYXRoPgoJCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0gMTMgMCBMIDEwIDIgTCAxNiAyIFoiPjwvcGF0aD4KCQk8cGF0aCBjbGFzcz0ic3QyIiBkPSJNIDIgMCBBIDIgMiAwIDAgMCAtMiAwIEEgMiAyIDAgMCAwIDIgMCIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwxMywxNS41KSI+PC9wYXRoPgoJCTxwYXRoIGNsYXNzPSJzdDEiIGlkPSJpbmRpY2F0b3IiIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsMTMsMTUuNSkiPjwvcGF0aD4KCTwvZz4KPC9zdmc+'
 };
 
 /**
@@ -164,14 +164,14 @@ const ImageLoader = {
     let cached, request, arrayBufferView, blob, urlCreator, image, reference;
 
     // Reference key
-    for (let iconName in DataImage) {
+    for (const iconName in DataImage) {
       if (DataImage.hasOwnProperty(iconName) && url === DataImage[iconName]) {
         reference = iconName;
       }
     }
 
     // Cached
-    cached = Cache.get(reference ? reference : url);
+    cached = Cache.get(reference || url);
 
     if (cached !== undefined) {
       if (onLoad) {
@@ -186,29 +186,29 @@ const ImageLoader = {
 
     // Construct a new XMLHttpRequest
     urlCreator = window.URL || window.webkitURL;
-    image = document.createElementNS("http://www.w3.org/1999/xhtml", "img");
+    image = document.createElementNS('http://www.w3.org/1999/xhtml', 'img');
 
     // Add to cache
-    Cache.add(reference ? reference : url, image);
+    Cache.add(reference || url, image);
 
     const onImageLoaded = () => {
       urlCreator.revokeObjectURL(image.src);
       onLoad(image);
     };
 
-    if (url.indexOf("data:") === 0) {
-      image.addEventListener("load", onImageLoaded, false);
+    if (url.indexOf('data:') === 0) {
+      image.addEventListener('load', onImageLoaded, false);
       image.src = url;
       return image;
     }
 
-    image.crossOrigin = this.crossOrigin !== undefined ? this.crossOrigin : "";
+    image.crossOrigin = this.crossOrigin !== undefined ? this.crossOrigin : '';
 
     request = new window.XMLHttpRequest();
-    request.open("GET", url, true);
-    request.responseType = "arraybuffer";
-    request.addEventListener("error", onError);
-    request.addEventListener("progress", event => {
+    request.open('GET', url, true);
+    request.responseType = 'arraybuffer';
+    request.addEventListener('error', onError);
+    request.addEventListener('progress', event => {
       if (!event) return;
 
       const { loaded, total, lengthComputable } = event;
@@ -218,7 +218,7 @@ const ImageLoader = {
       }
     });
 
-    request.addEventListener("loadend", event => {
+    request.addEventListener('loadend', event => {
       if (!event) return;
       const {
         currentTarget: { response }
@@ -227,7 +227,7 @@ const ImageLoader = {
       arrayBufferView = new Uint8Array(response);
       blob = new window.Blob([arrayBufferView]);
 
-      image.addEventListener("load", onImageLoaded, false);
+      image.addEventListener('load', onImageLoaded, false);
       image.src = urlCreator.createObjectURL(blob);
     });
 
@@ -351,7 +351,7 @@ function Media(constraints) {
     video: {
       width: { ideal: 1920 },
       height: { ideal: 1080 },
-      facingMode: { exact: "environment" }
+      facingMode: { exact: 'environment' }
     },
     audio: false
   };
@@ -404,7 +404,7 @@ Media.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     let index = this.videoDeviceIndex;
 
-    this.getDevices("video").then(devices => {
+    this.getDevices('video').then(devices => {
       stop();
       index++;
       if (index >= devices.length) {
@@ -424,7 +424,7 @@ Media.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @memberOf Media
    * @instance
    */
-  getDevices: function(type = "video") {
+  getDevices: function(type = 'video') {
     const devices = this.devices;
     const validate = _devices => {
       return _devices.map(device => {
@@ -435,7 +435,7 @@ Media.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       });
     };
     const filter = _devices => {
-      const reg = new RegExp(type, "i");
+      const reg = new RegExp(type, 'i');
       return _devices.filter(device => reg.test(device.kind));
     };
 
@@ -485,7 +485,7 @@ Media.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     const getUserMedia = this.getUserMedia.bind(this);
     const onVideoDevices = devices => {
       if (!devices || devices.length === 0) {
-        throw Error("no video device found");
+        throw Error('no video device found');
       }
 
       const device = targetDevice || devices[0];
@@ -512,7 +512,7 @@ Media.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
       track.stop();
 
-      window.removeEventListener("resize", this.onWindowResize.bind(this));
+      window.removeEventListener('resize', this.onWindowResize.bind(this));
 
       this.element = null;
       this.stream = null;
@@ -533,7 +533,7 @@ Media.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       this.scene.background = this.createVideoTexture();
     }
 
-    window.addEventListener("resize", this.onWindowResize.bind(this));
+    window.addEventListener('resize', this.onWindowResize.bind(this));
   },
 
   /**
@@ -546,7 +546,7 @@ Media.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     if (element) {
       element.play();
-      this.dispatchEvent({ type: "play" });
+      this.dispatchEvent({ type: 'play' });
     }
   },
 
@@ -560,7 +560,7 @@ Media.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     if (element) {
       element.pause();
-      this.dispatchEvent({ type: "pause" });
+      this.dispatchEvent({ type: 'pause' });
     }
   },
 
@@ -580,7 +580,7 @@ Media.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     texture.format = RGBFormat;
     texture.center.set(0.5, 0.5);
 
-    video.addEventListener("canplay", this.onWindowResize.bind(this));
+    video.addEventListener('canplay', this.onWindowResize.bind(this));
 
     return texture;
   },
@@ -594,29 +594,29 @@ Media.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   createVideoElement: function() {
     const dispatchEvent = this.dispatchEvent.bind(this);
-    const video = document.createElement("video");
+    const video = document.createElement('video');
 
     /**
      * Video can play event
      * @type {object}
      * @event Media#canplay
      */
-    const canPlay = () => dispatchEvent({ type: "canplay" });
+    const canPlay = () => dispatchEvent({ type: 'canplay' });
 
-    video.setAttribute("autoplay", "");
-    video.setAttribute("muted", "");
-    video.setAttribute("playsinline", "");
+    video.setAttribute('autoplay', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
 
-    video.style.position = "absolute";
-    video.style.top = "0";
-    video.style.left = "0";
-    video.style.width = "100%";
-    video.style.height = "100%";
-    video.style.objectPosition = "center";
-    video.style.objectFit = "cover";
-    video.style.display = this.scene ? "none" : "";
+    video.style.position = 'absolute';
+    video.style.top = '0';
+    video.style.left = '0';
+    video.style.width = '100%';
+    video.style.height = '100%';
+    video.style.objectPosition = 'center';
+    video.style.objectFit = 'cover';
+    video.style.display = this.scene ? 'none' : '';
 
-    video.addEventListener("canplay", canPlay);
+    video.addEventListener('canplay', canPlay);
 
     return video;
   },
@@ -729,8 +729,8 @@ Reticle.prototype = Object.assign(Object.create(Sprite.prototype), {
   createCanvas: function() {
     const width = 32;
     const height = 32;
-    const canvas = document.createElement("canvas");
-    const context = canvas.getContext("2d");
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
     const dpr = this.dpr;
 
     canvas.width = width * dpr;
@@ -738,7 +738,7 @@ Reticle.prototype = Object.assign(Object.create(Sprite.prototype), {
     context.scale(dpr, dpr);
 
     context.shadowBlur = 5;
-    context.shadowColor = "rgba(200,200,200,0.9)";
+    context.shadowColor = 'rgba(200,200,200,0.9)';
 
     return { canvas, context };
   },
@@ -825,7 +825,7 @@ Reticle.prototype = Object.assign(Object.create(Sprite.prototype), {
          * @type {object}
          * @event Reticle#reticle-ripple-end
          */
-        this.dispatchEvent({ type: "reticle-ripple-end" });
+        this.dispatchEvent({ type: 'reticle-ripple-end' });
       }
 
       material.map.needsUpdate = true;
@@ -836,7 +836,7 @@ Reticle.prototype = Object.assign(Object.create(Sprite.prototype), {
      * @type {object}
      * @event Reticle#reticle-ripple-start
      */
-    this.dispatchEvent({ type: "reticle-ripple-start" });
+    this.dispatchEvent({ type: 'reticle-ripple-start' });
 
     update();
   },
@@ -876,7 +876,7 @@ Reticle.prototype = Object.assign(Object.create(Sprite.prototype), {
      * @type {object}
      * @event Reticle#reticle-start
      */
-    this.dispatchEvent({ type: "reticle-start" });
+    this.dispatchEvent({ type: 'reticle-start' });
 
     this.startTimestamp = performance.now();
     this.callback = callback;
@@ -906,7 +906,7 @@ Reticle.prototype = Object.assign(Object.create(Sprite.prototype), {
      * @type {object}
      * @event Reticle#reticle-end
      */
-    this.dispatchEvent({ type: "reticle-end" });
+    this.dispatchEvent({ type: 'reticle-end' });
   },
 
   /**
@@ -928,7 +928,7 @@ Reticle.prototype = Object.assign(Object.create(Sprite.prototype), {
      * @type {object}
      * @event Reticle#reticle-update
      */
-    this.dispatchEvent({ type: "reticle-update", progress });
+    this.dispatchEvent({ type: 'reticle-update', progress });
 
     if (progress >= 1.0) {
       window.cancelAnimationFrame(this.timerId);
@@ -942,7 +942,7 @@ Reticle.prototype = Object.assign(Object.create(Sprite.prototype), {
 });
 
 function createCommonjsModule(fn, module) {
-  return (module = { exports: {} }), fn(module, module.exports), module.exports;
+  return (module = { exports: {}}), fn(module, module.exports), module.exports;
 }
 
 var Tween = createCommonjsModule(function(module, exports) {
@@ -1029,8 +1029,8 @@ var Tween = createCommonjsModule(function(module, exports) {
   // Include a performance.now polyfill.
   // In node.js, use process.hrtime.
   if (
-    typeof self === "undefined" &&
-    typeof process !== "undefined" &&
+    typeof self === 'undefined' &&
+    typeof process !== 'undefined' &&
     process.hrtime
   ) {
     TWEEN.now = function() {
@@ -1042,7 +1042,7 @@ var Tween = createCommonjsModule(function(module, exports) {
   }
   // In a browser, use self.performance.now if it is available.
   else if (
-    typeof self !== "undefined" &&
+    typeof self !== 'undefined' &&
     self.performance !== undefined &&
     self.performance.now !== undefined
   ) {
@@ -1120,7 +1120,7 @@ var Tween = createCommonjsModule(function(module, exports) {
 
       this._startTime =
         time !== undefined
-          ? typeof time === "string"
+          ? typeof time === 'string'
             ? TWEEN.now() + parseFloat(time)
             : time
           : TWEEN.now();
@@ -1289,8 +1289,8 @@ var Tween = createCommonjsModule(function(module, exports) {
           this._object[property] = this._interpolationFunction(end, value);
         } else {
           // Parses relative end values with start as base (e.g.: +10, -3)
-          if (typeof end === "string") {
-            if (end.charAt(0) === "+" || end.charAt(0) === "-") {
+          if (typeof end === 'string') {
+            if (end.charAt(0) === '+' || end.charAt(0) === '-') {
               end = start + parseFloat(end);
             } else {
               end = parseFloat(end);
@@ -1298,7 +1298,7 @@ var Tween = createCommonjsModule(function(module, exports) {
           }
 
           // Protect against non numeric properties.
-          if (typeof end === "number") {
+          if (typeof end === 'number') {
             this._object[property] = start + (end - start) * value;
           }
         }
@@ -1316,7 +1316,7 @@ var Tween = createCommonjsModule(function(module, exports) {
 
           // Reassign starting values, restart by making startTime = now
           for (property in this._valuesStartRepeat) {
-            if (typeof this._valuesEnd[property] === "string") {
+            if (typeof this._valuesEnd[property] === 'string') {
               this._valuesStartRepeat[property] =
                 this._valuesStartRepeat[property] +
                 parseFloat(this._valuesEnd[property]);
@@ -1738,14 +1738,14 @@ var Tween = createCommonjsModule(function(module, exports) {
  * @param {boolean} [animated=true] - Enable default hover animation
  */
 function Infospot(scale = 300, imageSrc, animated) {
-  const duration = 500,
-    scaleFactor = 1.3;
+  const duration = 500;
+    const scaleFactor = 1.3;
 
   imageSrc = imageSrc || DataImage.Info;
 
   Sprite.call(this);
 
-  this.type = "infospot";
+  this.type = 'infospot';
 
   this.animated = animated !== undefined ? animated : true;
   this.isHovering = false;
@@ -1822,14 +1822,14 @@ function Infospot(scale = 300, imageSrc, animated) {
     .easing(Tween.Easing.Quartic.Out);
 
   // Attach event listeners
-  this.addEventListener("click", this.onClick);
-  this.addEventListener("hover", this.onHover);
-  this.addEventListener("hoverenter", this.onHoverStart);
-  this.addEventListener("hoverleave", this.onHoverEnd);
-  this.addEventListener("panolens-dual-eye-effect", this.onDualEyeEffect);
-  this.addEventListener("panolens-container", this.setContainer.bind(this));
-  this.addEventListener("dismiss", this.onDismiss);
-  this.addEventListener("panolens-infospot-focus", this.setFocusMethod);
+  this.addEventListener('click', this.onClick);
+  this.addEventListener('hover', this.onHover);
+  this.addEventListener('hoverenter', this.onHoverStart);
+  this.addEventListener('hoverleave', this.onHoverEnd);
+  this.addEventListener('panolens-dual-eye-effect', this.onDualEyeEffect);
+  this.addEventListener('panolens-container', this.setContainer.bind(this));
+  this.addEventListener('dismiss', this.onDismiss);
+  this.addEventListener('panolens-infospot-focus', this.setFocusMethod);
 
   TextureLoader.load(imageSrc, postLoad);
 }
@@ -1920,7 +1920,7 @@ Infospot.prototype = Object.assign(Object.create(Sprite.prototype), {
     }
 
     const cursorStyle =
-      this.cursorStyle || (this.mode === MODES.NORMAL ? "pointer" : "default");
+      this.cursorStyle || (this.mode === MODES.NORMAL ? 'pointer' : 'default');
     const { scaleDownAnimation, scaleUpAnimation, element } = this;
 
     this.isHovering = true;
@@ -1939,20 +1939,20 @@ Infospot.prototype = Object.assign(Object.create(Sprite.prototype), {
       const { left, right, style } = element;
 
       if (this.mode === MODES.CARDBOARD || this.mode === MODES.STEREO) {
-        style.display = "none";
-        left.style.display = "block";
-        right.style.display = "block";
+        style.display = 'none';
+        left.style.display = 'block';
+        right.style.display = 'block';
 
         // Store element width for reference
         element._width = left.clientWidth;
         element._height = left.clientHeight;
       } else {
-        style.display = "block";
+        style.display = 'block';
         if (left) {
-          left.style.display = "none";
+          left.style.display = 'none';
         }
         if (right) {
-          right.style.display = "none";
+          right.style.display = 'none';
         }
 
         // Store element width for reference
@@ -1976,7 +1976,7 @@ Infospot.prototype = Object.assign(Object.create(Sprite.prototype), {
     const { scaleDownAnimation, scaleUpAnimation, element } = this;
 
     this.isHovering = false;
-    this.container.style.cursor = "default";
+    this.container.style.cursor = 'default';
 
     if (this.animated) {
       scaleUpAnimation.stop();
@@ -1986,12 +1986,12 @@ Infospot.prototype = Object.assign(Object.create(Sprite.prototype), {
     if (element && !this.element.locked) {
       const { left, right, style } = element;
 
-      style.display = "none";
+      style.display = 'none';
       if (left) {
-        left.style.display = "none";
+        left.style.display = 'none';
       }
       if (right) {
-        right.style.display = "none";
+        right.style.display = 'none';
       }
 
       this.unlockHoverElement();
@@ -2031,11 +2031,11 @@ Infospot.prototype = Object.assign(Object.create(Sprite.prototype), {
     if (this.mode === MODES.CARDBOARD || this.mode === MODES.STEREO) {
       element.left.style.display = element.style.display;
       element.right.style.display = element.style.display;
-      element.style.display = "none";
+      element.style.display = 'none';
     } else {
       element.style.display = element.left.style.display;
-      element.left.style.display = "none";
-      element.right.style.display = "none";
+      element.left.style.display = 'none';
+      element.right.style.display = 'none';
     }
 
     // Update elements translation
@@ -2083,23 +2083,23 @@ Infospot.prototype = Object.assign(Object.create(Sprite.prototype), {
         (y - container.clientHeight / 2);
 
       this.setElementStyle(
-        "transform",
+        'transform',
         element.left,
-        "translate(" + left + "px, " + top + "px)"
+        'translate(' + left + 'px, ' + top + 'px)'
       );
 
       left += container.clientWidth / 2;
 
       this.setElementStyle(
-        "transform",
+        'transform',
         element.right,
-        "translate(" + left + "px, " + top + "px)"
+        'translate(' + left + 'px, ' + top + 'px)'
       );
     } else {
       this.setElementStyle(
-        "transform",
+        'transform',
         element,
-        "translate(" + left + "px, " + top + "px)"
+        'translate(' + left + 'px, ' + top + 'px)'
       );
     }
   },
@@ -2115,7 +2115,7 @@ Infospot.prototype = Object.assign(Object.create(Sprite.prototype), {
   setElementStyle: function(type, element, value) {
     const style = element.style;
 
-    if (type === "transform") {
+    if (type === 'transform') {
       style.webkitTransform = style.msTransform = style.transform = value;
     }
   },
@@ -2150,16 +2150,16 @@ Infospot.prototype = Object.assign(Object.create(Sprite.prototype), {
    */
   addHoverText: function(text, delta = 40) {
     if (!this.element) {
-      this.element = document.createElement("div");
-      this.element.style.display = "none";
-      this.element.style.color = "#fff";
+      this.element = document.createElement('div');
+      this.element.style.display = 'none';
+      this.element.style.color = '#fff';
       this.element.style.top = 0;
-      this.element.style.maxWidth = "50%";
-      this.element.style.maxHeight = "50%";
-      this.element.style.textShadow = "0 0 3px #000000";
+      this.element.style.maxWidth = '50%';
+      this.element.style.maxHeight = '50%';
+      this.element.style.textShadow = '0 0 3px #000000';
       this.element.style.fontFamily = '"Trebuchet MS", Helvetica, sans-serif';
-      this.element.style.position = "absolute";
-      this.element.classList.add("panolens-infospot");
+      this.element.style.position = 'absolute';
+      this.element.classList.add('panolens-infospot');
       this.element.verticalDelta = delta;
     }
 
@@ -2176,10 +2176,10 @@ Infospot.prototype = Object.assign(Object.create(Sprite.prototype), {
   addHoverElement: function(el, delta = 40) {
     if (!this.element) {
       this.element = el.cloneNode(true);
-      this.element.style.display = "none";
+      this.element.style.display = 'none';
       this.element.style.top = 0;
-      this.element.style.position = "absolute";
-      this.element.classList.add("panolens-infospot");
+      this.element.style.position = 'absolute';
+      this.element.classList.add('panolens-infospot');
       this.element.verticalDelta = delta;
     }
   },
@@ -2340,14 +2340,14 @@ Infospot.prototype = Object.assign(Object.create(Sprite.prototype), {
  */
 function Widget(container) {
   if (!container) {
-    console.warn("PANOLENS.Widget: No container specified");
+    console.warn('PANOLENS.Widget: No container specified');
   }
 
   EventDispatcher.call(this);
 
-  this.DEFAULT_TRANSITION = "all 0.27s ease";
+  this.DEFAULT_TRANSITION = 'all 0.27s ease';
   this.TOUCH_ENABLED = !!(
-    "ontouchstart" in window ||
+    'ontouchstart' in window ||
     (window.DocumentTouch && document instanceof DocumentTouch)
   );
   this.PREVENT_EVENT_HANDLER = function(event) {
@@ -2379,35 +2379,35 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   addControlBar: function() {
     if (!this.container) {
-      console.warn("Widget container not set");
+      console.warn('Widget container not set');
       return;
     }
 
-    var scope = this,
-      bar,
-      styleTranslate,
-      styleOpacity,
-      gradientStyle;
+    var scope = this;
+      var bar;
+      var styleTranslate;
+      var styleOpacity;
+      var gradientStyle;
 
-    gradientStyle = "linear-gradient(bottom, rgba(0,0,0,0.2), rgba(0,0,0,0))";
+    gradientStyle = 'linear-gradient(bottom, rgba(0,0,0,0.2), rgba(0,0,0,0))';
 
-    bar = document.createElement("div");
-    bar.style.width = "100%";
-    bar.style.height = "44px";
-    bar.style.float = "left";
+    bar = document.createElement('div');
+    bar.style.width = '100%';
+    bar.style.height = '44px';
+    bar.style.float = 'left';
     bar.style.transform = bar.style.webkitTransform = bar.style.msTransform =
-      "translateY(-100%)";
-    bar.style.background = "-webkit-" + gradientStyle;
-    bar.style.background = "-moz-" + gradientStyle;
-    bar.style.background = "-o-" + gradientStyle;
-    bar.style.background = "-ms-" + gradientStyle;
+      'translateY(-100%)';
+    bar.style.background = '-webkit-' + gradientStyle;
+    bar.style.background = '-moz-' + gradientStyle;
+    bar.style.background = '-o-' + gradientStyle;
+    bar.style.background = '-ms-' + gradientStyle;
     bar.style.background = gradientStyle;
     bar.style.transition = this.DEFAULT_TRANSITION;
-    bar.style.pointerEvents = "none";
+    bar.style.pointerEvents = 'none';
     bar.isHidden = false;
     bar.toggle = function() {
       bar.isHidden = !bar.isHidden;
-      styleTranslate = bar.isHidden ? "translateY(0)" : "translateY(-100%)";
+      styleTranslate = bar.isHidden ? 'translateY(0)' : 'translateY(-100%)';
       styleOpacity = bar.isHidden ? 0 : 1;
       bar.style.transform = bar.style.webkitTransform = bar.style.msTransform = styleTranslate;
       bar.style.opacity = styleOpacity;
@@ -2447,11 +2447,11 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     this.container.appendChild(bar);
 
     // Mask events
-    this.mask.addEventListener("mousemove", this.PREVENT_EVENT_HANDLER, true);
-    this.mask.addEventListener("mouseup", this.PREVENT_EVENT_HANDLER, true);
-    this.mask.addEventListener("mousedown", this.PREVENT_EVENT_HANDLER, true);
+    this.mask.addEventListener('mousemove', this.PREVENT_EVENT_HANDLER, true);
+    this.mask.addEventListener('mouseup', this.PREVENT_EVENT_HANDLER, true);
+    this.mask.addEventListener('mousedown', this.PREVENT_EVENT_HANDLER, true);
     this.mask.addEventListener(
-      scope.TOUCH_ENABLED ? "touchend" : "click",
+      scope.TOUCH_ENABLED ? 'touchend' : 'click',
       function(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -2463,7 +2463,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     );
 
     // Event listener
-    this.addEventListener("control-bar-toggle", bar.toggle);
+    this.addEventListener('control-bar-toggle', bar.toggle);
 
     this.barElement = bar;
   },
@@ -2474,13 +2474,13 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @instance
    */
   createDefaultMenu: function() {
-    var scope = this,
-      handler;
+    var scope = this;
+      var handler;
 
     handler = function(method, data) {
       return function() {
         scope.dispatchEvent({
-          type: "panolens-viewer-handler",
+          type: 'panolens-viewer-handler',
           method: method,
           data: data
         });
@@ -2489,33 +2489,33 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     return [
       {
-        title: "Control",
+        title: 'Control',
         subMenu: [
           {
-            title: this.TOUCH_ENABLED ? "Touch" : "Mouse",
-            handler: handler("enableControl", CONTROLS.ORBIT)
+            title: this.TOUCH_ENABLED ? 'Touch' : 'Mouse',
+            handler: handler('enableControl', CONTROLS.ORBIT)
           },
           {
-            title: "Sensor",
-            handler: handler("enableControl", CONTROLS.DEVICEORIENTATION)
+            title: 'Sensor',
+            handler: handler('enableControl', CONTROLS.DEVICEORIENTATION)
           }
         ]
       },
 
       {
-        title: "Mode",
+        title: 'Mode',
         subMenu: [
           {
-            title: "Normal",
-            handler: handler("disableEffect")
+            title: 'Normal',
+            handler: handler('disableEffect')
           },
           {
-            title: "Cardboard",
-            handler: handler("enableEffect", MODES.CARDBOARD)
+            title: 'Cardboard',
+            handler: handler('enableEffect', MODES.CARDBOARD)
           },
           {
-            title: "Stereoscopic",
-            handler: handler("enableEffect", MODES.STEREO)
+            title: 'Stereoscopic',
+            handler: handler('enableEffect', MODES.STEREO)
           }
         ]
       }
@@ -2532,19 +2532,19 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     let element;
 
     switch (name) {
-      case "fullscreen":
+      case 'fullscreen':
         element = this.createFullscreenButton();
         this.fullscreenElement = element;
 
         break;
 
-      case "setting":
+      case 'setting':
         element = this.createSettingButton();
         this.settingElement = element;
 
         break;
 
-      case "video":
+      case 'video':
         element = this.createVideoControl();
         this.videoElement = element;
 
@@ -2567,21 +2567,21 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @instance
    */
   createMask: function() {
-    const element = document.createElement("div");
-    element.style.position = "absolute";
+    const element = document.createElement('div');
+    element.style.position = 'absolute';
     element.style.top = 0;
     element.style.left = 0;
-    element.style.width = "100%";
-    element.style.height = "100%";
-    element.style.background = "transparent";
-    element.style.display = "none";
+    element.style.width = '100%';
+    element.style.height = '100%';
+    element.style.background = 'transparent';
+    element.style.display = 'none';
 
     element.show = function() {
-      this.style.display = "block";
+      this.style.display = 'block';
     };
 
     element.hide = function() {
-      this.style.display = "none";
+      this.style.display = 'none';
     };
 
     return element;
@@ -2593,8 +2593,8 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @instance
    */
   createSettingButton: function() {
-    let scope = this,
-      item;
+    const scope = this;
+      let item;
 
     function onTap(event) {
       event.preventDefault();
@@ -2620,13 +2620,13 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     });
 
     item.activate = function() {
-      this.style.transform = "rotate3d(0,0,1,90deg)";
+      this.style.transform = 'rotate3d(0,0,1,90deg)';
       this.activated = true;
       scope.mask.show();
     };
 
     item.deactivate = function() {
-      this.style.transform = "rotate3d(0,0,0,0)";
+      this.style.transform = 'rotate3d(0,0,0,0)';
       this.activated = false;
       scope.mask.hide();
 
@@ -2657,15 +2657,15 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @fires Widget#panolens-viewer-handler
    */
   createFullscreenButton: function() {
-    let scope = this,
-      item,
-      isFullscreen = false,
-      tapSkipped = true,
-      stylesheetId;
+    const scope = this;
+      let item;
+      let isFullscreen = false;
+      let tapSkipped = true;
+      let stylesheetId;
 
     const { container } = this;
 
-    stylesheetId = "panolens-style-addon";
+    stylesheetId = 'panolens-style-addon';
 
     // Don't create button if no support
     if (
@@ -2736,21 +2736,21 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
        * @property {string} method - 'onWindowResize' function call on Viewer
        */
       scope.dispatchEvent({
-        type: "panolens-viewer-handler",
-        method: "onWindowResize"
+        type: 'panolens-viewer-handler',
+        method: 'onWindowResize'
       });
 
       tapSkipped = true;
     }
 
-    document.addEventListener("fullscreenchange", onFullScreenChange, false);
+    document.addEventListener('fullscreenchange', onFullScreenChange, false);
     document.addEventListener(
-      "webkitfullscreenchange",
+      'webkitfullscreenchange',
       onFullScreenChange,
       false
     );
-    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
-    document.addEventListener("MSFullscreenChange", onFullScreenChange, false);
+    document.addEventListener('mozfullscreenchange', onFullScreenChange, false);
+    document.addEventListener('MSFullscreenChange', onFullScreenChange, false);
 
     item = this.createCustomItem({
       style: {
@@ -2762,10 +2762,10 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     // Add fullscreen stlye if not exists
     if (!document.querySelector(stylesheetId)) {
-      const sheet = document.createElement("style");
+      const sheet = document.createElement('style');
       sheet.id = stylesheetId;
       sheet.innerHTML =
-        ":-webkit-full-screen { width: 100% !important; height: 100% !important }";
+        ':-webkit-full-screen { width: 100% !important; height: 100% !important }';
       document.body.appendChild(sheet);
     }
 
@@ -2779,14 +2779,14 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @return {HTMLSpanElement} - The dom element icon for video control
    */
   createVideoControl: function() {
-    const item = document.createElement("span");
-    item.style.display = "none";
+    const item = document.createElement('span');
+    item.style.display = 'none';
     item.show = function() {
-      item.style.display = "";
+      item.style.display = '';
     };
 
     item.hide = function() {
-      item.style.display = "none";
+      item.style.display = 'none';
       item.controlButton.paused = true;
       item.controlButton.update();
     };
@@ -2808,8 +2808,8 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       item.seekBar = null;
     };
 
-    this.addEventListener("video-control-show", item.show);
-    this.addEventListener("video-control-hide", item.hide);
+    this.addEventListener('video-control-show', item.show);
+    this.addEventListener('video-control-hide', item.hide);
 
     return item;
   },
@@ -2835,8 +2835,8 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
        * @property {string} method - 'toggleVideoPlay' function call on Viewer
        */
       scope.dispatchEvent({
-        type: "panolens-viewer-handler",
-        method: "toggleVideoPlay",
+        type: 'panolens-viewer-handler',
+        method: 'toggleVideoPlay',
         data: !this.paused
       });
 
@@ -2846,7 +2846,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     }
     const item = this.createCustomItem({
       style: {
-        float: "left",
+        float: 'left',
         backgroundImage: 'url("' + DataImage.VideoPlay + '")'
       },
 
@@ -2875,32 +2875,32 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @fires Widget#panolens-viewer-handler
    */
   createVideoControlSeekbar: function() {
-    let scope = this,
-      item,
-      progressElement,
-      progressElementControl,
-      isDragging = false,
-      mouseX,
-      percentageNow,
-      percentageNext;
+    const scope = this;
+      let item;
+      let progressElement;
+      let progressElementControl;
+      let isDragging = false;
+      let mouseX;
+      let percentageNow;
+      let percentageNext;
 
-    progressElement = document.createElement("div");
-    progressElement.style.width = "0%";
-    progressElement.style.height = "100%";
-    progressElement.style.backgroundColor = "#fff";
+    progressElement = document.createElement('div');
+    progressElement.style.width = '0%';
+    progressElement.style.height = '100%';
+    progressElement.style.backgroundColor = '#fff';
 
-    progressElementControl = document.createElement("div");
-    progressElementControl.style.float = "right";
-    progressElementControl.style.width = "14px";
-    progressElementControl.style.height = "14px";
-    progressElementControl.style.transform = "translate(7px, -5px)";
-    progressElementControl.style.borderRadius = "50%";
-    progressElementControl.style.backgroundColor = "#ddd";
+    progressElementControl = document.createElement('div');
+    progressElementControl.style.float = 'right';
+    progressElementControl.style.width = '14px';
+    progressElementControl.style.height = '14px';
+    progressElementControl.style.transform = 'translate(7px, -5px)';
+    progressElementControl.style.borderRadius = '50%';
+    progressElementControl.style.backgroundColor = '#ddd';
 
-    progressElementControl.addEventListener("mousedown", onMouseDown, {
+    progressElementControl.addEventListener('mousedown', onMouseDown, {
       passive: true
     });
-    progressElementControl.addEventListener("touchstart", onMouseDown, {
+    progressElementControl.addEventListener('touchstart', onMouseDown, {
       passive: true
     });
 
@@ -2941,8 +2941,8 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
          * @property {number} data - Percentage of current video. Range from 0.0 to 1.0
          */
         scope.dispatchEvent({
-          type: "panolens-viewer-handler",
-          method: "setVideoCurrentTime",
+          type: 'panolens-viewer-handler',
+          method: 'setVideoCurrentTime',
           data: percentageNext
         });
       }
@@ -2957,34 +2957,34 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     }
 
     function addControlListeners() {
-      scope.container.addEventListener("mousemove", onVideoControlDrag, {
+      scope.container.addEventListener('mousemove', onVideoControlDrag, {
         passive: true
       });
-      scope.container.addEventListener("mouseup", onVideoControlStop, {
+      scope.container.addEventListener('mouseup', onVideoControlStop, {
         passive: true
       });
-      scope.container.addEventListener("touchmove", onVideoControlDrag, {
+      scope.container.addEventListener('touchmove', onVideoControlDrag, {
         passive: true
       });
-      scope.container.addEventListener("touchend", onVideoControlStop, {
+      scope.container.addEventListener('touchend', onVideoControlStop, {
         passive: true
       });
     }
 
     function removeControlListeners() {
       scope.container.removeEventListener(
-        "mousemove",
+        'mousemove',
         onVideoControlDrag,
         false
       );
-      scope.container.removeEventListener("mouseup", onVideoControlStop, false);
+      scope.container.removeEventListener('mouseup', onVideoControlStop, false);
       scope.container.removeEventListener(
-        "touchmove",
+        'touchmove',
         onVideoControlDrag,
         false
       );
       scope.container.removeEventListener(
-        "touchend",
+        'touchend',
         onVideoControlStop,
         false
       );
@@ -3012,8 +3012,8 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
        * @property {number} data - Percentage of current video. Range from 0.0 to 1.0
        */
       scope.dispatchEvent({
-        type: "panolens-viewer-handler",
-        method: "setVideoCurrentTime",
+        type: 'panolens-viewer-handler',
+        method: 'setVideoCurrentTime',
         data: percentage
       });
 
@@ -3029,11 +3029,11 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     item = this.createCustomItem({
       style: {
-        float: "left",
-        width: "30%",
-        height: "4px",
-        marginTop: "20px",
-        backgroundColor: "rgba(188,188,188,0.8)"
+        float: 'left',
+        width: '30%',
+        height: '4px',
+        marginTop: '20px',
+        backgroundColor: 'rgba(188,188,188,0.8)'
       },
 
       onTap: onTap,
@@ -3043,10 +3043,10 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     item.appendChild(progressElement);
 
     item.setProgress = function(percentage) {
-      progressElement.style.width = percentage * 100 + "%";
+      progressElement.style.width = percentage * 100 + '%';
     };
 
-    this.addEventListener("video-update", function(event) {
+    this.addEventListener('video-update', function(event) {
       item.setProgress(event.percentage);
     });
 
@@ -3065,26 +3065,26 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   createMenuItem: function(title) {
     const scope = this;
-    const item = document.createElement("a");
+    const item = document.createElement('a');
     item.textContent = title;
-    item.style.display = "block";
-    item.style.padding = "10px";
-    item.style.textDecoration = "none";
-    item.style.cursor = "pointer";
-    item.style.pointerEvents = "auto";
+    item.style.display = 'block';
+    item.style.padding = '10px';
+    item.style.textDecoration = 'none';
+    item.style.cursor = 'pointer';
+    item.style.pointerEvents = 'auto';
     item.style.transition = this.DEFAULT_TRANSITION;
 
     item.slide = function(right) {
-      this.style.transform = "translateX(" + (right ? "" : "-") + "100%)";
+      this.style.transform = 'translateX(' + (right ? '' : '-') + '100%)';
     };
 
     item.unslide = function() {
-      this.style.transform = "translateX(0)";
+      this.style.transform = 'translateX(0)';
     };
 
     item.setIcon = function(url) {
       if (this.icon) {
-        this.icon.style.backgroundImage = "url(" + url + ")";
+        this.icon.style.backgroundImage = 'url(' + url + ')';
       }
     };
 
@@ -3095,10 +3095,10 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     };
 
     item.addSelection = function(name) {
-      const selection = document.createElement("span");
-      selection.style.fontSize = "13px";
-      selection.style.fontWeight = "300";
-      selection.style.float = "right";
+      const selection = document.createElement('span');
+      selection.style.fontSize = '13px';
+      selection.style.fontWeight = '300';
+      selection.style.float = 'right';
 
       this.selection = selection;
       this.setSelectionTitle(name);
@@ -3112,15 +3112,15 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       left = false,
       flip = false
     ) {
-      const element = document.createElement("span");
-      element.style.float = left ? "left" : "right";
-      element.style.width = "17px";
-      element.style.height = "17px";
-      element.style["margin" + (left ? "Right" : "Left")] = "12px";
-      element.style.backgroundSize = "cover";
+      const element = document.createElement('span');
+      element.style.float = left ? 'left' : 'right';
+      element.style.width = '17px';
+      element.style.height = '17px';
+      element.style['margin' + (left ? 'Right' : 'Left')] = '12px';
+      element.style.backgroundSize = 'cover';
 
       if (flip) {
-        element.style.transform = "rotateZ(180deg)";
+        element.style.transform = 'rotateZ(180deg)';
       }
 
       this.icon = element;
@@ -3137,17 +3137,17 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     };
 
     item.addEventListener(
-      "mouseenter",
+      'mouseenter',
       function() {
-        this.style.backgroundColor = "#e0e0e0";
+        this.style.backgroundColor = '#e0e0e0';
       },
       false
     );
 
     item.addEventListener(
-      "mouseleave",
+      'mouseleave',
       function() {
-        this.style.backgroundColor = "#fafafa";
+        this.style.backgroundColor = '#fafafa';
       },
       false
     );
@@ -3165,8 +3165,8 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
   createMenuItemHeader: function(title) {
     const header = this.createMenuItem(title);
 
-    header.style.borderBottom = "1px solid #333";
-    header.style.paddingBottom = "15px";
+    header.style.borderBottom = '1px solid #333';
+    header.style.paddingBottom = '15px';
 
     return header;
   },
@@ -3179,8 +3179,8 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @return {HTMLElement} - A span element
    */
   createMainMenu: function(menus) {
-    let scope = this,
-      menu = this.createMenu();
+    const scope = this;
+      const menu = this.createMenu();
 
     menu._width = 200;
     menu.changeSize(menu._width);
@@ -3189,8 +3189,8 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       event.preventDefault();
       event.stopPropagation();
 
-      let mainMenu = scope.mainMenu,
-        subMenu = this.subMenu;
+      const mainMenu = scope.mainMenu;
+        const subMenu = this.subMenu;
 
       function onNextTick() {
         mainMenu.changeSize(subMenu.clientWidth);
@@ -3210,12 +3210,12 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     for (var i = 0; i < menus.length; i++) {
       var item = menu.addItem(menus[i].title);
 
-      item.style.paddingLeft = "20px";
+      item.style.paddingLeft = '20px';
 
       item
         .addIcon()
         .addEventListener(
-          scope.TOUCH_ENABLED ? "touchend" : "click",
+          scope.TOUCH_ENABLED ? 'touchend' : 'click',
           onTap,
           false
         );
@@ -3239,9 +3239,9 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @return {HTMLElement} - A span element
    */
   createSubMenu: function(title, items) {
-    let scope = this,
-      menu,
-      subMenu = this.createMenu();
+    const scope = this;
+      let menu;
+      const subMenu = this.createMenu();
 
     subMenu.items = items;
     subMenu.activeItem = null;
@@ -3257,7 +3257,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       subMenu.slideAll(true);
       subMenu.hide();
 
-      if (this.type !== "header") {
+      if (this.type !== 'header') {
         subMenu.setActiveItem(this);
         scope.activeMainItem.setSelectionTitle(this.textContent);
 
@@ -3271,7 +3271,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       .addHeader(title)
       .addIcon(undefined, true, true)
       .addEventListener(
-        scope.TOUCH_ENABLED ? "touchend" : "click",
+        scope.TOUCH_ENABLED ? 'touchend' : 'click',
         onTap,
         false
       );
@@ -3281,9 +3281,9 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
       item.style.fontWeight = 300;
       item.handler = items[i].handler;
-      item.addIcon(" ", true);
+      item.addIcon(' ', true);
       item.addEventListener(
-        scope.TOUCH_ENABLED ? "touchend" : "click",
+        scope.TOUCH_ENABLED ? 'touchend' : 'click',
         onTap,
         false
       );
@@ -3306,46 +3306,46 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   createMenu: function() {
     const scope = this;
-    const menu = document.createElement("span");
+    const menu = document.createElement('span');
     const style = menu.style;
 
-    style.padding = "5px 0";
-    style.position = "fixed";
-    style.bottom = "100%";
-    style.right = "14px";
-    style.backgroundColor = "#fafafa";
-    style.fontFamily = "Helvetica Neue";
-    style.fontSize = "14px";
-    style.visibility = "hidden";
+    style.padding = '5px 0';
+    style.position = 'fixed';
+    style.bottom = '100%';
+    style.right = '14px';
+    style.backgroundColor = '#fafafa';
+    style.fontFamily = 'Helvetica Neue';
+    style.fontSize = '14px';
+    style.visibility = 'hidden';
     style.opacity = 0;
-    style.boxShadow = "0 0 12pt rgba(0,0,0,0.25)";
-    style.borderRadius = "2px";
-    style.overflow = "hidden";
-    style.willChange = "width, height, opacity";
-    style.pointerEvents = "auto";
+    style.boxShadow = '0 0 12pt rgba(0,0,0,0.25)';
+    style.borderRadius = '2px';
+    style.overflow = 'hidden';
+    style.willChange = 'width, height, opacity';
+    style.pointerEvents = 'auto';
     style.transition = this.DEFAULT_TRANSITION;
 
     menu.visible = false;
 
     menu.changeSize = function(width, height) {
       if (width) {
-        this.style.width = width + "px";
+        this.style.width = width + 'px';
       }
 
       if (height) {
-        this.style.height = height + "px";
+        this.style.height = height + 'px';
       }
     };
 
     menu.show = function() {
       this.style.opacity = 1;
-      this.style.visibility = "visible";
+      this.style.visibility = 'visible';
       this.visible = true;
     };
 
     menu.hide = function() {
       this.style.opacity = 0;
-      this.style.visibility = "hidden";
+      this.style.visibility = 'hidden';
       this.visible = false;
     };
 
@@ -3375,7 +3375,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     menu.addHeader = function(title) {
       const header = scope.createMenuItemHeader(title);
-      header.type = "header";
+      header.type = 'header';
 
       this.appendChild(header);
 
@@ -3384,7 +3384,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     menu.addItem = function(title) {
       const item = scope.createMenuItem(title);
-      item.type = "item";
+      item.type = 'item';
 
       this.appendChild(item);
 
@@ -3393,7 +3393,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     menu.setActiveItem = function(item) {
       if (this.activeItem) {
-        this.activeItem.setIcon(" ");
+        this.activeItem.setIcon(' ');
       }
 
       item.setIcon(DataImage.Check);
@@ -3401,9 +3401,9 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       this.activeItem = item;
     };
 
-    menu.addEventListener("mousemove", this.PREVENT_EVENT_HANDLER, true);
-    menu.addEventListener("mouseup", this.PREVENT_EVENT_HANDLER, true);
-    menu.addEventListener("mousedown", this.PREVENT_EVENT_HANDLER, true);
+    menu.addEventListener('mousemove', this.PREVENT_EVENT_HANDLER, true);
+    menu.addEventListener('mouseup', this.PREVENT_EVENT_HANDLER, true);
+    menu.addEventListener('mousedown', this.PREVENT_EVENT_HANDLER, true);
 
     return menu;
   },
@@ -3416,34 +3416,34 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   createCustomItem: function(options = {}) {
     const scope = this;
-    const item = options.element || document.createElement("span");
+    const item = options.element || document.createElement('span');
     const { onDispose } = options;
 
-    item.style.cursor = "pointer";
-    item.style.float = "right";
-    item.style.width = "44px";
-    item.style.height = "100%";
-    item.style.backgroundSize = "60%";
-    item.style.backgroundRepeat = "no-repeat";
-    item.style.backgroundPosition = "center";
+    item.style.cursor = 'pointer';
+    item.style.float = 'right';
+    item.style.width = '44px';
+    item.style.height = '100%';
+    item.style.backgroundSize = '60%';
+    item.style.backgroundRepeat = 'no-repeat';
+    item.style.backgroundPosition = 'center';
     item.style.webkitUserSelect = item.style.MozUserSelect = item.style.userSelect =
-      "none";
-    item.style.position = "relative";
-    item.style.pointerEvents = "auto";
+      'none';
+    item.style.position = 'relative';
+    item.style.pointerEvents = 'auto';
 
     // White glow on icon
     item.addEventListener(
-      scope.TOUCH_ENABLED ? "touchstart" : "mouseenter",
+      scope.TOUCH_ENABLED ? 'touchstart' : 'mouseenter',
       function() {
         item.style.filter = item.style.webkitFilter =
-          "drop-shadow(0 0 5px rgba(255,255,255,1))";
+          'drop-shadow(0 0 5px rgba(255,255,255,1))';
       },
       { passive: true }
     );
     item.addEventListener(
-      scope.TOUCH_ENABLED ? "touchend" : "mouseleave",
+      scope.TOUCH_ENABLED ? 'touchend' : 'mouseleave',
       function() {
-        item.style.filter = item.style.webkitFilter = "";
+        item.style.filter = item.style.webkitFilter = '';
       },
       { passive: true }
     );
@@ -3452,7 +3452,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     if (options.onTap) {
       item.addEventListener(
-        scope.TOUCH_ENABLED ? "touchend" : "click",
+        scope.TOUCH_ENABLED ? 'touchend' : 'click',
         options.onTap,
         false
       );
@@ -3460,7 +3460,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     item.dispose = function() {
       item.removeEventListener(
-        scope.TOUCH_ENABLED ? "touchend" : "click",
+        scope.TOUCH_ENABLED ? 'touchend' : 'click',
         options.onTap,
         false
       );
@@ -3482,7 +3482,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @return {HTMLElement} - The same element with merged styles
    */
   mergeStyleOptions: function(element, options = {}) {
-    for (let property in options) {
+    for (const property in options) {
       if (options.hasOwnProperty(property)) {
         element.style[property] = options[property];
       }
@@ -3514,7 +3514,7 @@ Widget.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 function Panorama(geometry, material) {
   Mesh.call(this, geometry, material);
 
-  this.type = "panorama";
+  this.type = 'panorama';
 
   this.ImageQualityLow = 1;
   this.ImageQualityFair = 2;
@@ -3550,9 +3550,9 @@ function Panorama(geometry, material) {
     this.animationDuration / 2
   );
 
-  this.addEventListener("load", this.fadeIn.bind(this));
-  this.addEventListener("panolens-container", this.setContainer.bind(this));
-  this.addEventListener("click", this.onClick.bind(this));
+  this.addEventListener('load', this.fadeIn.bind(this));
+  this.addEventListener('panolens-container', this.setContainer.bind(this));
+  this.addEventListener('click', this.onClick.bind(this));
 
   this.setupTransitions();
 }
@@ -3587,11 +3587,11 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
         const { container } = this;
 
         if (container) {
-          object.dispatchEvent({ type: "panolens-container", container });
+          object.dispatchEvent({ type: 'panolens-container', container });
         }
 
         object.dispatchEvent({
-          type: "panolens-infospot-focus",
+          type: 'panolens-infospot-focus',
           method: function(vector, duration, easing) {
             /**
              * Infospot focus handler event
@@ -3601,8 +3601,8 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
              * @property {*} data - The argument to be passed into the method
              */
             this.dispatchEvent({
-              type: "panolens-viewer-handler",
-              method: "tweenControlCenter",
+              type: 'panolens-viewer-handler',
+              method: 'tweenControlCenter',
               data: [vector, duration, easing]
             });
           }.bind(this)
@@ -3638,7 +3638,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
          * @type {object}
          * @event Infospot#dismiss
          */
-        object.dispatchEvent({ type: "dismiss" });
+        object.dispatchEvent({ type: 'dismiss' });
       });
     }
   },
@@ -3669,7 +3669,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
            * @property {HTMLElement} container - The container of this panorama
            */
           child.dispatchEvent({
-            type: "panolens-container",
+            type: 'panolens-container',
             container: container
           });
         }
@@ -3693,7 +3693,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
      * @type {object}
      * @event Panorama#load
      */
-    this.dispatchEvent({ type: "load" });
+    this.dispatchEvent({ type: 'load' });
   },
 
   /**
@@ -3709,7 +3709,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
      * @event Panorama#progress
      * @property {object} progress - The progress object containing loaded and total amount
      */
-    this.dispatchEvent({ type: "progress", progress: progress });
+    this.dispatchEvent({ type: 'progress', progress: progress });
   },
 
   /**
@@ -3724,7 +3724,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
      * @type {object}
      * @event Panorama#error
      */
-    this.dispatchEvent({ type: "error" });
+    this.dispatchEvent({ type: 'error' });
   },
 
   /**
@@ -3776,9 +3776,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
     const visible =
       isVisible !== undefined
         ? isVisible
-        : this.isInfospotVisible
-        ? false
-        : true;
+        : !this.isInfospotVisible;
 
     this.traverse(function(object) {
       if (object instanceof Infospot) {
@@ -3802,7 +3800,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
            * @type {object}
            */
           this.dispatchEvent({
-            type: "infospot-animation-complete",
+            type: 'infospot-animation-complete',
             visible: visible
           });
         }.bind(this)
@@ -3838,7 +3836,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
     this.visible = true;
 
     if (!position) {
-      console.warn("Please specify infospot position for linking");
+      console.warn('Please specify infospot position for linking');
 
       return;
     }
@@ -3866,7 +3864,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
     spot.position.copy(position);
     spot.toPanorama = pano;
     spot.addEventListener(
-      "click",
+      'click',
       function() {
         /**
          * Viewer handler event
@@ -3876,8 +3874,8 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
          * @property {*} data - The argument to be passed into the method
          */
         this.dispatchEvent({
-          type: "panolens-viewer-handler",
-          method: "setPanorama",
+          type: 'panolens-viewer-handler',
+          method: 'setPanorama',
           data: pano
         });
       }.bind(this)
@@ -3907,7 +3905,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
            * @event Panorama#enter-fade-start
            * @type {object}
            */
-          this.dispatchEvent({ type: "enter-fade-start" });
+          this.dispatchEvent({ type: 'enter-fade-start' });
         }.bind(this)
       );
 
@@ -3923,7 +3921,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
            * @event Panorama#leave-complete
            * @type {object}
            */
-          this.dispatchEvent({ type: "leave-complete" });
+          this.dispatchEvent({ type: 'leave-complete' });
         }.bind(this)
       );
 
@@ -3936,7 +3934,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
            * @event Panorama#enter-complete
            * @type {object}
            */
-          this.dispatchEvent({ type: "enter-complete" });
+          this.dispatchEvent({ type: 'enter-complete' });
         }.bind(this)
       )
       .start();
@@ -3977,7 +3975,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
            * @event Panorama#enter-fade-complete
            * @type {object}
            */
-          this.dispatchEvent({ type: "enter-fade-complete" });
+          this.dispatchEvent({ type: 'enter-fade-complete' });
         }.bind(this)
       )
       .start();
@@ -4018,7 +4016,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
            * @event Panorama#enter-start
            * @type {object}
            */
-          this.dispatchEvent({ type: "enter-start" });
+          this.dispatchEvent({ type: 'enter-start' });
 
           if (this.loaded) {
             this.fadeIn(duration);
@@ -4034,10 +4032,10 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
      * @event Panorama#enter
      * @type {object}
      */
-    this.dispatchEvent({ type: "enter" });
+    this.dispatchEvent({ type: 'enter' });
 
     this.children.forEach(child => {
-      child.dispatchEvent({ type: "panorama-enter" });
+      child.dispatchEvent({ type: 'panorama-enter' });
     });
 
     this.active = true;
@@ -4062,7 +4060,7 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
            * @event Panorama#leave-start
            * @type {object}
            */
-          this.dispatchEvent({ type: "leave-start" });
+          this.dispatchEvent({ type: 'leave-start' });
 
           this.fadeOut(duration);
           this.toggleInfospotVisibility(false);
@@ -4075,10 +4073,10 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
      * @event Panorama#leave
      * @type {object}
      */
-    this.dispatchEvent({ type: "leave" });
+    this.dispatchEvent({ type: 'leave' });
 
     this.children.forEach(child => {
-      child.dispatchEvent({ type: "panorama-leave" });
+      child.dispatchEvent({ type: 'panorama-leave' });
     });
 
     this.active = false;
@@ -4104,8 +4102,8 @@ Panorama.prototype = Object.assign(Object.create(Mesh.prototype), {
      * @property {*} data - The argument to be passed into the method
      */
     this.dispatchEvent({
-      type: "panolens-viewer-handler",
-      method: "onPanoramaDispose",
+      type: 'panolens-viewer-handler',
+      method: 'onPanoramaDispose',
       data: this
     });
 
@@ -4170,10 +4168,10 @@ ImagePanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
     src = src || this.src;
 
     if (!src) {
-      console.warn("Image source undefined");
+      console.warn('Image source undefined');
 
       return;
-    } else if (typeof src === "string") {
+    } else if (typeof src === 'string') {
       TextureLoader.load(
         src,
         this.onLoad.bind(this),
@@ -4242,7 +4240,7 @@ function EmptyPanorama() {
     transparent: true
   });
 
-  geometry.addAttribute("position", new BufferAttribute(new Float32Array(), 1));
+  geometry.addAttribute('position', new BufferAttribute(new Float32Array(), 1));
 
   Panorama.call(this, geometry, material);
 }
@@ -4258,7 +4256,7 @@ EmptyPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
  */
 function CubePanorama(images = []) {
   const edgeLength = 10000;
-  const shader = Object.assign({}, ShaderLib["cube"]);
+  const shader = Object.assign({}, ShaderLib['cube']);
   const geometry = new BoxBufferGeometry(edgeLength, edgeLength, edgeLength);
   const material = new ShaderMaterial({
     fragmentShader: shader.fragmentShader,
@@ -4300,7 +4298,7 @@ CubePanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
    * @instance
    */
   onLoad: function(texture) {
-    this.material.uniforms["tCube"].value = texture;
+    this.material.uniforms['tCube'].value = texture;
 
     Panorama.prototype.onLoad.call(this);
   },
@@ -4366,12 +4364,12 @@ function VideoPanorama(src, options = {}) {
   this.src = src;
 
   this.options = {
-    videoElement: document.createElement("video"),
+    videoElement: document.createElement('video'),
     loop: true,
     muted: true,
     autoplay: false,
     playsinline: true,
-    crossOrigin: "anonymous"
+    crossOrigin: 'anonymous'
   };
 
   Object.assign(this.options, options);
@@ -4380,13 +4378,13 @@ function VideoPanorama(src, options = {}) {
   this.videoProgress = 0;
   this.radius = radius;
 
-  this.addEventListener("leave", this.pauseVideo.bind(this));
+  this.addEventListener('leave', this.pauseVideo.bind(this));
   this.addEventListener(
-    "enter-fade-start",
+    'enter-fade-start',
     this.resumeVideoProgress.bind(this)
   );
-  this.addEventListener("video-toggle", this.toggleVideo.bind(this));
-  this.addEventListener("video-time", this.setVideoCurrentTime.bind(this));
+  this.addEventListener('video-toggle', this.toggleVideo.bind(this));
+  this.addEventListener('video-time', this.setVideoCurrentTime.bind(this));
 }
 VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
   constructor: VideoPanorama,
@@ -4401,8 +4399,7 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
         /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(
           a.substr(0, 4)
         )
-      )
-        check = true;
+      ) { check = true; }
     })(window.navigator.userAgent || window.navigator.vendor || window.opera);
     return check;
   },
@@ -4427,8 +4424,8 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
     video.muted = muted;
 
     if (playsinline) {
-      video.setAttribute("playsinline", "");
-      video.setAttribute("webkit-playsinline", "");
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
     }
 
     const onloadeddata = function() {
@@ -4442,8 +4439,8 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
          * @property {boolean} data - Pause video or not
          */
         this.dispatchEvent({
-          type: "panolens-viewer-handler",
-          method: "updateVideoPlayButton",
+          type: 'panolens-viewer-handler',
+          method: 'updateVideoPlayButton',
           data: false
         });
       }
@@ -4460,8 +4457,8 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
            * @property {boolean} data - Pause video or not
            */
           this.dispatchEvent({
-            type: "panolens-viewer-handler",
-            method: "updateVideoPlayButton",
+            type: 'panolens-viewer-handler',
+            method: 'updateVideoPlayButton',
             data: false
           });
         } else {
@@ -4472,8 +4469,8 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
            * @property {boolean} data - Pause video or not
            */
           this.dispatchEvent({
-            type: "panolens-viewer-handler",
-            method: "updateVideoPlayButton",
+            type: 'panolens-viewer-handler',
+            method: 'updateVideoPlayButton',
             data: true
           });
         }
@@ -4501,8 +4498,8 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
     if (video.readyState > 2) {
       onloadeddata.call(this);
     } else {
-      if (video.querySelectorAll("source").length === 0) {
-        const source = document.createElement("source");
+      if (video.querySelectorAll('source').length === 0) {
+        const source = document.createElement('source');
         source.src = this.src;
         video.appendChild(source);
       }
@@ -4510,10 +4507,10 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
       video.load();
     }
 
-    video.addEventListener("loadeddata", onloadeddata.bind(this));
+    video.addEventListener('loadeddata', onloadeddata.bind(this));
 
     video.addEventListener(
-      "timeupdate",
+      'timeupdate',
       function() {
         this.videoProgress =
           video.duration >= 0 ? video.currentTime / video.duration : 0;
@@ -4525,21 +4522,21 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
          * @property {number} data - The percentage of video progress. Range from 0.0 to 1.0
          */
         this.dispatchEvent({
-          type: "panolens-viewer-handler",
-          method: "onVideoUpdate",
+          type: 'panolens-viewer-handler',
+          method: 'onVideoUpdate',
           data: this.videoProgress
         });
       }.bind(this)
     );
 
     video.addEventListener(
-      "ended",
+      'ended',
       function() {
         if (!loop) {
           this.resetVideo();
           this.dispatchEvent({
-            type: "panolens-viewer-handler",
-            method: "updateVideoPlayButton",
+            type: 'panolens-viewer-handler',
+            method: 'updateVideoPlayButton',
             data: true
           });
         }
@@ -4599,7 +4596,7 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
       return;
     }
 
-    video[video.paused ? "play" : "pause"]();
+    video[video.paused ? 'play' : 'pause']();
   },
 
   /**
@@ -4615,8 +4612,8 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
       video.currentTime = video.duration * percentage;
 
       this.dispatchEvent({
-        type: "panolens-viewer-handler",
-        method: "onVideoUpdate",
+        type: 'panolens-viewer-handler',
+        method: 'onVideoUpdate',
         data: percentage
       });
     }
@@ -4640,7 +4637,7 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
        * @event VideoPanorama#play
        *
        */
-      dispatchEvent({ type: "play" });
+      dispatchEvent({ type: 'play' });
     };
     const onError = error => {
       // Error playing video. Retry next frame. Possibly Waiting for user interaction
@@ -4652,7 +4649,7 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
        * @event VideoPanorama#play-error
        *
        */
-      dispatchEvent({ type: "play-error", error });
+      dispatchEvent({ type: 'play-error', error });
     };
 
     if (video && video.paused) {
@@ -4682,7 +4679,7 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
      * @event VideoPanorama#pause
      *
      */
-    this.dispatchEvent({ type: "pause" });
+    this.dispatchEvent({ type: 'pause' });
   },
 
   /**
@@ -4703,8 +4700,8 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
        * @property {boolean} data - Pause video or not
        */
       this.dispatchEvent({
-        type: "panolens-viewer-handler",
-        method: "updateVideoPlayButton",
+        type: 'panolens-viewer-handler',
+        method: 'updateVideoPlayButton',
         data: false
       });
     } else {
@@ -4717,8 +4714,8 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
        * @property {boolean} data - Pause video or not
        */
       this.dispatchEvent({
-        type: "panolens-viewer-handler",
-        method: "updateVideoPlayButton",
+        type: 'panolens-viewer-handler',
+        method: 'updateVideoPlayButton',
         data: true
       });
     }
@@ -4761,7 +4758,7 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
       video.muted = true;
     }
 
-    this.dispatchEvent({ type: "volumechange" });
+    this.dispatchEvent({ type: 'volumechange' });
   },
 
   /**
@@ -4776,7 +4773,7 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
       video.muted = false;
     }
 
-    this.dispatchEvent({ type: "volumechange" });
+    this.dispatchEvent({ type: 'volumechange' });
   },
 
   /**
@@ -4801,13 +4798,13 @@ VideoPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
 
     this.pauseVideo();
 
-    this.removeEventListener("leave", this.pauseVideo.bind(this));
+    this.removeEventListener('leave', this.pauseVideo.bind(this));
     this.removeEventListener(
-      "enter-fade-start",
+      'enter-fade-start',
       this.resumeVideoProgress.bind(this)
     );
-    this.removeEventListener("video-toggle", this.toggleVideo.bind(this));
-    this.removeEventListener("video-time", this.setVideoCurrentTime.bind(this));
+    this.removeEventListener('video-toggle', this.toggleVideo.bind(this));
+    this.removeEventListener('video-time', this.setVideoCurrentTime.bind(this));
 
     if (map) {
       map.dispose();
@@ -4835,7 +4832,7 @@ function GoogleStreetviewLoader(parameters = {}) {
   this._hc = 0;
   this.result = null;
   this.rotation = 0;
-  this.copyright = "";
+  this.copyright = '';
   this.onSizeChange = null;
   this.onPanoramaLoad = null;
 
@@ -4851,12 +4848,12 @@ function GoogleStreetviewLoader(parameters = {}) {
   let gl;
 
   try {
-    const canvas = document.createElement("canvas");
+    const canvas = document.createElement('canvas');
 
-    gl = canvas.getContext("experimental-webgl");
+    gl = canvas.getContext('experimental-webgl');
 
     if (!gl) {
-      gl = canvas.getContext("webgl");
+      gl = canvas.getContext('webgl');
     }
   } catch (error) {}
 
@@ -4897,13 +4894,13 @@ Object.assign(GoogleStreetviewLoader.prototype, {
 
     for (let y = 0; y < this._hc; y++) {
       for (let x = 0; x < this._wc; x++) {
-        const c = document.createElement("canvas");
+        const c = document.createElement('canvas');
         if (x < this._wc - 1) c.width = maxW;
         else c.width = w - maxW * x;
         if (y < this._hc - 1) c.height = maxH;
         else c.height = h - maxH * y;
         this._canvas.push(c);
-        this._ctx.push(c.getContext("2d"));
+        this._ctx.push(c.getContext('2d'));
       }
     }
   },
@@ -4985,15 +4982,15 @@ Object.assign(GoogleStreetviewLoader.prototype, {
     for (let y = 0; y < h; y++) {
       for (let x = 0; x < w; x++) {
         const url =
-          "https://geo0.ggpht.com/cbk?cb_client=maps_sv.tactile&authuser=0&hl=en&output=tile&zoom=" +
+          'https://geo0.ggpht.com/cbk?cb_client=maps_sv.tactile&authuser=0&hl=en&output=tile&zoom=' +
           this._zoom +
-          "&x=" +
+          '&x=' +
           x +
-          "&y=" +
+          '&y=' +
           y +
-          "&panoid=" +
+          '&panoid=' +
           this._panoId +
-          "&nbt&fover=2";
+          '&nbt&fover=2';
         (function(x, y) {
           if (useWebGL) {
             const texture = TextureLoader.load(url, null, function() {
@@ -5001,10 +4998,10 @@ Object.assign(GoogleStreetviewLoader.prototype, {
             });
           } else {
             const img = new Image();
-            img.addEventListener("load", function() {
+            img.addEventListener('load', function() {
               self.composeFromTile(x, y, this);
             });
-            img.crossOrigin = "";
+            img.crossOrigin = '';
             img.src = url;
           }
         })(x, y);
@@ -5099,13 +5096,13 @@ GoogleStreetviewPanorama.prototype = Object.assign(
      * @instance
      */
     setupGoogleMapAPI: function(apiKey) {
-      const script = document.createElement("script");
-      script.src = "https://maps.googleapis.com/maps/api/js?";
-      script.src += apiKey ? "key=" + apiKey : "";
+      const script = document.createElement('script');
+      script.src = 'https://maps.googleapis.com/maps/api/js?';
+      script.src += apiKey ? 'key=' + apiKey : '';
       script.onreadystatechange = this.setGSVLoader.bind(this);
       script.onload = this.setGSVLoader.bind(this);
 
-      document.querySelector("head").appendChild(script);
+      document.querySelector('head').appendChild(script);
     },
 
     /**
@@ -5202,49 +5199,49 @@ const StereographicShader = {
   },
 
   vertexShader: [
-    "varying vec2 vUv;",
+    'varying vec2 vUv;',
 
-    "void main() {",
+    'void main() {',
 
-    "vUv = uv;",
-    "gl_Position = vec4( position, 1.0 );",
+    'vUv = uv;',
+    'gl_Position = vec4( position, 1.0 );',
 
-    "}"
-  ].join("\n"),
+    '}'
+  ].join('\n'),
 
   fragmentShader: [
-    "uniform sampler2D tDiffuse;",
-    "uniform float resolution;",
-    "uniform mat4 transform;",
-    "uniform float zoom;",
-    "uniform float opacity;",
+    'uniform sampler2D tDiffuse;',
+    'uniform float resolution;',
+    'uniform mat4 transform;',
+    'uniform float zoom;',
+    'uniform float opacity;',
 
-    "varying vec2 vUv;",
+    'varying vec2 vUv;',
 
-    "const float PI = 3.141592653589793;",
+    'const float PI = 3.141592653589793;',
 
-    "void main(){",
+    'void main(){',
 
-    "vec2 position = -1.0 +  2.0 * vUv;",
+    'vec2 position = -1.0 +  2.0 * vUv;',
 
-    "position *= vec2( zoom * resolution, zoom * 0.5 );",
+    'position *= vec2( zoom * resolution, zoom * 0.5 );',
 
-    "float x2y2 = position.x * position.x + position.y * position.y;",
-    "vec3 sphere_pnt = vec3( 2. * position, x2y2 - 1. ) / ( x2y2 + 1. );",
+    'float x2y2 = position.x * position.x + position.y * position.y;',
+    'vec3 sphere_pnt = vec3( 2. * position, x2y2 - 1. ) / ( x2y2 + 1. );',
 
-    "sphere_pnt = vec3( transform * vec4( sphere_pnt, 1.0 ) );",
+    'sphere_pnt = vec3( transform * vec4( sphere_pnt, 1.0 ) );',
 
-    "vec2 sampleUV = vec2(",
-    "(atan(sphere_pnt.y, sphere_pnt.x) / PI + 1.0) * 0.5,",
-    "(asin(sphere_pnt.z) / PI + 0.5)",
-    ");",
+    'vec2 sampleUV = vec2(',
+    '(atan(sphere_pnt.y, sphere_pnt.x) / PI + 1.0) * 0.5,',
+    '(asin(sphere_pnt.z) / PI + 0.5)',
+    ');',
 
-    "gl_FragColor = texture2D( tDiffuse, sampleUV );",
+    'gl_FragColor = texture2D( tDiffuse, sampleUV );',
 
-    "gl_FragColor.a *= opacity;",
+    'gl_FragColor.a *= opacity;',
 
-    "}"
-  ].join("\n")
+    '}'
+  ].join('\n')
 };
 
 /**
@@ -5255,8 +5252,8 @@ const StereographicShader = {
  * @param {number} [size=10000] - Size of plane geometry
  * @param {number} [ratio=0.5]  - Ratio of plane geometry's height against width
  */
-function LittlePlanet(type = "image", source, size = 10000, ratio = 0.5) {
-  if (type === "image") {
+function LittlePlanet(type = 'image', source, size = 10000, ratio = 0.5) {
+  if (type === 'image') {
     ImagePanorama.call(
       this,
       source,
@@ -5281,7 +5278,7 @@ function LittlePlanet(type = "image", source, size = 10000, ratio = 0.5) {
   this.vectorX = new Vector3(1, 0, 0);
   this.vectorY = new Vector3(0, 1, 0);
 
-  this.addEventListener("window-resize", this.onWindowResize);
+  this.addEventListener('window-resize', this.onWindowResize);
 }
 
 LittlePlanet.prototype = Object.assign(Object.create(ImagePanorama.prototype), {
@@ -5308,8 +5305,8 @@ LittlePlanet.prototype = Object.assign(Object.create(ImagePanorama.prototype), {
   },
 
   createMaterial: function(size) {
-    const shader = Object.assign({}, StereographicShader),
-      uniforms = shader.uniforms;
+    const shader = Object.assign({}, StereographicShader);
+      const uniforms = shader.uniforms;
 
     uniforms.zoom.value = size;
     uniforms.opacity.value = 0.0;
@@ -5324,36 +5321,36 @@ LittlePlanet.prototype = Object.assign(Object.create(ImagePanorama.prototype), {
   },
 
   registerMouseEvents: function() {
-    this.container.addEventListener("mousedown", this.onMouseDown.bind(this), {
+    this.container.addEventListener('mousedown', this.onMouseDown.bind(this), {
       passive: true
     });
-    this.container.addEventListener("mousemove", this.onMouseMove.bind(this), {
+    this.container.addEventListener('mousemove', this.onMouseMove.bind(this), {
       passive: true
     });
-    this.container.addEventListener("mouseup", this.onMouseUp.bind(this), {
+    this.container.addEventListener('mouseup', this.onMouseUp.bind(this), {
       passive: true
     });
-    this.container.addEventListener("touchstart", this.onMouseDown.bind(this), {
+    this.container.addEventListener('touchstart', this.onMouseDown.bind(this), {
       passive: true
     });
-    this.container.addEventListener("touchmove", this.onMouseMove.bind(this), {
+    this.container.addEventListener('touchmove', this.onMouseMove.bind(this), {
       passive: true
     });
-    this.container.addEventListener("touchend", this.onMouseUp.bind(this), {
+    this.container.addEventListener('touchend', this.onMouseUp.bind(this), {
       passive: true
     });
     this.container.addEventListener(
-      "mousewheel",
+      'mousewheel',
       this.onMouseWheel.bind(this),
       { passive: false }
     );
     this.container.addEventListener(
-      "DOMMouseScroll",
+      'DOMMouseScroll',
       this.onMouseWheel.bind(this),
       { passive: false }
     );
     this.container.addEventListener(
-      "contextmenu",
+      'contextmenu',
       this.onContextMenu.bind(this),
       { passive: true }
     );
@@ -5361,47 +5358,47 @@ LittlePlanet.prototype = Object.assign(Object.create(ImagePanorama.prototype), {
 
   unregisterMouseEvents: function() {
     this.container.removeEventListener(
-      "mousedown",
+      'mousedown',
       this.onMouseDown.bind(this),
       false
     );
     this.container.removeEventListener(
-      "mousemove",
+      'mousemove',
       this.onMouseMove.bind(this),
       false
     );
     this.container.removeEventListener(
-      "mouseup",
+      'mouseup',
       this.onMouseUp.bind(this),
       false
     );
     this.container.removeEventListener(
-      "touchstart",
+      'touchstart',
       this.onMouseDown.bind(this),
       false
     );
     this.container.removeEventListener(
-      "touchmove",
+      'touchmove',
       this.onMouseMove.bind(this),
       false
     );
     this.container.removeEventListener(
-      "touchend",
+      'touchend',
       this.onMouseUp.bind(this),
       false
     );
     this.container.removeEventListener(
-      "mousewheel",
+      'mousewheel',
       this.onMouseWheel.bind(this),
       false
     );
     this.container.removeEventListener(
-      "DOMMouseScroll",
+      'DOMMouseScroll',
       this.onMouseWheel.bind(this),
       false
     );
     this.container.removeEventListener(
-      "contextmenu",
+      'contextmenu',
       this.onContextMenu.bind(this),
       false
     );
@@ -5542,8 +5539,8 @@ LittlePlanet.prototype = Object.assign(Object.create(ImagePanorama.prototype), {
     this.onUpdateCallback();
 
     this.dispatchEvent({
-      type: "panolens-viewer-handler",
-      method: "disableControl"
+      type: 'panolens-viewer-handler',
+      method: 'disableControl'
     });
 
     ImagePanorama.prototype.onLoad.call(this, texture);
@@ -5553,8 +5550,8 @@ LittlePlanet.prototype = Object.assign(Object.create(ImagePanorama.prototype), {
     this.unregisterMouseEvents();
 
     this.dispatchEvent({
-      type: "panolens-viewer-handler",
-      method: "enableControl",
+      type: 'panolens-viewer-handler',
+      method: 'enableControl',
       data: CONTROLS.ORBIT
     });
 
@@ -5587,7 +5584,7 @@ LittlePlanet.prototype = Object.assign(Object.create(ImagePanorama.prototype), {
  * @param {number} [ratio=0.5]  - Ratio of plane geometry's height against width
  */
 function ImageLittlePlanet(source, size, ratio) {
-  LittlePlanet.call(this, "image", source, size, ratio);
+  LittlePlanet.call(this, 'image', source, size, ratio);
 }
 
 ImageLittlePlanet.prototype = Object.assign(
@@ -5616,7 +5613,7 @@ ImageLittlePlanet.prototype = Object.assign(
     updateTexture: function(texture) {
       texture.minFilter = texture.magFilter = LinearFilter;
 
-      this.material.uniforms["tDiffuse"].value = texture;
+      this.material.uniforms['tDiffuse'].value = texture;
     },
 
     /**
@@ -5625,7 +5622,7 @@ ImageLittlePlanet.prototype = Object.assign(
      * @instance
      */
     dispose: function() {
-      const tDiffuse = this.material.uniforms["tDiffuse"];
+      const tDiffuse = this.material.uniforms['tDiffuse'];
 
       if (tDiffuse && tDiffuse.value) {
         tDiffuse.value.dispose();
@@ -5652,13 +5649,13 @@ function CameraPanorama(constraints) {
   this.media = new Media(constraints);
   this.radius = radius;
 
-  this.addEventListener("enter", this.start.bind(this));
-  this.addEventListener("leave", this.stop.bind(this));
+  this.addEventListener('enter', this.start.bind(this));
+  this.addEventListener('leave', this.stop.bind(this));
   this.addEventListener(
-    "panolens-container",
+    'panolens-container',
     this.onPanolensContainer.bind(this)
   );
-  this.addEventListener("panolens-scene", this.onPanolensScene.bind(this));
+  this.addEventListener('panolens-scene', this.onPanolensScene.bind(this));
 }
 
 CameraPanorama.prototype = Object.assign(Object.create(Panorama.prototype), {
@@ -5828,8 +5825,8 @@ function OrbitControls(object, domElement) {
   var lastPosition = new Vector3();
   var lastQuaternion = new Quaternion();
 
-  var momentumLeft = 0,
-    momentumUp = 0;
+  var momentumLeft = 0;
+    var momentumUp = 0;
   var eventPrevious;
   var momentumOn = false;
 
@@ -5863,9 +5860,9 @@ function OrbitControls(object, domElement) {
 
   // events
 
-  var changeEvent = { type: "change" };
-  var startEvent = { type: "start" };
-  var endEvent = { type: "end" };
+  var changeEvent = { type: 'change' };
+  var startEvent = { type: 'start' };
+  var endEvent = { type: 'end' };
 
   this.setLastQuaternion = function(quaternion) {
     lastQuaternion.copy(quaternion);
@@ -5947,7 +5944,7 @@ function OrbitControls(object, domElement) {
     } else {
       // camera neither orthographic or perspective
       console.warn(
-        "WARNING: OrbitControls.js encountered an unknown camera type - pan disabled."
+        'WARNING: OrbitControls.js encountered an unknown camera type - pan disabled.'
       );
     }
   };
@@ -5983,7 +5980,7 @@ function OrbitControls(object, domElement) {
       scope.dispatchEvent(changeEvent);
     } else {
       console.warn(
-        "WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled."
+        'WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.'
       );
     }
   };
@@ -6004,7 +6001,7 @@ function OrbitControls(object, domElement) {
       scope.dispatchEvent(changeEvent);
     } else {
       console.warn(
-        "WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled."
+        'WARNING: OrbitControls.js encountered an unknown camera type - dolly/zoom disabled.'
       );
     }
   };
@@ -6149,8 +6146,8 @@ function OrbitControls(object, domElement) {
     }
 
     if (state !== STATE.NONE) {
-      document.addEventListener("mousemove", onMouseMove, false);
-      document.addEventListener("mouseup", onMouseUp, false);
+      document.addEventListener('mousemove', onMouseMove, false);
+      document.addEventListener('mouseup', onMouseUp, false);
       scope.dispatchEvent(startEvent);
     }
 
@@ -6225,8 +6222,8 @@ function OrbitControls(object, domElement) {
 
     if (scope.enabled === false) return;
 
-    document.removeEventListener("mousemove", onMouseMove, false);
-    document.removeEventListener("mouseup", onMouseUp, false);
+    document.removeEventListener('mousemove', onMouseMove, false);
+    document.removeEventListener('mouseup', onMouseUp, false);
     scope.dispatchEvent(endEvent);
     state = STATE.NONE;
   }
@@ -6236,8 +6233,7 @@ function OrbitControls(object, domElement) {
       scope.enabled === false ||
       scope.noZoom === true ||
       state !== STATE.NONE
-    )
-      return;
+    ) { return; }
 
     event.preventDefault();
     event.stopPropagation();
@@ -6297,8 +6293,7 @@ function OrbitControls(object, domElement) {
       scope.enabled === false ||
       scope.noKeys === true ||
       scope.noRotate === true
-    )
-      return;
+    ) { return; }
 
     switch (event.keyCode) {
       case scope.keys.UP:
@@ -6322,12 +6317,9 @@ function OrbitControls(object, domElement) {
       momentumOn = true;
 
       if (keyUp) momentumUp = -scope.rotateSpeed * scope.momentumKeydownFactor;
-      if (keyBottom)
-        momentumUp = scope.rotateSpeed * scope.momentumKeydownFactor;
-      if (keyLeft)
-        momentumLeft = -scope.rotateSpeed * scope.momentumKeydownFactor;
-      if (keyRight)
-        momentumLeft = scope.rotateSpeed * scope.momentumKeydownFactor;
+      if (keyBottom) { momentumUp = scope.rotateSpeed * scope.momentumKeydownFactor; }
+      if (keyLeft) { momentumLeft = -scope.rotateSpeed * scope.momentumKeydownFactor; }
+      if (keyRight) { momentumLeft = scope.rotateSpeed * scope.momentumKeydownFactor; }
     }
   }
 
@@ -6480,37 +6472,37 @@ function OrbitControls(object, domElement) {
   }
 
   this.dispose = function() {
-    this.domElement.removeEventListener("mousedown", onMouseDown);
-    this.domElement.removeEventListener("mousewheel", onMouseWheel);
-    this.domElement.removeEventListener("DOMMouseScroll", onMouseWheel);
+    this.domElement.removeEventListener('mousedown', onMouseDown);
+    this.domElement.removeEventListener('mousewheel', onMouseWheel);
+    this.domElement.removeEventListener('DOMMouseScroll', onMouseWheel);
 
-    this.domElement.removeEventListener("touchstart", touchstart);
-    this.domElement.removeEventListener("touchend", touchend);
-    this.domElement.removeEventListener("touchmove", touchmove);
+    this.domElement.removeEventListener('touchstart', touchstart);
+    this.domElement.removeEventListener('touchend', touchend);
+    this.domElement.removeEventListener('touchmove', touchmove);
 
-    window.removeEventListener("keyup", onKeyUp);
-    window.removeEventListener("keydown", onKeyDown);
+    window.removeEventListener('keyup', onKeyUp);
+    window.removeEventListener('keydown', onKeyDown);
   };
 
   // this.domElement.addEventListener( 'contextmenu', function ( event ) { event.preventDefault(); }, false );
-  this.domElement.addEventListener("mousedown", onMouseDown, {
+  this.domElement.addEventListener('mousedown', onMouseDown, {
     passive: false
   });
-  this.domElement.addEventListener("mousewheel", onMouseWheel, {
+  this.domElement.addEventListener('mousewheel', onMouseWheel, {
     passive: false
   });
-  this.domElement.addEventListener("DOMMouseScroll", onMouseWheel, {
+  this.domElement.addEventListener('DOMMouseScroll', onMouseWheel, {
     passive: false
   }); // firefox
 
-  this.domElement.addEventListener("touchstart", touchstart, {
+  this.domElement.addEventListener('touchstart', touchstart, {
     passive: false
   });
-  this.domElement.addEventListener("touchend", touchend, { passive: false });
-  this.domElement.addEventListener("touchmove", touchmove, { passive: false });
+  this.domElement.addEventListener('touchend', touchend, { passive: false });
+  this.domElement.addEventListener('touchmove', touchmove, { passive: false });
 
-  window.addEventListener("keyup", onKeyUp, { passive: false });
-  window.addEventListener("keydown", onKeyDown, { passive: false });
+  window.addEventListener('keyup', onKeyUp, { passive: false });
+  window.addEventListener('keydown', onKeyDown, { passive: false });
 
   // force an update at start
   this.update();
@@ -6531,7 +6523,7 @@ OrbitControls.prototype = Object.assign(
  */
 function DeviceOrientationControls(camera, domElement) {
   var scope = this;
-  var changeEvent = { type: "change" };
+  var changeEvent = { type: 'change' };
 
   var rotY = 0;
   var rotX = 0;
@@ -6539,7 +6531,7 @@ function DeviceOrientationControls(camera, domElement) {
   var tempY = 0;
 
   this.camera = camera;
-  this.camera.rotation.reorder("YXZ");
+  this.camera.rotation.reorder('YXZ');
   this.domElement = domElement !== undefined ? domElement : document;
 
   this.enabled = true;
@@ -6611,7 +6603,7 @@ function DeviceOrientationControls(camera, domElement) {
     q1.multiply(fingerQY);
     q1.multiply(fingerQX);
 
-    euler.set(beta, alpha, -gamma, "YXZ"); // 'ZXY' for the device, but 'YXZ' for us
+    euler.set(beta, alpha, -gamma, 'YXZ'); // 'ZXY' for the device, but 'YXZ' for us
 
     quaternion.setFromEuler(euler); // orient the device
 
@@ -6624,23 +6616,23 @@ function DeviceOrientationControls(camera, domElement) {
     onScreenOrientationChangeEvent(); // run once on load
 
     window.addEventListener(
-      "orientationchange",
+      'orientationchange',
       onScreenOrientationChangeEvent,
       { passive: true }
     );
     window.addEventListener(
-      "deviceorientation",
+      'deviceorientation',
       onDeviceOrientationChangeEvent,
       { passive: true }
     );
-    window.addEventListener("deviceorientation", this.update.bind(this), {
+    window.addEventListener('deviceorientation', this.update.bind(this), {
       passive: true
     });
 
-    scope.domElement.addEventListener("touchstart", onTouchStartEvent, {
+    scope.domElement.addEventListener('touchstart', onTouchStartEvent, {
       passive: false
     });
-    scope.domElement.addEventListener("touchmove", onTouchMoveEvent, {
+    scope.domElement.addEventListener('touchmove', onTouchMoveEvent, {
       passive: false
     });
 
@@ -6649,27 +6641,27 @@ function DeviceOrientationControls(camera, domElement) {
 
   this.disconnect = function() {
     window.removeEventListener(
-      "orientationchange",
+      'orientationchange',
       onScreenOrientationChangeEvent,
       false
     );
     window.removeEventListener(
-      "deviceorientation",
+      'deviceorientation',
       onDeviceOrientationChangeEvent,
       false
     );
     window.removeEventListener(
-      "deviceorientation",
+      'deviceorientation',
       this.update.bind(this),
       false
     );
 
     scope.domElement.removeEventListener(
-      "touchstart",
+      'touchstart',
       onTouchStartEvent,
       false
     );
-    scope.domElement.removeEventListener("touchmove", onTouchMoveEvent, false);
+    scope.domElement.removeEventListener('touchmove', onTouchMoveEvent, false);
 
     scope.enabled = false;
   };
@@ -6748,7 +6740,7 @@ function CardboardEffect(renderer) {
   var distortion = new Vector2(0.441, 0.156);
 
   var geometry = new PlaneBufferGeometry(1, 1, 10, 20)
-    .removeAttribute("normal")
+    .removeAttribute('normal')
     .toNonIndexed();
 
   var positions = geometry.attributes.position.array;
@@ -6910,9 +6902,9 @@ function Viewer(options) {
   options.controlBar =
     options.controlBar !== undefined ? options.controlBar : true;
   options.controlButtons = options.controlButtons || [
-    "fullscreen",
-    "setting",
-    "video"
+    'fullscreen',
+    'setting',
+    'video'
   ];
   options.autoHideControlBar =
     options.autoHideControlBar !== undefined
@@ -6932,7 +6924,7 @@ function Viewer(options) {
   options.viewIndicator =
     options.viewIndicator !== undefined ? options.viewIndicator : false;
   options.indicatorSize = options.indicatorSize || 30;
-  options.output = options.output ? options.output : "none";
+  options.output = options.output ? options.output : 'none';
   options.autoRotate = options.autoRotate || false;
   options.autoRotateSpeed = options.autoRotateSpeed || 2.0;
   options.autoRotateActivationDuration =
@@ -6952,10 +6944,10 @@ function Viewer(options) {
     container._width = container.clientWidth;
     container._height = container.clientHeight;
   } else {
-    container = document.createElement("div");
-    container.classList.add("panolens-container");
-    container.style.width = "100%";
-    container.style.height = "100%";
+    container = document.createElement('div');
+    container.classList.add('panolens-container');
+    container.style.width = '100%';
+    container.style.height = '100%';
     container._width = window.innerWidth;
     container._height = window.innerHeight;
     document.body.appendChild(container);
@@ -7005,7 +6997,7 @@ function Viewer(options) {
   this.outputDivElement = null;
 
   this.touchSupported =
-    "ontouchstart" in window ||
+    'ontouchstart' in window ||
     (window.DocumentTouch && document instanceof DocumentTouch);
 
   // Handler references
@@ -7037,14 +7029,14 @@ function Viewer(options) {
   this.renderer.autoClear = false;
 
   // Append Renderer Element to container
-  this.renderer.domElement.classList.add("panolens-canvas");
-  this.renderer.domElement.style.display = "block";
-  this.container.style.backgroundColor = "#000";
+  this.renderer.domElement.classList.add('panolens-canvas');
+  this.renderer.domElement.style.display = 'block';
+  this.container.style.backgroundColor = '#000';
   this.container.appendChild(this.renderer.domElement);
 
   // Camera Controls
   this.OrbitControls = new OrbitControls(this.camera, this.container);
-  this.OrbitControls.id = "orbit";
+  this.OrbitControls.id = 'orbit';
   this.OrbitControls.minDistance = 1;
   this.OrbitControls.noPan = true;
   this.OrbitControls.autoRotate = this.options.autoRotate;
@@ -7054,13 +7046,13 @@ function Viewer(options) {
     this.camera,
     this.container
   );
-  this.DeviceOrientationControls.id = "device-orientation";
+  this.DeviceOrientationControls.id = 'device-orientation';
   this.DeviceOrientationControls.enabled = false;
   this.camera.position.z = 1;
 
   // Register change event if passiveRenering
   if (this.options.passiveRendering) {
-    console.warn("passiveRendering is now deprecated");
+    console.warn('passiveRendering is now deprecated');
   }
 
   // Controls
@@ -7115,7 +7107,7 @@ function Viewer(options) {
   }
 
   // Output infospot position to an overlay container if specified
-  if (this.options.output === "overlay") {
+  if (this.options.output === 'overlay') {
     this.addOutputElement();
   }
 
@@ -7150,7 +7142,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     // All object added to scene has 'panolens-viewer-handler' event to handle viewer communication
     if (object.addEventListener) {
       object.addEventListener(
-        "panolens-viewer-handler",
+        'panolens-viewer-handler',
         this.eventHandler.bind(this)
       );
     }
@@ -7158,17 +7150,17 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     // All object added to scene being passed with container
     if (object instanceof Panorama && object.dispatchEvent) {
       object.dispatchEvent({
-        type: "panolens-container",
+        type: 'panolens-container',
         container: this.container
       });
     }
 
     if (object instanceof CameraPanorama) {
-      object.dispatchEvent({ type: "panolens-scene", scene: this.scene });
+      object.dispatchEvent({ type: 'panolens-scene', scene: this.scene });
     }
 
     // Hookup default panorama event listeners
-    if (object.type === "panorama") {
+    if (object.type === 'panorama') {
       this.addPanoramaEventListener(object);
 
       if (!this.panorama) {
@@ -7186,7 +7178,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
   remove: function(object) {
     if (object.removeEventListener) {
       object.removeEventListener(
-        "panolens-viewer-handler",
+        'panolens-viewer-handler',
         this.eventHandler.bind(this)
       );
     }
@@ -7202,13 +7194,13 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   addDefaultControlBar: function(array) {
     if (this.widget) {
-      console.warn("Default control bar exists");
+      console.warn('Default control bar exists');
       return;
     }
 
     const widget = new Widget(this.container);
     widget.addEventListener(
-      "panolens-viewer-handler",
+      'panolens-viewer-handler',
       this.eventHandler.bind(this)
     );
     widget.addControlBar();
@@ -7228,7 +7220,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
   setPanorama: function(pano) {
     const leavingPanorama = this.panorama;
 
-    if (pano.type === "panorama" && leavingPanorama !== pano) {
+    if (pano.type === 'panorama' && leavingPanorama !== pano) {
       // Clear exisiting infospot
       this.hideInfospot();
 
@@ -7236,10 +7228,10 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
         if (leavingPanorama) {
           leavingPanorama.onLeave();
         }
-        pano.removeEventListener("enter-fade-start", afterEnterComplete);
+        pano.removeEventListener('enter-fade-start', afterEnterComplete);
       };
 
-      pano.addEventListener("enter-fade-start", afterEnterComplete);
+      pano.addEventListener('enter-fade-start', afterEnterComplete);
 
       // Assign and enter panorama
       (this.panorama = pano).onEnter();
@@ -7380,7 +7372,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
      * @property {MODES} mode - Current display mode
      */
     this.dispatchEventToChildren({
-      type: "panolens-dual-eye-effect",
+      type: 'panolens-dual-eye-effect',
       mode: this.mode
     });
 
@@ -7399,7 +7391,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
      * @event Viewer#mode-change
      * @property {MODES} mode - Current display mode
      */
-    this.dispatchEvent({ type: "mode-change", mode: this.mode });
+    this.dispatchEvent({ type: 'mode-change', mode: this.mode });
   },
 
   /**
@@ -7424,7 +7416,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
      * @property {MODES} mode - Current display mode
      */
     this.dispatchEventToChildren({
-      type: "panolens-dual-eye-effect",
+      type: 'panolens-dual-eye-effect',
       mode: this.mode
     });
 
@@ -7440,7 +7432,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
      * @event Viewer#mode-change
      * @property {MODES} mode - Current display mode
      */
-    this.dispatchEvent({ type: "mode-change", mode: this.mode });
+    this.dispatchEvent({ type: 'mode-change', mode: this.mode });
   },
 
   /**
@@ -7515,7 +7507,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
        * @type {object}
        * @event Viewer#video-toggle
        */
-      this.panorama.dispatchEvent({ type: "video-toggle", pause: pause });
+      this.panorama.dispatchEvent({ type: 'video-toggle', pause: pause });
     }
   },
 
@@ -7535,7 +7527,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
        * @property {number} percentage - Percentage of a video. Range from 0.0 to 1.0
        */
       this.panorama.dispatchEvent({
-        type: "video-time",
+        type: 'video-time',
         percentage: percentage
       });
     }
@@ -7558,7 +7550,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
      * @property {number} percentage - Percentage of a video. Range from 0.0 to 1.0
      */
     if (widget) {
-      widget.dispatchEvent({ type: "video-update", percentage: percentage });
+      widget.dispatchEvent({ type: 'video-update', percentage: percentage });
     }
   },
 
@@ -7602,7 +7594,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
      * @event Viewer#video-control-show
      */
     if (widget) {
-      widget.dispatchEvent({ type: "video-control-show" });
+      widget.dispatchEvent({ type: 'video-control-show' });
     }
   },
 
@@ -7620,7 +7612,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
      * @event Viewer#video-control-hide
      */
     if (widget) {
-      widget.dispatchEvent({ type: "video-control-hide" });
+      widget.dispatchEvent({ type: 'video-control-hide' });
     }
   },
 
@@ -7646,16 +7638,16 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   addPanoramaEventListener: function(pano) {
     // Set camera control on every panorama
-    pano.addEventListener("enter-fade-start", this.setCameraControl.bind(this));
+    pano.addEventListener('enter-fade-start', this.setCameraControl.bind(this));
 
     // Show and hide widget event only when it's VideoPanorama
     if (pano instanceof VideoPanorama) {
       pano.addEventListener(
-        "enter-fade-start",
+        'enter-fade-start',
         this.showVideoWidget.bind(this)
       );
       pano.addEventListener(
-        "leave",
+        'leave',
         function() {
           if (!(this.panorama instanceof VideoPanorama)) {
             this.hideVideoWidget.call(this);
@@ -8003,7 +7995,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     let width, height;
 
     const expand =
-      this.container.classList.contains("panolens-container") ||
+      this.container.classList.contains('panolens-container') ||
       this.container.isFullscreen;
 
     if (windowWidth !== undefined && windowHeight !== undefined) {
@@ -8055,11 +8047,11 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
      * @property {number} width  - Width of the window
      * @property {number} height - Height of the window
      */
-    this.dispatchEvent({ type: "window-resize", width: width, height: height });
+    this.dispatchEvent({ type: 'window-resize', width: width, height: height });
     this.scene.traverse(function(object) {
       if (object.dispatchEvent) {
         object.dispatchEvent({
-          type: "window-resize",
+          type: 'window-resize',
           width: width,
           height: height
         });
@@ -8073,11 +8065,11 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    * @instance
    */
   addOutputElement: function() {
-    const element = document.createElement("div");
-    element.style.position = "absolute";
-    element.style.right = "10px";
-    element.style.top = "10px";
-    element.style.color = "#fff";
+    const element = document.createElement('div');
+    element.style.position = 'absolute';
+    element.style.right = '10px';
+    element.style.top = '10px';
+    element.style.color = '#fff';
     this.container.appendChild(element);
     this.outputDivElement = element;
   },
@@ -8105,11 +8097,11 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       }
 
       switch (this.options.output) {
-        case "console":
+        case 'console':
           console.info(message);
           break;
 
-        case "overlay":
+        case 'overlay':
           this.outputDivElement.textContent = message;
           break;
 
@@ -8132,7 +8124,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       event.clientX >= 0 ? event.clientX : event.touches[0].clientX;
     this.userMouse.y =
       event.clientY >= 0 ? event.clientY : event.touches[0].clientY;
-    this.userMouse.type = "mousedown";
+    this.userMouse.type = 'mousedown';
     this.onTap(event);
   },
 
@@ -8144,7 +8136,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   onMouseMove: function(event) {
     event.preventDefault();
-    this.userMouse.type = "mousemove";
+    this.userMouse.type = 'mousemove';
     this.onTap(event);
   },
 
@@ -8157,7 +8149,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
   onMouseUp: function(event) {
     let onTarget = false;
 
-    this.userMouse.type = "mouseup";
+    this.userMouse.type = 'mouseup';
 
     const type =
       (this.userMouse.x >= event.clientX - this.options.clickTolerance &&
@@ -8173,14 +8165,14 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
           event.changedTouches[0].clientY - this.options.clickTolerance &&
         this.userMouse.y <=
           event.changedTouches[0].clientY + this.options.clickTolerance)
-        ? "click"
+        ? 'click'
         : undefined;
 
     // Event should happen on canvas
     if (
       event &&
       event.target &&
-      !event.target.classList.contains("panolens-canvas")
+      !event.target.classList.contains('panolens-canvas')
     ) {
       return;
     }
@@ -8199,13 +8191,13 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       onTarget = this.onTap(event, type);
     }
 
-    this.userMouse.type = "none";
+    this.userMouse.type = 'none';
 
     if (onTarget) {
       return;
     }
 
-    if (type === "click") {
+    if (type === 'click') {
       const {
         options: { autoHideInfospot, autoHideControlBar },
         panorama,
@@ -8245,7 +8237,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
     // output infospot information
     if (
-      (event.type !== "mousedown" && this.touchSupported) ||
+      (event.type !== 'mousedown' && this.touchSupported) ||
       this.OUTPUT_INFOSPOT
     ) {
       this.outputPosition();
@@ -8258,14 +8250,14 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     const intersect_entity = this.getConvertedIntersect(intersects);
     const intersect = intersects.length > 0 ? intersects[0].object : undefined;
 
-    if (this.userMouse.type === "mouseup") {
+    if (this.userMouse.type === 'mouseup') {
       if (
         intersect_entity &&
         this.pressEntityObject === intersect_entity &&
         this.pressEntityObject.dispatchEvent
       ) {
         this.pressEntityObject.dispatchEvent({
-          type: "pressstop-entity",
+          type: 'pressstop-entity',
           mouseEvent: event
         });
       }
@@ -8273,14 +8265,14 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       this.pressEntityObject = undefined;
     }
 
-    if (this.userMouse.type === "mouseup") {
+    if (this.userMouse.type === 'mouseup') {
       if (
         intersect &&
         this.pressObject === intersect &&
         this.pressObject.dispatchEvent
       ) {
         this.pressObject.dispatchEvent({
-          type: "pressstop",
+          type: 'pressstop',
           mouseEvent: event
         });
       }
@@ -8288,26 +8280,26 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       this.pressObject = undefined;
     }
 
-    if (type === "click") {
+    if (type === 'click') {
       this.panorama.dispatchEvent({
-        type: "click",
+        type: 'click',
         intersects: intersects,
         mouseEvent: event
       });
 
       if (intersect_entity && intersect_entity.dispatchEvent) {
         intersect_entity.dispatchEvent({
-          type: "click-entity",
+          type: 'click-entity',
           mouseEvent: event
         });
       }
 
       if (intersect && intersect.dispatchEvent) {
-        intersect.dispatchEvent({ type: "click", mouseEvent: event });
+        intersect.dispatchEvent({ type: 'click', mouseEvent: event });
       }
     } else {
       this.panorama.dispatchEvent({
-        type: "hover",
+        type: 'hover',
         intersects: intersects,
         mouseEvent: event
       });
@@ -8320,7 +8312,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       ) {
         if (this.hoverObject.dispatchEvent) {
           this.hoverObject.dispatchEvent({
-            type: "hoverleave",
+            type: 'hoverleave',
             mouseEvent: event
           });
 
@@ -8336,7 +8328,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
           if (this.hoverObject.dispatchEvent) {
             this.hoverObject.dispatchEvent({
-              type: "hoverenter",
+              type: 'hoverenter',
               mouseEvent: event
             });
 
@@ -8345,54 +8337,54 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
               (this.options.autoReticleSelect && this.options.enableReticle) ||
               this.tempEnableReticle
             ) {
-              this.reticle.start(this.onTap.bind(this, event, "click"));
+              this.reticle.start(this.onTap.bind(this, event, 'click'));
             }
           }
         }
 
         if (
-          this.userMouse.type === "mousedown" &&
+          this.userMouse.type === 'mousedown' &&
           this.pressEntityObject != intersect_entity
         ) {
           this.pressEntityObject = intersect_entity;
 
           if (this.pressEntityObject.dispatchEvent) {
             this.pressEntityObject.dispatchEvent({
-              type: "pressstart-entity",
+              type: 'pressstart-entity',
               mouseEvent: event
             });
           }
         }
 
         if (
-          this.userMouse.type === "mousedown" &&
+          this.userMouse.type === 'mousedown' &&
           this.pressObject != intersect
         ) {
           this.pressObject = intersect;
 
           if (this.pressObject.dispatchEvent) {
             this.pressObject.dispatchEvent({
-              type: "pressstart",
+              type: 'pressstart',
               mouseEvent: event
             });
           }
         }
 
-        if (this.userMouse.type === "mousemove" || this.options.enableReticle) {
+        if (this.userMouse.type === 'mousemove' || this.options.enableReticle) {
           if (intersect && intersect.dispatchEvent) {
-            intersect.dispatchEvent({ type: "hover", mouseEvent: event });
+            intersect.dispatchEvent({ type: 'hover', mouseEvent: event });
           }
 
           if (this.pressEntityObject && this.pressEntityObject.dispatchEvent) {
             this.pressEntityObject.dispatchEvent({
-              type: "pressmove-entity",
+              type: 'pressmove-entity',
               mouseEvent: event
             });
           }
 
           if (this.pressObject && this.pressObject.dispatchEvent) {
             this.pressObject.dispatchEvent({
-              type: "pressmove",
+              type: 'pressmove',
               mouseEvent: event
             });
           }
@@ -8405,7 +8397,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
         this.pressEntityObject.dispatchEvent
       ) {
         this.pressEntityObject.dispatchEvent({
-          type: "pressstop-entity",
+          type: 'pressstop-entity',
           mouseEvent: event
         });
 
@@ -8414,7 +8406,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
 
       if (!intersect && this.pressObject && this.pressObject.dispatchEvent) {
         this.pressObject.dispatchEvent({
-          type: "pressstop",
+          type: 'pressstop',
           mouseEvent: event
         });
 
@@ -8426,7 +8418,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     if (intersect && intersect instanceof Infospot) {
       this.infospot = intersect;
 
-      if (type === "click") {
+      if (type === 'click') {
         return true;
       }
     } else if (this.infospot) {
@@ -8434,7 +8426,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     }
 
     // Auto rotate
-    if (this.options.autoRotate && this.userMouse.type !== "mousemove") {
+    if (this.options.autoRotate && this.userMouse.type !== 'mousemove') {
       // Auto-rotate idle timer
       clearTimeout(this.autoRotateRequestId);
 
@@ -8512,7 +8504,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
      * @event Viewer#control-bar-toggle
      */
     if (widget) {
-      widget.dispatchEvent({ type: "control-bar-toggle" });
+      widget.dispatchEvent({ type: 'control-bar-toggle' });
     }
   },
 
@@ -8525,8 +8517,8 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
   onKeyDown: function(event) {
     if (
       this.options.output &&
-      this.options.output !== "none" &&
-      event.key === "Control"
+      this.options.output !== 'none' &&
+      event.key === 'Control'
     ) {
       this.OUTPUT_INFOSPOT = true;
     }
@@ -8562,11 +8554,11 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
           child instanceof Infospot &&
           child.element &&
           (this.hoverObject === child ||
-            child.element.style.display !== "none" ||
+            child.element.style.display !== 'none' ||
             (child.element.left &&
-              child.element.left.style.display !== "none") ||
+              child.element.left.style.display !== 'none') ||
             (child.element.right &&
-              child.element.right.style.display !== "none"))
+              child.element.right.style.display !== 'none'))
         ) {
           if (this.checkSpriteInViewport(child)) {
             const { x, y } = this.getScreenVector(
@@ -8632,22 +8624,22 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     const options = { passive: false };
 
     this.container.addEventListener(
-      "mousedown",
+      'mousedown',
       this.HANDLER_MOUSE_DOWN,
       options
     );
     this.container.addEventListener(
-      "mousemove",
+      'mousemove',
       this.HANDLER_MOUSE_MOVE,
       options
     );
-    this.container.addEventListener("mouseup", this.HANDLER_MOUSE_UP, options);
+    this.container.addEventListener('mouseup', this.HANDLER_MOUSE_UP, options);
     this.container.addEventListener(
-      "touchstart",
+      'touchstart',
       this.HANDLER_MOUSE_DOWN,
       options
     );
-    this.container.addEventListener("touchend", this.HANDLER_MOUSE_UP, options);
+    this.container.addEventListener('touchend', this.HANDLER_MOUSE_UP, options);
   },
 
   /**
@@ -8657,23 +8649,23 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   unregisterMouseAndTouchEvents: function() {
     this.container.removeEventListener(
-      "mousedown",
+      'mousedown',
       this.HANDLER_MOUSE_DOWN,
       false
     );
     this.container.removeEventListener(
-      "mousemove",
+      'mousemove',
       this.HANDLER_MOUSE_MOVE,
       false
     );
-    this.container.removeEventListener("mouseup", this.HANDLER_MOUSE_UP, false);
+    this.container.removeEventListener('mouseup', this.HANDLER_MOUSE_UP, false);
     this.container.removeEventListener(
-      "touchstart",
+      'touchstart',
       this.HANDLER_MOUSE_DOWN,
       false
     );
     this.container.removeEventListener(
-      "touchend",
+      'touchend',
       this.HANDLER_MOUSE_UP,
       false
     );
@@ -8718,11 +8710,11 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   registerEventListeners: function() {
     // Resize Event
-    window.addEventListener("resize", this.HANDLER_WINDOW_RESIZE, true);
+    window.addEventListener('resize', this.HANDLER_WINDOW_RESIZE, true);
 
     // Keyboard Event
-    window.addEventListener("keydown", this.HANDLER_KEY_DOWN, true);
-    window.addEventListener("keyup", this.HANDLER_KEY_UP, true);
+    window.addEventListener('keydown', this.HANDLER_KEY_DOWN, true);
+    window.addEventListener('keyup', this.HANDLER_KEY_UP, true);
   },
 
   /**
@@ -8732,11 +8724,11 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
    */
   unregisterEventListeners: function() {
     // Resize Event
-    window.removeEventListener("resize", this.HANDLER_WINDOW_RESIZE, true);
+    window.removeEventListener('resize', this.HANDLER_WINDOW_RESIZE, true);
 
     // Keyboard Event
-    window.removeEventListener("keydown", this.HANDLER_KEY_DOWN, true);
-    window.removeEventListener("keyup", this.HANDLER_KEY_UP, true);
+    window.removeEventListener('keydown', this.HANDLER_KEY_DOWN, true);
+    window.removeEventListener('keyup', this.HANDLER_KEY_UP, true);
   },
 
   /**
@@ -8762,7 +8754,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
         object.dispose();
         object = null;
       } else if (object.dispatchEvent) {
-        object.dispatchEvent("dispose");
+        object.dispatchEvent('dispose');
       }
     }
 
@@ -8818,7 +8810,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
     request.onloadend = function(event) {
       callback(event);
     };
-    request.open("GET", url, true);
+    request.open('GET', url, true);
     request.send(null);
   },
 
@@ -8834,18 +8826,18 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
       if (asyncEvent.loaded === 0) return;
 
       const viewIndicatorDiv = asyncEvent.target.responseXML.documentElement;
-      viewIndicatorDiv.style.width = scope.viewIndicatorSize + "px";
-      viewIndicatorDiv.style.height = scope.viewIndicatorSize + "px";
-      viewIndicatorDiv.style.position = "absolute";
-      viewIndicatorDiv.style.top = "10px";
-      viewIndicatorDiv.style.left = "10px";
-      viewIndicatorDiv.style.opacity = "0.5";
-      viewIndicatorDiv.style.cursor = "pointer";
-      viewIndicatorDiv.id = "panolens-view-indicator-container";
+      viewIndicatorDiv.style.width = scope.viewIndicatorSize + 'px';
+      viewIndicatorDiv.style.height = scope.viewIndicatorSize + 'px';
+      viewIndicatorDiv.style.position = 'absolute';
+      viewIndicatorDiv.style.top = '10px';
+      viewIndicatorDiv.style.left = '10px';
+      viewIndicatorDiv.style.opacity = '0.5';
+      viewIndicatorDiv.style.cursor = 'pointer';
+      viewIndicatorDiv.id = 'panolens-view-indicator-container';
 
       scope.container.appendChild(viewIndicatorDiv);
 
-      const indicator = viewIndicatorDiv.querySelector("#indicator");
+      const indicator = viewIndicatorDiv.querySelector('#indicator');
       const setIndicatorD = function() {
         scope.radius = scope.viewIndicatorSize * 0.225;
         scope.currentPanoAngle = scope.camera.rotation.y - Math$1.degToRad(90);
@@ -8857,17 +8849,17 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
         scope.rightX = scope.radius * Math.cos(scope.rightAngle);
         scope.rightY = scope.radius * Math.sin(scope.rightAngle);
         scope.indicatorD =
-          "M " +
+          'M ' +
           scope.leftX +
-          " " +
+          ' ' +
           scope.leftY +
-          " A " +
+          ' A ' +
           scope.radius +
-          " " +
+          ' ' +
           scope.radius +
-          " 0 0 1 " +
+          ' 0 0 1 ' +
           scope.rightX +
-          " " +
+          ' ' +
           scope.rightY;
 
         if (
@@ -8877,22 +8869,22 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
           scope.rightY &&
           scope.radius
         ) {
-          indicator.setAttribute("d", scope.indicatorD);
+          indicator.setAttribute('d', scope.indicatorD);
         }
       };
 
       scope.addUpdateCallback(setIndicatorD);
 
       const indicatorOnMouseEnter = function() {
-        this.style.opacity = "1";
+        this.style.opacity = '1';
       };
 
       const indicatorOnMouseLeave = function() {
-        this.style.opacity = "0.5";
+        this.style.opacity = '0.5';
       };
 
-      viewIndicatorDiv.addEventListener("mouseenter", indicatorOnMouseEnter);
-      viewIndicatorDiv.addEventListener("mouseleave", indicatorOnMouseLeave);
+      viewIndicatorDiv.addEventListener('mouseenter', indicatorOnMouseEnter);
+      viewIndicatorDiv.addEventListener('mouseleave', indicatorOnMouseLeave);
     }
 
     this.loadAsyncRequest(DataImage.ViewIndicator, loadViewIndicator);
@@ -8907,7 +8899,7 @@ Viewer.prototype = Object.assign(Object.create(EventDispatcher.prototype), {
   appendControlItem: function(option) {
     const item = this.widget.createCustomItem(option);
 
-    if (option.group === "video") {
+    if (option.group === 'video') {
       this.widget.videoElement.appendChild(item);
     } else {
       this.widget.barElement.appendChild(item);
