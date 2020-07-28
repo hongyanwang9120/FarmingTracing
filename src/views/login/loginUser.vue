@@ -368,6 +368,7 @@ $light_gray: #eee;
     }
     .note {
       display: flex;
+      font-size:16px;
       justify-content: space-between;
       span {
         img {

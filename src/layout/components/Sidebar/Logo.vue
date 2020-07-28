@@ -30,7 +30,7 @@ export default {
   },
   watch: {
     collapse(val) {
-      console.log(val, 'collapse')
+      // console.log(val, 'collapse')
      return this.logo = 
       val ? require('@/assets/login_images/logo_slices/logo.png') : require('@/assets/login_images/logo_slices/logo@2x.png')
     }

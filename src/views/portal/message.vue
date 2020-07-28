@@ -95,6 +95,7 @@ border-radius:8px;
   ),rgba(255,255,255,0.3));
   border-radius:8px;
   display: flex;;
+  font-size:14px;
 align-items:center;
   i{
     margin:0 14px 0 18px;

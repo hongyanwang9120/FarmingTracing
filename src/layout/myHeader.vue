@@ -70,6 +70,7 @@ export default {
    padding:0 50px;
  width:100%;
 height:60px;
+font-size:14px;
 background:rgba(36,61,117,1);
 display: flex;
  justify-content: space-between ;

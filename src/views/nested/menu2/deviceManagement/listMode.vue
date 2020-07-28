@@ -3,15 +3,15 @@
     <div class="search">
       <el-form ref="form" :model="form" label-width="70px" class="form">
         <el-form-item label="设备名称">
-          <el-input v-model="form.name" placeholder="请输入" style="width:360px" />
+          <el-input v-model="form.name" placeholder="请输入"  />
         </el-form-item>
         <el-form-item label="设备类型">
-          <el-select v-model="form.type" placeholder="请选择" style="width:360px">
+          <el-select v-model="form.type" placeholder="请选择" >
             <el-option label="全部" value="all" />
           </el-select>
         </el-form-item>
         <el-form-item label="设备状态">
-          <el-select v-model="form.status" placeholder="请选择" style="width:360px">
+          <el-select v-model="form.status" placeholder="请选择" >
             <el-option label="全部" value="all" />
           </el-select>
         </el-form-item>
@@ -95,7 +95,7 @@ export default {
           uuId: "12041B000000030C",
           type: "水EC传感器",
           status: "在线",
-          information: "地块8，地块9，地块10",
+          // information: "地块8，地块9，地块10",
           position: "123，123",
           cardNumber: "17734567890",
         },
@@ -105,7 +105,7 @@ export default {
           uuId: "12041B000000030C",
           type: "水EC传感器",
           status: "在线",
-          information: "地块8，地块9，地块10",
+          // information: "地块8，地块9，地块10",
           position: "123，123",
           cardNumber: "17734567890",
         },
@@ -115,7 +115,7 @@ export default {
           uuId: "12041B000000030C",
           type: "水EC传感器",
           status: "在线",
-          information: "地块8，地块9，地块10",
+          // information: "地块8，地块9，地块10",
           position: "123，123",
           cardNumber: "17734567890",
         },
@@ -130,7 +130,7 @@ export default {
       "设备识别码",
       "设备类型",
       "设备状态",
-      "地块信息",
+      // "地块信息",
       "位置坐标",
       "物联网卡号",
       "数据查看",
@@ -171,8 +171,12 @@ export default {
   width: 100%;
   height: calc(100% - 60px);
   border-top: 1px solid rgba(221, 221, 221, 1);
+  font-size:14px;
   .search {
     height: 97px;
+    ::v-deep .el-input__inner {
+      width:360px;
+    }
   }
   .form {
     display: flex;

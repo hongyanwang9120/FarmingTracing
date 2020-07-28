@@ -123,7 +123,7 @@ $light_gray: #eee;
   overflow: hidden;
   .protal {
     background-color: white;
-
+    font-size:20px;
     .header {
       width: 1200px;
       height: 60px;

@@ -117,7 +117,8 @@ export const constantRoutes = [
             path: 'menu1-1',
             component: () => import('@/views/nested/menu1/menu1-1'),
             name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
+            meta: { title: 'Menu1-1' },
+            hidden:true
           },
           {
             path: 'menu1-2',
@@ -150,8 +151,26 @@ export const constantRoutes = [
       {
         path: 'menu2',
         component: () => import('@/views/nested/menu2/index'),
+        redirect: '/nested/menu2/menu2-1',
         name: 'Menu2',
-        meta: { title: '物联网设备管理' }
+        meta: { title: '物联网设备管理' , icon: 'table'},
+        children: [
+          
+          {
+            path: 'menu2-1',
+            component: () => import('@/views/nested/menu2/deviceManagement/index'),
+            meta: { title: '新增设备',breadcrumb: false ,},
+            name: '新增设备',
+            hidden: true
+          },
+          {
+            path: 'menu2-2',
+            component: () => import('@/views/nested/menu2/newEquipment/index'),
+            name: '新增设备',
+            meta: { title: '新增设备',breadcrumb: false ,},
+            hidden: true
+          }
+        ]
       }
     ]
   },

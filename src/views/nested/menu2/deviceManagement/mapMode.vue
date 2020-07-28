@@ -100,6 +100,7 @@ export default {
     MapInit() {
       // let _this = this;
       this.myMap = new AMap.Map("map", {
+        animateEnable:true,
         center: [121.35045, 28.55084],
         mapStyle: "amap://styles/grey", // 设置地图的显示样式
         layers: [
@@ -137,9 +138,8 @@ export default {
           self.myMap.remove(self.markers);
           self.lnglats[i].iconType = self.lnglats[i].iconType.includes("B")
             ? self.lnglats[i].iconType.split("B")[0]
-            : self.lnglats[i].iconType + "B";
+            : self.lnglats[i].iconType + "B" ;
           self.mapInitMarker();
-          // console.log(self.lnglats[i]);
           self.selectObj=self.lnglats[i];
           // sessionStorage.setItem('switchId',e.target.switchId)
           // that.$router.push('/sec/innerBox')
@@ -173,7 +173,7 @@ export default {
         case "3B":
           iconUrl = require("@/assets/map_images/warning_02.png");
           break;
-        // 这里如何限制？有没有默认值？
+
         default:
           iconUrl = "";
           break;
