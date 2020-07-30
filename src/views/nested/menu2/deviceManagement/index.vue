@@ -34,7 +34,7 @@
   </div>
 </template>
 <script>
-import mapMode from './mapMode';
+import mapMode from '@/views/common/mapViewMode';
 import listMode from './listMode';
 
 export default {

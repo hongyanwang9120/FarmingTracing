@@ -24,7 +24,7 @@ export default {
 <style lang="scss" scoped>
 .new-equipment{
   height: 100%;
-  padding: 0 0px 0px;
+  padding: 0 0px 50px;
   background: white;
   font-size:14px;
 }

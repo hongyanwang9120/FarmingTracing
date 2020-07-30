@@ -38,14 +38,67 @@
               <el-input type="textarea" v-model="ruleForm.desc"></el-input>
             </el-form-item>
             <el-form-item label="设备地址 : " prop="address">
-              <div id="map" class="map">
-                <div class="info">
-                  <input id="input_id" type="text" placeholder="请输入关键字进行搜索" />
-                </div>
-              </div>
+              <map-handle-mode></map-handle-mode>
             </el-form-item>
           </div>
           <hr />
+          <div class="title">
+            <img src="@/assets/equipment_images/Basic information.png" alt />
+            <span>报警设置</span>
+          </div>
+          <div class="form-alarm">
+            <el-form-item>
+              <template scope="scope">
+                <div v-for="(item,index) in alarmMsg" :key="index" class="alarm-item">
+                  <p class="item-list">
+                    <span class="item-name">
+                      <span>{{item.name}}</span>
+                    </span> :
+                    <span class="item-status">{{item.status}}</span>
+                  </p>
+                  <p class="item-critical-value">设备临界值 :</p>
+                  <template>
+                    <span v-if="item.num !== 0">
+                      <el-input-number
+                        v-model="item.num"
+                        controls-position="right"
+                        @change="handleMaxChange"
+                        :precision="2"
+                        :min="1"
+                        :max="99999.99"
+                      ></el-input-number>
+                    </span>
+                    <span v-else>
+                      <el-input-number
+                        controls-position="right"
+                        @change="handleMaxChange"
+                        placeholder="最大临界值"
+                      ></el-input-number>
+                    </span>
+                  </template>
+                  <template>
+                    <span v-if="item.num !== 0">
+                      <el-input-number
+                        v-model="item.minNum"
+                        controls-position="right"
+                        @change="handleMinChange"
+                        :precision="2"
+                        :min="1"
+                        :max="99999.99"
+                      ></el-input-number>
+                    </span>
+                    <span v-else>
+                      <el-input-number
+                        controls-position="right"
+                        @change="handleMinChange"
+                        placeholder="最小临界值"
+                      ></el-input-number>
+                    </span>
+                  </template>
+                </div>
+              </template>
+            </el-form-item>
+          </div>
         </div>
         <!-- <el-form-item label="活动性质" prop="type">
               <el-checkbox-group v-model="ruleForm.type">
@@ -61,11 +114,18 @@
         </el-form-item>
       </el-form>
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
   </div>
 </template>
 <script>
 import AMap from "AMap";
+import MapHandleMode from './mapHandleMode'
 export default {
+  components:{MapHandleMode},
   data() {
     return {
       ruleForm: {
@@ -76,6 +136,19 @@ export default {
         card: "",
         desc: "",
       },
+
+      alarmMsg: [
+        {
+          name: "水电导率",
+          status: "0.2mS/cm",
+          Num: 0,
+        },
+        {
+          name: "水温",
+          status: "26.96℃",
+           Num: 0,
+        },
+      ],
       rules: {
         name: [
           { required: true, message: "请输入活动名称", trigger: "blur" },
@@ -94,6 +167,14 @@ export default {
   },
 
   methods: {
+    handleMaxChange(value, index) {
+      // this.maxNum=value;
+      console.log(value, index, "最大");
+    },
+    handleMinChange(value) {
+      // this.minNum=value;
+      console.log(value, "最小");
+    },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -130,7 +211,7 @@ export default {
       this.myMap.plugin(["AMap.ControlBar"], function () {
         var controlBar = new AMap.ControlBar({
           showZoomBar: true,
-          showZoomBar: true,
+          showControlButton: true,
           position: { top: "10px", left: "-95px" },
         });
         _this.myMap.addControl(controlBar);
@@ -140,14 +221,12 @@ export default {
         let autoOptions = {
           input: "input_id",
         };
-
         let autocomplete = new AMap.Autocomplete(autoOptions);
-
         let placeSearch = new AMap.PlaceSearch({
-          // city:'北京',
           map: this.myMap,
         });
         AMap.event.addListener(autocomplete, "select", (e) => {
+          console.log(e);
           // TODO 针对选中的POI实现自己的功能
           // placeSearch.setCity(e.poi.adcode);
           placeSearch.search(e.poi.name);
@@ -169,8 +248,8 @@ export default {
           maximumAge: 0, //定位结果缓存0毫秒，默认：0
           convert: true, //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
           showButton: true, //显示定位按钮，默认：true
-          buttonPosition: "RB", //定位按钮停靠位置，默认：'LB'，左下角
-          buttonOffset: new AMap.Pixel(10, 20), //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+          buttonPosition: "LB", //定位按钮停靠位置，默认：'LB'，左下角
+          buttonOffset: new AMap.Pixel(25, 20), //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
           showMarker: true, //定位成功后在定位到的位置显示点标记，默认：true
           showCircle: true, //定位成功后用圆圈表示定位精度范围，默认：true
           panToLocation: true, //定位成功后将定位到的位置作为地图中心点，默认：true
@@ -178,9 +257,23 @@ export default {
         });
         _this.myMap.addControl(geoLocation);
         geoLocation.getCurrentPosition();
-        // AMap.event.addListener(geolocation, "complete", onComplete); //返回定位信息
-        // AMap.event.addListener(geolocation, "error", onError); //返回定位出错信息
+        AMap.event.addListener(geoLocation, "complete", _this.onMapComplete); //返回定位信息
+        AMap.event.addListener(geoLocation, "error", _this.onMapError); //返回定位出错信息
       });
+    },
+    onMapComplete(data) {
+      var str = [];
+      str.push("定位结果：" + data.position);
+      str.push("定位类别：" + data.location_type);
+      if (data.accuracy) {
+        str.push("精度：" + data.accuracy + " 米");
+      } //如为IP精确定位结果则没有精度信息
+      str.push("是否经过偏移：" + (data.isConverted ? "是" : "否"));
+      console.log(str.join("<br>"));
+    },
+    //解析定位错误信息
+    onMapError(data) {
+      console.log("失败原因排查信息:" + data.message);
     },
   },
 };
@@ -188,8 +281,7 @@ export default {
 
 <style lang="scss" scoped>
 .equipment {
-  height: 100%;
-  padding: 0 0px 20px;
+  padding: 0 0px;
   background: white;
   font-size: 14px;
   .equipment-note {
@@ -239,15 +331,30 @@ export default {
           right: 0px;
           z-index: 2;
         }
+        ::v-deep .el-input__inner {
+          width: 340px;
+          height: 40px;
+        }
+        ::v-deep .el-textarea__inner {
+          width: 800px;
+          height: 110px;
+        }
       }
-    }
-    ::v-deep .el-input__inner {
-      width: 340px;
-      height: 40px;
-    }
-    ::v-deep .el-textarea__inner {
-      width: 800px;
-      height: 110px;
+      .form-alarm {
+        padding-left: 300px;
+
+        .alarm-item {
+          display: flex;
+          justify-content: left;
+          align-items: center;
+          .item-list {
+           width:200px;
+          }
+          .item-critical-value{
+            margin:0 18px;
+          }
+        }
+      }
     }
   }
 }

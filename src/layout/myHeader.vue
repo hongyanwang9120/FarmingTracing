@@ -21,6 +21,7 @@
           />
         </el-select>
       </div>
+      <span @click="fullScreen"> 全屏</span>
       <div class="message">
         <span>消息</span>
         <el-button type="primary" class="message_num">12</el-button>
@@ -31,7 +32,7 @@
 </template>
 
 <script>
-
+import screenfull from 'screenfull'
 export default {
   name: 'MyHeader',
   components: {
@@ -39,6 +40,8 @@ export default {
   },
    data() {
       return {
+         //默认不全屏
+         isFullscreen: false,
         options: [{
           value: '选项1',
           label: '切换组织'
@@ -61,6 +64,18 @@ export default {
   computed: {
   },
   methods: {
+    fullScreen(){
+    
+ if (!screenfull.isEnabled) {
+          this.$message({
+            message: 'you browser can not work',
+            type: 'warning'
+          })
+          return false
+        }
+        screenfull.toggle()
+
+    }
   }
 }
 </script>
