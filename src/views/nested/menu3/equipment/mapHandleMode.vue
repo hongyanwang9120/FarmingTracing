@@ -17,14 +17,17 @@ export default {
   data() {
     return {
       myMap: null,
+      markers:[],
     };
   },
 
   mounted() {
     this.MapInit();
+    this.MapClickOn()
   },
 
   methods: {
+
   launchFullscreen(element) {
 	//此方法不可以在異步任務中執行，否則火狐無法全屏
 	if(element.requestFullscreen) {
@@ -53,6 +56,25 @@ fullScreen() {
   var mapBox = document.getElementById('map');
 	this.launchFullscreen(mapBox);//开启全屏
 },
+ showInfoClick(e){
+   this.myMap.remove(this.markers);
+        var text = '您在 [ '+e.lnglat.getLng()+','+e.lnglat.getLat()+' ] 的位置单击了地图！'
+        var marker = new AMap.Marker({
+        icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+        // icon: require("@/assets/map_images/fault.png"),
+        position: [e.lnglat.getLng(), e.lnglat.getLat()],
+      });
+      this.markers.push(marker);
+      this.myMap.add(marker);
+      console.log(text)
+
+
+    },
+MapClickOn(){
+console.log('123456')
+        this.myMap.on('click', this.showInfoClick);
+ 
+    },
     MapInit() {
       let _this = this;
       this.myMap = new AMap.Map("map", {

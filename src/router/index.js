@@ -159,13 +159,13 @@ export const constantRoutes = [
           {
             path: 'menu2-1',
             component: () => import('@/views/nested/menu2/deviceManagement/index'),
-            meta: { title: '新增设备',breadcrumb: false ,},
-            name: '新增设备',
+            meta: { title: '设备管理',breadcrumb: false ,},
+            name: '设备管理',
             hidden: true
           },
           {
             path: 'menu2-2',
-            component: () => import('@/views/nested/menu2/newEquipment/index'),
+            component: () => import('@/views/nested/menu2/equipment/index'),
             name: '新增设备',
             meta: { title: '新增设备',breadcrumb: false ,},
             hidden: true
