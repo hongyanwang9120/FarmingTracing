@@ -72,6 +72,7 @@ fullScreen() {
 
     },
 MapClickOn(){
+
         this.myMap.on('click', this.showInfoClick);
  
     },
