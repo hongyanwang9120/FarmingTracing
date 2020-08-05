@@ -48,6 +48,15 @@ module.exports = {
   productionSourceMap: false,
   devServer: {
     port: port,
+    // proxy: {
+      // '/ysapi': {
+      //   target: 'https://open.ys7.com',
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     '/ysapi': ''
+      //   }
+      // }
+    // },
     open: true,
     overlay: {
       warnings: false,

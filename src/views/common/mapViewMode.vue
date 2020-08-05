@@ -68,6 +68,7 @@ export default {
     };
   },
   mounted() {
+
     const self = this;
     self.MapInit();
     self.mapInitMarker();
