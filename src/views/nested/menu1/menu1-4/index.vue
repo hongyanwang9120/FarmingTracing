@@ -27,28 +27,16 @@ export default {
    created() {
      this.linkUrl=process.env.VUE_APP_YS_URL + this.iframeObj.Url+"&autoplay=1&accessToken="+this.iframeObj.AccessToken
    
+    //请求萤石access
     getAccessToken({
     	appKey:'ccba7185a57c4d54802a59c1dcc53532',
       appSecret:'83536573dd4ea7ae22951abd2fd8ac5d'
     }).then(response => {
-      console.log(response,888)
+      console.log(response)
     }).catch(req=>{
-      console.log(req,8889)
+      console.log(req)
     })
-//  console.log(`${process.env.VUE_APP_YS_POST_ACCESSTOKEN}`,'---process.env.VUE_APP_YS_POST_ACCESSTOKEN')
-//    axios.post(`${process.env.VUE_APP_YS_POST_ACCESSTOKEN}`,qs.stringify({
-//    appKey:'ccba7185a57c4d54802a59c1dcc53532',
-//    appSecret:'83536573dd4ea7ae22951abd2fd8ac5d'
-//  })).then((res)=>{console.log(res,777)}).catch((req)=>{console.log('req',77)})
-//
-//  axios.post('https://open.ys7.com/api/lapp/token/get',qs.stringify({
-//    appKey:'ccba7185a57c4d54802a59c1dcc53532',
-//    appSecret:'83536573dd4ea7ae22951abd2fd8ac5d'
-//  })).then(response => {
-//    console.log(response,333)
-//  }).catch(req=>{
-//    console.log(req,8888)
-//  })
+
     },
   mounted() {
  setTimeout(() => {

@@ -1,13 +1,12 @@
 <template>
   <div class="panorama-container">
-    <div class="panorama-text">这是全景name: {{ name }}</div>
     <div id="pano" class="main" style="background-color: rgb(0, 0, 0);">
       <!-- <canvas
         width="700"
         height="974"
         class="panolens-canvas"
         style="width: 700px; height: 974px;"
-      ></canvas> -->
+      ></canvas>-->
       <div
         style="
           position: absolute;
@@ -52,9 +51,10 @@
             transition: all 0.27s ease 0s;
             width: 200px;
           "
-        ><a
-          type="item"
-          style="
+        >
+          <a
+            type="item"
+            style="
               display: block;
               padding: 10px 10px 10px 20px;
               text-decoration: none;
@@ -62,8 +62,10 @@
               pointer-events: auto;
               transition: all 0.27s ease 0s;
             "
-        >Control<span
-          style="
+          >
+            Control
+            <span
+              style="
                 float: right;
                 width: 17px;
                 height: 17px;
@@ -71,11 +73,12 @@
                 background-size: cover;
                 background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiIC8+PC9zdmc+');
               "
-        /><span
-          style="font-size: 13px; font-weight: 300; float: right;"
-        >Mouse</span></a><a
-          type="item"
-          style="
+            />
+            <span style="font-size: 13px; font-weight: 300; float: right;">Mouse</span>
+          </a>
+          <a
+            type="item"
+            style="
               display: block;
               padding: 10px 10px 10px 20px;
               text-decoration: none;
@@ -83,8 +86,10 @@
               pointer-events: auto;
               transition: all 0.27s ease 0s;
             "
-        >Mode<span
-          style="
+          >
+            Mode
+            <span
+              style="
                 float: right;
                 width: 17px;
                 height: 17px;
@@ -92,9 +97,11 @@
                 background-size: cover;
                 background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTguNTksMTYuNThMMTMuMTcsMTJMOC41OSw3LjQxTDEwLDZMMTYsMTJMMTAsMThMOC41OSwxNi41OFoiIC8+PC9zdmc+');
               "
-        /><span
-          style="font-size: 13px; font-weight: 300; float: right;"
-        >Normal</span></a></span><span
+            />
+            <span style="font-size: 13px; font-weight: 300; float: right;">Normal</span>
+          </a>
+        </span>
+        <span
           style="
             cursor: pointer;
             float: right;
@@ -116,50 +123,42 @@
     </div>
     <ul id="list" class="list">
       <li class="li">
-    
-        <img
-          src="../../assets/panorama_images/wKgBKF3LlMmAQ3cVAAAM7VcYeJY958.png"
-        >
+        <img src="../../assets/panorama_images/wKgBKF3LlMmAQ3cVAAAM7VcYeJY958.png" />
         <p style="margin-top: 10px;">27.74℃</p>
       </li>
       <li class="li">
-        <img
-          src="../../assets/panorama_images/wKgBKF3LlMmAWavfAAAOPshRT0s390.png"
-        >
+        <img src="../../assets/panorama_images/wKgBKF3LlMmAWavfAAAOPshRT0s390.png" />
         <p style="margin-top: 10px;">100.0RH%</p>
       </li>
       <li class="li">
-        <img
-          src="../../assets/panorama_images/wKgBn13LlNmAMfVFAAAM7VcYeJY489.png"
-        >
+        <img src="../../assets/panorama_images/wKgBn13LlNmAMfVFAAAM7VcYeJY489.png" />
         <p style="margin-top: 10px;">997.1hPa</p>
       </li>
       <li class="li">
-        <img
-          src="../../assets/panorama_images/wKgBKF3LlMmABazJAAALyFZFBhs061.png"
-        >
+        <img src="../../assets/panorama_images/wKgBKF3LlMmABazJAAALyFZFBhs061.png" />
         <p style="margin-top: 10px;">27953.2lux</p>
       </li>
     </ul>
+    <!-- 这是主全景图 -->
     <input
       id="pic"
       type="hidden"
       value="/31384703333230301f002a00_1594953794-20200717104317943.jpg"
-    >
-    <input id="time" type="hidden" value="2020-07-17 10:41:55">
+    />
+    <input id="time" type="hidden" value="2020-07-17 10:41:55" />
     <ul style="display: none;">
-      <li class="li1">
-        http://220.170.144.56:22999/group1/M00/00/64/wKgBKF3LlMmAQ3cVAAAM7VcYeJY958.png
-      </li>
-      <li class="li1">
-        http://220.170.144.56:22999/group1/M00/00/64/wKgBKF3LlMmAWavfAAAOPshRT0s390.png
-      </li>
-      <li class="li1">
-        http://220.170.144.56:22999/group1/M00/00/08/wKgBn13LlNmAMfVFAAAM7VcYeJY489.png
-      </li>
-      <li class="li1">
-        http://220.170.144.56:22999/group1/M00/00/64/wKgBKF3LlMmABazJAAALyFZFBhs061.png
-      </li>
+      <li
+        class="li1"
+      >http://220.170.144.56:22999/group1/M00/00/64/wKgBKF3LlMmAQ3cVAAAM7VcYeJY958.png</li>
+      <li
+        class="li1"
+      >http://220.170.144.56:22999/group1/M00/00/64/wKgBKF3LlMmAWavfAAAOPshRT0s390.png</li>
+      <li
+        class="li1"
+      >http://220.170.144.56:22999/group1/M00/00/08/wKgBn13LlNmAMfVFAAAM7VcYeJY489.png</li>
+      <li
+        class="li1"
+      >http://220.170.144.56:22999/group1/M00/00/64/wKgBKF3LlMmABazJAAALyFZFBhs061.png</li>
     </ul>
     <ul style="display: none;">
       <li class="li2">27.74℃</li>
@@ -171,97 +170,88 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { ImagePanorama, Panorama, Viewer } from '@/lib/panolens.module.js'
+import { mapGetters } from "vuex";
+import { ImagePanorama, Panorama, Viewer } from "@/lib/panolens.module.js";
 export default {
-  name: 'Panorama',
+  name: "Panorama",
   computed: {
-    ...mapGetters([
-      'name'
-    ])
+    ...mapGetters(["name"]),
   },
   data() {
-    return {
-
-    }
+    return {};
   },
   mounted() {
     this.$nextTick(() => {
- var panorama;
-        var viewer;
-        var images;
-        var index = 0;
-        var renewDuration = 10000;
-      
-      var container = document.getElementById('pano');
-      // viewer = new PANOLENS.Viewer({
-  
+      var panorama;
+      var viewer;
+      var images;
+      var index = 0;
+      var renewDuration = 10000;
+      var container = document.getElementById("pano");
       viewer = new Viewer({
         container: container,
-        controlButtons: ['fullscreen'],
+        controlButtons: ["fullscreen"],
         autoRotate: true,
         autoRotateActivationDuration: 2000,
-        autoRotateSpeed: 0.3
+        autoRotateSpeed: 0.3,
       });
       function renew() {
-        var val = document.getElementById('pic').value;
+        var val = document.getElementById("pic").value;
         panorama && panorama.dispose() && viewer.remove(panorama);
         // panorama = new PANOLENS.ImagePanorama(val);
         panorama = new ImagePanorama(val);
- 
+
         viewer.add(panorama);
       }
       renew();
-    })
+    });
   },
-  methods: {
-    
-  }
-}
+  methods: {},
+};
 </script>
 
 <style lang="scss" scoped>
 * {
-        margin: 0;
-        padding: 0;
-      }
-      .main {
-        width: 100vw;
-        height: 100vh;
-        margin: 0 auto;
-        overflow: hidden;
-      }
-      .time {
-        text-align: center;
-        color: white;
-        font-size: 20px;
-        font-weight: 500;
-        position: absolute;
-        z-index: 20;
-        top: 15px;
-        left: 20px;
-      }
-      .list {
-        position: absolute;
-        z-index: 20;
-        width: 800px;
-        top: 120px;
-        left: 50%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        color: white;
-        transform: translateX(-50%);
-      }
-      .li {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        flex-grow: 2;
-        flex-shrink: 1;
-      }
+  margin: 0;
+  padding: 0;
+}
+.main {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.time {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  position: absolute;
+  z-index: 20;
+  top: 15px;
+  left: 20px;
+}
+.list {
+  position: absolute;
+  z-index: 20;
+  width: 800px;
+  top: 120px;
+  left: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  transform: translateX(-50%);
+}
+.li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex-grow: 2;
+  flex-shrink: 1;
+}
 .panorama {
   &-container {
     margin: 30px;
@@ -273,8 +263,8 @@ export default {
 }
 </style>
 <style id="panolens-style-addon" scoped>
-      :-webkit-full-screen {
-        width: 100% !important;
-        height: 100% !important;
-      }
-    </style>
+:-webkit-full-screen {
+  width: 100% !important;
+  height: 100% !important;
+}
+</style>

@@ -49,11 +49,26 @@ module.exports = {
   devServer: {
     port: port,
     // proxy: {
-      // '/ysapi': {
-      //   target: 'https://open.ys7.com',
+    //   '/api': {
+    //     target: 'http://192.168.101.79:8083/',
+    //     changeOrigin: true,
+    //     ws: true,
+    //     pathRewrite: {
+    //         '^/api': '/'
+    //     }
+    // },
+      // [process.env.VUE_APP_BASE_API+'/user/info']: {
+      //   target: `http://localhost:${port}/mock`,
       //   changeOrigin: true,
       //   pathRewrite: {
-      //     '/ysapi': ''
+      //     ['^' + process.env.VUE_APP_BASE_API]: ''
+      //   }
+      // },
+      // [process.env.VUE_APP_BASE_API]:{
+      //   target: process.env.BACKGROUND_APPLICATION_URL,
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     ['^' + process.env.VUE_APP_BASE_API]: ''
       //   }
       // }
     // },
