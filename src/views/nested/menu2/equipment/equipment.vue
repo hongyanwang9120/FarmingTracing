@@ -153,6 +153,7 @@
           <el-button @click="resetForm('ruleForm')" round>返回</el-button>
         </div>
       </el-form>
+      <!-- <mapa></mapa> -->
     </div>
     <br />
     <br />
@@ -163,9 +164,14 @@
 </template>
 <script>
 import AMap from "AMap";
-import MapHandleMode from "./mapHandleMode";
+import MapHandleMode from "@/views/common/mapHandleMode";
+// import mapa from "@/views/common/mapa";
+
 export default {
-  components: { MapHandleMode },
+  components: { 
+    MapHandleMode ,
+    // mapa
+    },
   data() {
     return {
       checkList: ["短信推送"],

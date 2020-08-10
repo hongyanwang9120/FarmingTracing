@@ -12,7 +12,6 @@
 </template>
 
 <script>
-// import { validUsername } from '@/utils/validate'
 import loginUser from './loginUser'
 import portalFooter from '../common/portalFooter'
 import loginHeader from './header'
