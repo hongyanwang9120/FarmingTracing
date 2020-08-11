@@ -52,6 +52,18 @@ export const constantRoutes = [
     hidden: true
   },
   {
+    path: "/form",
+    component: Layout,
+    children: [
+      {
+        path: "index",
+        name: "Form",
+        component: () => import("@/views/form/index"),
+        meta: { title: "信息管理", icon: "form" }
+      }
+    ]
+  },
+  {
     path: "/dashboard",
     component: Layout,
     redirect: "/dashboard/user",
@@ -72,21 +84,22 @@ export const constantRoutes = [
             hidden: true
           }
         ]
-      }
-    ]
-  },
-  {
-    path: "/form",
-    component: Layout,
-    children: [
+      },
       {
-        path: "index",
-        name: "Form",
-        component: () => import("@/views/form/index"),
-        meta: { title: "政府信息维护", icon: "form" }
+        path: "institution",
+        name: "institution",
+        component: () => import("@/views/dashboard/accredited-institution/index"),
+        meta: { title: "机构认证", icon: "form" },
+      },
+      {
+        path: "certification",
+        name: "certification",
+        component: () => import("@/views/dashboard/enterprise-certification/index"),
+        meta: { title: "企业认证", icon: "form" },
       }
     ]
   },
+
 
   {
     path: "/example",
@@ -98,14 +111,20 @@ export const constantRoutes = [
       {
         path: "table",
         name: "Table",
-        component: () => import("@/views/table/index"),
-        meta: { title: "我的回答", icon: "table" }
+        component: () => import("@/views/Enterprise-information/table/index"),
+        meta: { title: "基础信息维护", icon: "table" }
       },
       {
         path: "tree",
         name: "Tree",
-        component: () => import("@/views/tree/index"),
-        meta: { title: "我的文章", icon: "tree" }
+        component: () => import("@/views/Enterprise-information/tree/index"),
+        meta: { title: "企业人员管理", icon: "tree" }
+      },
+      {
+        path: "live",
+        name: "Live",
+        component: () => import("@/views/Enterprise-information/live/index"),
+        meta: { title: "企业直播管理", icon: "tree" }
       }
     ]
   },
@@ -121,10 +140,10 @@ export const constantRoutes = [
     },
     children: [
       {
-        path: "menu1",
+        path: "task",
         component: () => import("@/views/nested/menu1/index"), // Parent router-view
-        name: "Menu1",
-        meta: { title: "Menu1" },
+        name: "Task ",
+        meta: { title: "任务管理 " },
         children: [
           {
             path: "menu1-1",
@@ -204,6 +223,18 @@ export const constantRoutes = [
         name: "panorama",
         component: () => import("@/views/panorama/index"),
         meta: { title: "全景场景", icon: "form" }
+      }
+    ]
+  },
+  {
+    path: "/maintenance",
+    component: Layout,
+    children: [
+      {
+        path: "index",
+        name: "maintenance",
+        component: () => import("@/views/maintenance/index"),
+        meta: { title: "基础数据维护", icon: "form" }
       }
     ]
   },

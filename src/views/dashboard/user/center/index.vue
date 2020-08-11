@@ -38,14 +38,30 @@
             <div class="info-colon">:</div>
             <div class="info-val">1990/01/01</div>
           </div>
-          <div class="info-item">
-            <div class="info-key">现住址</div>
+          <div class="info-item ">
+           
+               <div class="info-key">现住址</div>
             <div class="info-colon">:</div>
+             <template v-if="!addressEdit">
             <div class="info-val">江苏省无锡市XXX县XXX镇XXX村</div>
-            <div class="edit">
+            <div class="edit" @click="changeAddressEdit">
               <img src="@/assets/user_images/modify.png" alt />
               <span>设定/修改</span>
             </div>
+            </template>
+            <template v-if="addressEdit">
+            <div>
+ <div class="info-val province">
+           <province></province></div>
+          <el-input placeholder="请输入内容" class="detailed-address"></el-input>
+            <div class="edit"  @click="changeAddressEdit">
+              
+              <span>保存</span>
+      
+              </div>
+            </div>
+               
+            </template>
           </div>
           <div class="info-item">
             <div class="info-key">认证信息</div>
@@ -78,7 +94,7 @@
               <span>修改</span>
             </div>
           </div>
-          <div class="info-item">
+          <div class="info-item portrait">
             <div class="info-key">头像</div>
             <div class="info-colon">:</div>
             <div class="info-val">
@@ -96,15 +112,19 @@
 </template>
 <script>
 import { getListDevicesWeb } from "@/api/device";
-import axios from "axios";
-import qs from "qs";
+import province from './province.vue'
+// import axios from "axios";
+// import qs from "qs";
 export default {
+ 
   data() {
     return {
       btnList: ["基本信息", "密码设置/修改", "实名认证"],
       btnSel: 0,
+      addressEdit:false
     };
   },
+   components:{province},
   created() {
     // 联调已测通
     /*
@@ -133,6 +153,9 @@ axios({
     changeTab(index) {
       this.btnSel = index;
     },
+    changeAddressEdit(){
+      this.addressEdit=!this.addressEdit
+    }
   },
 };
 </script>
@@ -168,17 +191,25 @@ axios({
       font-weight: 400;
       color: rgba(51, 51, 51, 1);
       display: flex;
+      span {
+        cursor: pointer;
+      }
       .info-left {
         flex-grow: 2;
+        
       }
       .info-right {
         flex-grow: 3;
+        .portrait {
+          align-items:center
+        }
       }
       .info-item {
         min-height: 50px;
         display: flex;
         align-items: top;
       }
+     
       .info-key {
         width: 70px;
         display: inline-block;
@@ -210,7 +241,16 @@ axios({
           margin-left: 11px;
         }
       }
+      .province{
+        position: relative;
+        top:-10px;
+      }
+      
     }
+    .detailed-address{
+        background: red;
+        width:500px
+      }
   }
 }
 </style>

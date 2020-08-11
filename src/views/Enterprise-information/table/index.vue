@@ -1,5 +1,6 @@
 <template>
   <div class="app-container">
+    <h1>企业信息维护</h1>
     <el-table
       v-loading="listLoading"
       :data="list"

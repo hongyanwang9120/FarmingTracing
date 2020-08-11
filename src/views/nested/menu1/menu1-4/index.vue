@@ -3,8 +3,8 @@
     1-456789
     <iframe
       :src=linkUrl
-      width="300"
-      height="200"
+      width="600"
+      height="400"
       id="ysOpenDevice"
       allowfullscreen
     ></iframe>
@@ -20,7 +20,7 @@ export default {
       iframeObj:{
         "AppKey":"ccba7185a57c4d54802a59c1dcc53532",
         "AccessToken":"at.7c2qvg3o4liriux52px9xc7f1hjul4a7-2306dorv75-1rqb151-8xc6hshmk",
-        "Url":"ezopen://open.ys7.com/D44297815/1.hd.live"},
+        "Url":"ezopen://open.ys7.com/D44297872/1.hd.live"},
       linkUrl:null,
     }
   },
@@ -39,9 +39,8 @@ export default {
 
     },
   mounted() {
- setTimeout(() => {
    this.playerInit()
- }, 0);
+
     
    
   },
@@ -51,13 +50,13 @@ export default {
 let player = document.getElementById('ysOpenDevice').contentWindow;
 /* iframe 支持方法 */
 
-player.postMessage("play", "https://open.ys7.com/ezopen/h5/iframe") /* 播放 */
-player.postMessage("stop", "https://open.ys7.com/ezopen/h5/iframe") /* 结束 */
-player.postMessage("capturePicture", "https://open.ys7.com/ezopen/h5/iframe") /* 截图 */
-player.postMessage("openSound", "https://open.ys7.com/ezopen/h5/iframe") /* 开启声音 */
-player.postMessage("closeSound", "https://open.ys7.com/ezopen/h5/iframe") /* 关闭声音 */
-player.postMessage("startSave", "https://open.ys7.com/ezopen/h5/iframe") /* 开始录制 */
-player.postMessage("stopSave", "https://open.ys7.com/ezopen/h5/iframe") /* 结束录制 */
+// player.postMessage("play", "https://open.ys7.com/ezopen/h5/iframe") /* 播放 */
+// player.postMessage("stop", "https://open.ys7.com/ezopen/h5/iframe") /* 结束 */
+// player.postMessage("capturePicture", "https://open.ys7.com/ezopen/h5/iframe") /* 截图 */
+// player.postMessage("openSound", "https://open.ys7.com/ezopen/h5/iframe") /* 开启声音 */
+// player.postMessage("closeSound", "https://open.ys7.com/ezopen/h5/iframe") /* 关闭声音 */
+// player.postMessage("startSave", "https://open.ys7.com/ezopen/h5/iframe") /* 开始录制 */
+// player.postMessage("stopSave", "https://open.ys7.com/ezopen/h5/iframe") /* 结束录制 */
     }
   },
  
